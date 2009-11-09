@@ -1,0 +1,19 @@
+{# template/homepage/trav_d.html #}
+{% extends "site_base.html" %}
+
+{% block show %}0{% endblock show %}
+{% block head_title %}HOME{% endblock head_title %}
+{% block pageheading %}<a href="{% url home %}">{{ trav.title }}</a>{% endblock pageheading %}
+
+{% block body %}
+
+    	<div>
+			<p>
+				<div style="float:right;padding:10px;">
+					<img src="{{ trav.photo.get_display_url }}"></img>
+				</div>
+				{{ trav.body }}
+			</p>
+		</div>
+
+{% endblock %}

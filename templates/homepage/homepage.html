@@ -1,0 +1,34 @@
+{% extends "site_base.html" %}
+
+{% block show %}0{% endblock show %}
+{% block head_title %}HOME{% endblock head_title %}
+{% block pageheading %}My recent thoughts{% endblock pageheading %}
+{% load pagination_tags %}
+
+{% block body %}
+	{% autopaginate trav_list 2 %}
+	{% for trav in trav_list %}
+    	<div style="padding:15px 0;">
+			<p>
+				<div style="float:left;width:530px;">
+					<a href="{% url trav trav.slug %}">
+						<h2>{{ trav.title }}</h2>
+					</a>
+					<div style="padding:15px 0 0 0;">
+						{{ trav.body|truncatewords:30 }}
+					</div>
+					<div style="padding:0 0 0 100px;color:#7AAA1B;">
+						{{ trav.created|date:"D d M Y" }}
+					</div>
+				</div>
+				<div style="float:left;padding:0 10px 0 10px;">
+					<img src="{{ trav.photo.get_thumbnail_url }}"></img>
+				</div>
+			</p>
+		</div>
+		<div class="clearer"></div>
+	{% endfor %}
+	{% paginate %}
+	
+
+{% endblock %}

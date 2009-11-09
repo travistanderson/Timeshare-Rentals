@@ -1,0 +1,17 @@
+{# templates/work/index.html #}
+{% extends "work/base.html" %}
+{% block pageheading %}WORK{% endblock pageheading %}
+{% load pagination_tags %}
+
+{% block body %}
+
+<a href="{% url hisg %}"><h2>HISG</h2></a>
+<p>Humanitarian International Services Group works all around the world. "Connecting resources to needs".</p><br/>
+<a href="{% url gg %}"><h2>Global Grazer</h2></a>
+<p>Global Grazer is a site that helps you find great restaurants all over the world.</p><br/>
+<a href="{% url kw %}"><h2>Kingdom Warriors</h2></a>
+<p>Kingdom Warriors is a group of men that seeks to help other men be better husbands and fathers.</p><br/>
+<a href="{% url aw %}"><h2>Anderson Woodwork</h2></a>
+<p>Anderson Woodwork is the place to get all your custom woodworking done.</p><br/>
+
+{% endblock %}

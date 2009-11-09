@@ -1,0 +1,20 @@
+{# templates/life/videos.html #}
+{% extends "life/base.html" %}
+{% block pageheading %}Videos{% endblock pageheading %}
+{% load pagination_tags %}
+
+{% block body %}
+
+
+{% for video in video_list %}
+<div style="float:left;padding:0 40px 30px 0;">
+	<a href="{% url videos_d video.id %}">
+		<h3>{{ video.name }}</h3> <br/>
+		{{ video.caption }} <br/>
+		<img src="{{ video.frame.get_front_page_url }}"></img> <br/>
+		{{ video.created|date:"d M Y" }}
+	</a>
+</div>
+{% endfor %}
+
+{% endblock %}

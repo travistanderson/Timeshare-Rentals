@@ -1,0 +1,56 @@
+{# templates/mission/oil.html #}
+{% extends "mission/base.html" %}
+{% block pageheading %}OIL Chart{% endblock pageheading %}
+{% load pagination_tags %}
+
+{% block body %}
+<br/>
+{# <img src="http://chart.apis.google.com/chart?cht=lxy #}
+{# 	&chd=t:{% for checkoff in checkoff_list %} #}
+{# 		{{ checkoff.date_checked }}, #}
+{# 	{% endfor %}|	{% for checkoff in checkoff_list %} #}
+{# 			{{ checkoff.oillevel }}, #}
+{# 		{% endfor %}|1,100|10,10 #}
+{# 	&chs=650x400 #}
+{# 	&chl=Months #}
+{# 	&chco=FF0000,00FF00 #}
+{# 	&chxp=1,1000,2000,3000,4000,5000| #}
+{# 	&chdl=oil level|minimum level #}
+{# 	&chdlp=t" #}
+{# 	 #}
+{# ></img> #}
+
+<div class="oilchart-left">some labels</div>
+<div class="oilchart-chart">
+	<img src="http://chart.apis.google.com/chart?cht=lxy
+		&chd=t:{% for checkoff in dates_list %}
+			{{ checkoff }}
+			{% if forloop.last %}
+			{% else %},
+			{% endif %}
+		{% endfor %}|
+			{% for checkoff in oil_list %}
+				{{ checkoff }}
+				{% if forloop.last %}
+				{% else %},
+				{% endif %}
+			{% endfor %}	
+		|1,100|10,10
+		&chs=650x400
+		&chco=FF0000,00FF00
+		&chxp=1,1000,2000,3000,4000,5000|
+		&chdl=oil level|minimum level
+		&chdlp=t" >
+	</img>
+</div>
+<div class="clearer"></div>
+
+{% for checkoff in oil_list %}
+	{{ checkoff}}<br/>
+{% endfor %}
+
+{% for checkoff in dates_list %}
+	{{ checkoff}}<br/>
+{% endfor %}
+
+{% endblock %}

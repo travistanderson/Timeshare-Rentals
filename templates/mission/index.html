@@ -1,0 +1,14 @@
+{# templates/mission/index.html #}
+{% extends "mission/base.html" %}
+{% block pageheading %}MISSION{% endblock pageheading %}
+{% load pagination_tags %}
+
+{% block body %}
+
+<div class="right"><img src="{{ photo.get_home_url }}"></img></div>
+
+<a href="{% url oil %}">Oil Chart</a>
+<a href="{% url christmas %}">Christmas</a>
+<a href="{% url calendar %}">Calendar</a>
+
+{% endblock %}

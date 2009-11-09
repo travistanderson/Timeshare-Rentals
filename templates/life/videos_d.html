@@ -1,0 +1,42 @@
+{# templates/life/videos_d.html #}
+{% extends "life/base.html" %}
+{% block pageheading %}Video - {{ video.name }}{% endblock pageheading %}
+{% block body %}
+
+<div style="padding:0 0 20px 0;"><h3>{{ video.caption }}</h3></div>
+<div style="text-align:center;">
+	<object width="{{ video.width }}" height="{{ video.height|add:"16" }}" 	classid="clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B" codebase="http://www.apple.com/qtactivex/qtplugin.cab">
+		<param name="src" value="/site_media/{{ video.path }}">
+		<param name="controller" value="true">
+		<param name="autoplay" value="false">
+		<embed src="/site_media/{{ video.path }}"
+			width="{{ video.width }}" height="{{ video.height|add:"16" }}"
+			controller="true" autoplay="false"
+			scale="tofit" cache="true"
+			pluginspage="http://www.apple.com/quicktime/download/"
+		>
+	</object>
+</div>
+<div style="float:left;padding:10px 0 0 10px;width:102px;">
+	{% if prev %}
+	<a href="{% url videos_d prev.id %}">
+		previous video <br/>
+		<img src="{{ prev.frame.get_thumbnail_url }}"></img><br/>{{ prev.name }}</a>
+	{% else %}
+	first
+	{% endif %}
+</div>
+<div style="float:left;padding:10px 0 0 180px;">
+	<a href="{% url videos %}">Back to Videos list</a>
+</div>
+<div style="float:left;padding:10px 0 0 180px;width:102px;">
+	{% if next %}
+	<a href="{% url videos_d next.id %}">
+		next video <br/>
+		<img src="{{ next.frame.get_thumbnail_url }}"></img><br/>{{ next.name }}</a>
+	{% else %}
+	last	
+	{% endif %}
+</div>
+{% endblock %}
+

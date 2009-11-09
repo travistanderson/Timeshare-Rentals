@@ -1,0 +1,23 @@
+{# templates/hobby/index.html #}
+{% extends "hobby/base.html" %}
+{% block pageheading %}HOBBIES{% endblock pageheading %}
+{% load pagination_tags %}
+
+{% block body %}
+
+Here are my hobbies <br/>
+<h2><a href="{% url todo %}">Todo List</a></h2>
+<p>I have designs on building my own todo list, for learning and for fun.</p>
+<h2><a href="{% url django %}">Django</a></h2>
+<p>This site is built with django and I am having lots of fun learning django. Check it out.</p>
+<h2><a href="{% url python %}">Python</a></h2>
+<p>You know how I feel about django and django is built with python.</p>
+{{ video.name }}
+<h2><a href="{% url illustration %}">Illustration</a></h2>
+<p>Here are some illustrations I have drawn.</p>
+<h2><a href="{% url blender %}">Blender</a></h2>
+<p>Blender is a 3d drawing application which can render video, is free, is python based and can edit video. Give it a try like I did.</p>
+<h2><a href="{% url flash %}">Flash</a></h2>
+<p>I had to take a flash class in school so now you have to check out my flash stuff.</p>
+
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block navigation %}
+	<ul id="navigation">
+		<li class="nav1">
+			<a id="life" title="Life: See who I am" href="{% url life %}">
+			<span>Life</span>
+			</a>
+		</li>
+		<li class="nav2">
+			<a id="work" title="Work: See What I do" href="{% url work %}">
+			<span>Work</span>
+			</a>
+		</li>
+		<li class="nav3">
+			<a id="mission" title="Mission: See where I live" href="{% url mission %}">
+			<span>mission</span>
+			</a>
+		</li>
+		<li class="nav4">
+			<a id="hobby" title="Hobby: See what I am up to" href="{% url hobby %}">
+			<span>hobby</span>
+			</a>
+		</li>
+	</ul>
+{% endblock %}
+
+{% block subnavigation %}
+	<ul id="subnavigation">
+		<!-- home -->
+		<li class="subs sub0"><a href="{% url home %}">RECENT</a></li>
+		<li class="subs sub0"><a href="{% url home %}">BEST POSTS</a></li>
+		<li class="subs sub0"><a href="{% url home %}">MOST COMMENTED</a></li>
+		<li class="subs sub0"><a href="{% url home %}">ABOUT DUKE</a></li>
+		<!-- Life -->
+		<li class="subs sub1"><a href="{% url family %}">FAMILY</a></li>
+		<li class="subs sub1"><a href="{% url liphotos %}">PHOTOS</a></li>
+		<li class="subs sub1"><a href="{% url videos %}">VIDEOS</a></li>
+		<li class="subs sub1"><a href="{% url abe_blog %}">ABRAHAM'S BLOG</a></li>
+		<!-- Work -->
+		<li class="subs sub2"><a href="{% url hisg %}">HISG</a></li>
+		<li class="subs sub2"><a href="{% url gg %}">GLOBAL GRAZER</a></li>
+		<li class="subs sub2"><a href="{% url kw %}">KINGDOM WARRIORS</a></li>
+		<li class="subs sub2"><a href="{% url aw %}">ANDERSON WOODWORK</a></li>
+		<!-- Mission -->
+		<li class="subs sub3"><a href="{% url christmas %}">CHRISTMAS</a></li>
+		<li class="subs sub3"><a href="{% url oil %}">OIL CHART</a></li>
+		<li class="subs sub3"><a href="{% url calendar %}">CALENDAR</a></li>
+		<li class="subs sub3"><a href="{% url checklist %}">CHECKLIST</a></li>
+		<!-- Hobby -->
+		<li class="subs sub4"><a href="{% url todo %}">TODO LIST</a></li>
+		<li class="subs sub4"><a href="{% url django %}">DJANGO</a></li>
+		<li class="subs sub4"><a href="{% url python %}">PYTHON</a></li>
+		<li class="subs sub4"><a href="{% url illustration %}">ILLUSTRATION</a></li>
+		<li class="subs sub4"><a href="{% url blender %}">BLENDER</a></li>
+		<li class="subs sub4"><a href="{% url flash %}">FLASH</a></li>
+	</ul>
+{% endblock %}
+
+
+

@@ -1,0 +1,29 @@
+{# templates/life/photos.html #}
+{% extends "life/base.html" %}
+{% block pageheading %}Photos{% endblock pageheading %}
+{% load pagination_tags %}
+
+{% block body %}
+
+<div style="margin:0 0 0 90px">
+{% if gallery_list %}
+	
+	{% for gallery in gallery_list %}
+		<div style="display:inline; width:300px;float:left;padding:0 0 20px 0">
+			<h2>
+				<a href='{{ gallery.id }}'>
+					{{ gallery.title }}-{{gallery.date_added|date:"Y" }}
+				</a>
+			</h2>
+			<a href="{{ gallery.id }}">
+			<img src="{{ gallery.photosd.get_front_page_url }}" />
+			</a><br>
+			{{ gallery.description }}
+		</div>
+	{% endfor %}
+{% else %}
+	<p>No gallerys.</p>
+{% endif %}
+</div>
+
+{% endblock %}

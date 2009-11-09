@@ -1,0 +1,20 @@
+{# templates/life/index.html #}
+{% extends "life/base.html" %}
+{% block pageheading %}LIFE{% endblock pageheading %}
+{% load pagination_tags %}
+
+{% block body %}
+
+<h2><a href="{% url family %}">Family</a></h2>
+<p>My Family</p>
+<h2><a href="{% url liphotos %}">Photos</a></h2>
+<p>Here's the pics</p>
+<h2><a href="{% url videos %}">Videos</a></h2>
+<p>Here's the vids</p>
+{{ video.name }}
+<h2><a href="{% url abe_blog %}">Abe's Blog</a></h2>
+<p>Wondering what in the world a blog is. <br/>
+Latest: <br/>
+{{ abe.title }}</p>
+
+{% endblock %}

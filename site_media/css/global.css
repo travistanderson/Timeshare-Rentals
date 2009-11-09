@@ -1,0 +1,87 @@
+html, body {height:100%;}
+html, body, div, p, ul, ol, li, h1, h2, h3, h4, pre, form, p, button, img {border:0 none;margin:0;padding:0;}
+body {
+-x-system-font:none;/*background-image:url(/site_media/images/logo/carbon.jpg);*/background-color:#FFFFFF;
+color:#8D8D85;font-family:Tahoma,Arial,sans-serif;font-size:11px;font-size-adjust:none;font-stretch:normal;
+font-style:normal;font-variant:normal;font-weight:normal;line-height:16px;}
+ul, li {list-style-type:none;}
+a {outline-color:-moz-use-text-color;outline-style:none;outline-width:medium;text-decoration:none;}
+a:hover {cursor:pointer;text-decoration:none;}
+a span, button span, ul#navigation span, h2 span, h3 span {display:none;}
+input, textarea {-x-system-font:none;color:#3A3A35;font-family:Tahoma,Arial,sans-serif;font-size:11px;font-size-adjust:none;font-stretch:normal;font-style:normal;font-variant:normal;font-weight:normal;line-height:17px;}
+button {cursor:pointer;display:block;}
+div.clear {clear:both;font-size:1px;height:1px;line-height:1px;position:relative;}
+#page_container {margin:0 auto;padding:0 0 30px;text-align:left;width:920px;}
+#bd {background:transparent url(../img/backgrounds/content.gif) repeat-y scroll 0 0;margin:40px 0 0 15px;width:890px;}
+a, h4 a {/*border-bottom:1px solid #D7E1E9;*/color:#7AAA1B;}
+p a:hover, h4 a:hover {border-bottom:1px solid #AAA;color:#333;}
+p.link {padding:0 0 0 19px;}
+h3 {height:10px;}
+/*===================== header ===============================*/
+#header {height:90px;}
+#header #logo {float:left;height:48px;padding:20px 0 0 0px;width:135px;}
+#header h1 {background:transparent url(/site_media/images/logo/travis2.gif) no-repeat scroll 0 0;cursor:pointer;display:block;height:48px;text-indent:-9999px;}
+#header h1:hover {background-position:0 -48px;}
+#header h1 a {display:block;height:48px;width:132px;}
+#header .contact {float:right;margin:0px;padding:0px;width:115px;position:relative;top:6px;}
+/*===================== navigation ===============================*/
+ul#navigation {height:50px;}
+ul#navigation li {float:left;width:230px;}
+ul#navigation li a {cursor:pointer;display:block;height:50px;}
+ul#navigation li a#life {background:transparent url(/site_media/images/navigation/life.gif) no-repeat scroll 0 0;}
+ul#navigation li a#work {background:transparent url(/site_media/images/navigation/work.gif) no-repeat scroll 0 0;}
+ul#navigation li a#mission {background:transparent url(/site_media/images/navigation/mission.gif) no-repeat scroll 0 0;}
+ul#navigation li a#hobby {background:transparent url(/site_media/images/navigation/hobby.gif) no-repeat scroll 0 0;}
+ul#navigation li a#life:hover, ul#navigation li a#work:hover, ul#navigation li a#mission:hover, ul#navigation li a#hobby:hover {background-position:0 -50px;}
+
+#subnavigation{margin:30px 0 0 100px;color:#7AAA1B;font-size:1.25em;height:30px;width:800px;}
+#subnavigation li{display:none;padding:0 0 0 50px;float:left;}
+#subnavigation a:link{text-decoration:none;color:gray;}
+#subnavigation a:visited{text-decoration:none;color:gray;}
+#subnavigation a:hover{color:#7AAA1B;}
+#subnavigation a:active{color:gray;}
+/*===================== left column ===============================*/
+#left_column{float:left;width:674px;border-right:1px solid #DCDCDC;}
+#left_column .section{border-bottom:1px solid #DCDCDC;padding:0 0 30px;}
+#homepic{padding:10px 10px 10px 0;}
+#news_box {position:relative;}
+#news_error_box {background:transparent url(/img/backgrounds/newsletter.gif) no-repeat scroll 0 0;height:65px;left:0;position:absolute;top:52px;width:200px;}
+.left{float:left;}
+.right{float:right;}
+.clearer{clear:both;}
+#cform{margin:20px 0 0 0;background-color:#EEFFEE;}
+#cform a {background-color:#DDDDDD;padding:0 6px;}
+.first{float:left;clear:left;width:110px;text-align:right;}
+.second{float:left;margin:0 0 0 10px;width:50px;}
+.third{float:left;}
+.checkoffform{}
+.checkoffform li{height:30px;}
+.checkoffform input{width:30px;}
+
+.billtable{margin:20px 0 0 0;border-collapse:collapse;}
+.billtable th{padding:10px;border:solid 4px #DCDCDC;}
+.billtable td{padding:10px;border:solid 4px #DCDCDC;}
+
+.oilchart-chart{float:left;width:650px;}
+.oilchart-left{float:left;width:20px;}
+/*===================== right column ===============================*/
+#right_column {float:right;padding:0 0 27px;width:215px;}
+#right_column p {margin:7px 0 0 15px;}
+#right_column p.highlight, #right_column span.highlight {color:#7AAA1B;}
+#right_column .section {border-bottom:1px solid #DCDCDC;padding:0 0 24px;}
+#right_column h3 {margin:0 0 12px 15px;}
+/*===================== footer ===============================*/
+#footer {margin:0 0 0 15px;padding:26px 0;border-top:1px solid #DCDCDC}
+#footer ul, #footer li {float:left;}
+#footer li a {border-bottom:1px solid #E0E0E0;color:#6E6E66;}
+#footer li a:hover {border-bottom:1px solid #FFFFFF;color:#8E8E86;}
+#footer li span {color:#D0D0D0;}
+#footer p#copyright {float:right;width:445px;}
+/*===================== end ===============================*/
+
+
+/*===================== colors ===============================*/
+/* #7AAA1B -- green*/
+/* #DCDCDC -- gray*/
+
+/* == */

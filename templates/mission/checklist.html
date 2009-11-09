@@ -1,0 +1,28 @@
+{# templates/mission/checklist.html #}
+{% extends "mission/base.html" %}
+{% block pageheading %}Checklist{% endblock pageheading %}
+{% load pagination_tags %}
+
+{% block body %}
+
+Today is {{ today }}<br/><br/>
+<h3>Current Checklist</h3><br/>
+	<a href="{% url checkoff current %}">{{ current|date:"M d Y" }}</a> 
+	<span style="padding:0 0 0 30px;">
+		{% if done %}
+			Checkoff is done!
+		{% else %}
+			Not done yet!
+		{% endif %}
+	</span>
+<br/><br/>
+<h3>List of Past Checklists</h3><br/>
+
+{% for checkoff in past_checkoff_list %}
+	<a href="{% url oldcheckoff checkoff %}">{{ checkoff }}</a><br/>
+{% endfor %}
+<br/><br/>
+
+
+
+{% endblock %}

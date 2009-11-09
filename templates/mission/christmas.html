@@ -1,0 +1,33 @@
+{# templates/mission/christmas.html #}
+{% extends "mission/base.html" %}
+{% block pageheading %}CHRISTMAS GIFT EXCHANGE{% endblock pageheading %}
+{% load pagination_tags %}
+
+{% block body %}
+
+
+<table id="cform">
+	<caption>Church group</caption>
+	<th>
+		<td width="80px"><h3>Receiver</h3></td>
+		<td width="80px"><h3>Giver</h3></td>
+		<td width="300px"><h3>Ideas</h3></td>
+		<td></td>
+	</th>
+	{% for fellow in fellow_list %}
+	<tr>
+		
+		<td style="padding:0 10px 0 10px;">{{ forloop.counter }}</td>
+		<td>{{ fellow }}</td>
+		<td>{{ fellow.giver }}</td>
+		<td>
+			{% for gift in fellow.gift.all %}
+				<span style="padding:0 20px 0 0;">{{ gift }}</span>
+			{% endfor %}
+		</td>
+		<td><a href="{% url gift fellow.id %}">add gift idea</a></td>
+	</tr>
+	{% endfor %}
+</table>
+
+{% endblock %}

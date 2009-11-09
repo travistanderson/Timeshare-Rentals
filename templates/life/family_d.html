@@ -1,0 +1,18 @@
+{# templates/life/family_d.html #}
+{% extends "life/base.html" %}
+{% block pageheading %}{{ family.person }}{% endblock pageheading %}
+{% load pagination_tags %}
+
+{% block body %}
+
+<p>
+	{{ family.bio }} 
+	<img src="{{ family.photo.get_display_url }}"></img>
+	My favorite verse is {{ family.verse }}.<br/>
+	My favorite movie is {{ family.movie }}.<br/>
+	My favorite video game is {{ family.videogame }}.<br/>
+
+</p>
+
+{% endblock %}
+

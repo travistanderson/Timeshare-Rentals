@@ -1,0 +1,38 @@
+{# templates/mission/oldcheckoff.html #}
+{% extends "mission/base.html" %}
+{% block pageheading %}Checkoff {% endblock pageheading %}
+{% load pagination_tags %}
+
+{% block body %}
+<h3>
+	{{ checkoff }} done by {{ checkoff.checked_by.first_name }} {{ checkoff.checked_by.last_name }}
+	<div class="right" style="padding:0 20px 0 0;"><a href="{% url checklist %}">Back to List</a></div>
+</h3>
+
+<br/><br/>
+saltlevel : {{ checkoff.saltlevel }}<br/>
+saltbags : {{ checkoff.saltbags }}<br/>
+salttimer : {{ checkoff.salttimer }}<br/>
+uvlight : {{ checkoff.uvlight }}<br/>
+oillevel : {{ checkoff.oillevel }}<br/>
+filterspressure : {{ checkoff.filterspressure }}<br/>
+filtersleft : {{ checkoff.filtersleft }}<br/>
+boilerflush : {{ checkoff.boilerflush }}<br/>
+waterpots : {{ checkoff.waterpots }}<br/>
+doors : {{ checkoff.doors }}<br/>
+
+{# fields = ('saltlevel', #}
+{# 		'saltbags', #}
+{# 		'salttimer', #}
+{# 		'uvlight', #}
+{# 		'oillevel', #}
+{# 		'filterspressure', #}
+{# 		'filtersleft', #}
+{# 		'boilerflush', #}
+{# 		'waterpots', #}
+{# 		'doors',) #}
+<br/><br/>
+
+<a href="{% url checklist %}">Back to List</a>
+
+{% endblock %}
