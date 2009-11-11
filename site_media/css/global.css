@@ -1,7 +1,7 @@
 html, body {height:100%;}
 html, body, div, p, ul, ol, li, h1, h2, h3, h4, pre, form, p, button, img {border:0 none;margin:0;padding:0;}
 body {
--x-system-font:none;/*background-image:url(/site_media/images/logo/carbon.jpg);*/background-color:#FFFFFF;
+-x-system-font:none;background-image:url(/site_media/images/bg6.gif);background-color:#FFFFFF;
 color:#8D8D85;font-family:Tahoma,Arial,sans-serif;font-size:11px;font-size-adjust:none;font-stretch:normal;
 font-style:normal;font-variant:normal;font-weight:normal;line-height:16px;}
 ul, li {list-style-type:none;}
@@ -40,48 +40,23 @@ ul#navigation li a#life:hover, ul#navigation li a#work:hover, ul#navigation li a
 #subnavigation a:visited{text-decoration:none;color:gray;}
 #subnavigation a:hover{color:#7AAA1B;}
 #subnavigation a:active{color:gray;}
-/*===================== left column ===============================*/
-#left_column{float:left;width:674px;border-right:1px solid #DCDCDC;}
-#left_column .section{border-bottom:1px solid #DCDCDC;padding:0 0 30px;}
-#homepic{padding:10px 10px 10px 0;}
-#news_box {position:relative;}
-#news_error_box {background:transparent url(/img/backgrounds/newsletter.gif) no-repeat scroll 0 0;height:65px;left:0;position:absolute;top:52px;width:200px;}
+/*===================== generic ===================================*/
 .left{float:left;}
 .right{float:right;}
 .clearer{clear:both;}
-#cform{margin:20px 0 0 0;background-color:#EEFFEE;}
-#cform a {background-color:#DDDDDD;padding:0 6px;}
-.first{float:left;clear:left;width:110px;text-align:right;}
-.second{float:left;margin:0 0 0 10px;width:50px;}
-.third{float:left;}
-.checkoffform{}
-.checkoffform li{height:30px;}
-.checkoffform input{width:30px;}
-
-.billtable{margin:20px 0 0 0;border-collapse:collapse;}
-.billtable th{padding:10px;border:solid 4px #DCDCDC;}
-.billtable td{padding:10px;border:solid 4px #DCDCDC;}
-
-.oilchart-chart{float:left;width:650px;}
-.oilchart-left{float:left;width:20px;}
-/*===================== right column ===============================*/
-#right_column {float:right;padding:0 0 27px;width:215px;}
-#right_column p {margin:7px 0 0 15px;}
-#right_column p.highlight, #right_column span.highlight {color:#7AAA1B;}
-#right_column .section {border-bottom:1px solid #DCDCDC;padding:0 0 24px;}
-#right_column h3 {margin:0 0 12px 15px;}
+.italicer{font-style:italic;}
+/*===================== left column ===============================*/
+#left_column {float:left;padding:0 0 27px;width:215px;}
+.section{border:1px solid gray;padding:10px;margin:5px;}
+/*===================== main column ===============================*/
+#main_column{float:left;width:674px;}
 /*===================== footer ===============================*/
-#footer {margin:0 0 0 15px;padding:26px 0;border-top:1px solid #DCDCDC}
-#footer ul, #footer li {float:left;}
-#footer li a {border-bottom:1px solid #E0E0E0;color:#6E6E66;}
-#footer li a:hover {border-bottom:1px solid #FFFFFF;color:#8E8E86;}
-#footer li span {color:#D0D0D0;}
-#footer p#copyright {float:right;width:445px;}
-/*===================== end ===============================*/
+#footer {margin:0 0 0 15px;padding:26px 0;}
+/*============================================================*/
 
 
 /*===================== colors ===============================*/
 /* #7AAA1B -- green*/
 /* #DCDCDC -- gray*/
 
-/* == */
+/*===================== end ==================================*/

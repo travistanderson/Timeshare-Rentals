@@ -2,12 +2,12 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 	<head>
 		<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
-		<meta content="travis anderson, new media, development" name="keywords"/>
-		<meta content="2009" name="year"/>
+		<meta content="Timeshare Rentals, Rentals, Timeshare, Vacation" name="keywords"/>
+		<meta content="2010" name="year"/>
 		<meta content="Web Design" name="category"/>
 		<meta content="index,follow" name="robots"/>
 		<meta content="en" name="content-language"/>
-		<title>{% if site_name %}{{ site_name }} : {% endif %}{% block head_title %}{% endblock %}</title>
+		<title>{% block head_title %}{% endblock %} - TimeshareRentals.com</title>
 		<link rel="stylesheet" type="text/css" href="/site_media/css/global.css" >
 		<script type="text/javascript" src="/site_media/js/jquery-1.3.2.min.js"></script>
 		<script type="text/javascript" src="/site_media/js/navigate.js"></script>
@@ -35,24 +35,26 @@
 
 			<div id="bd">
 				<div id="left_column">
-					{% block body %}{% endblock %}
-				</div><!-- end of left_column -->
-				
-				<div id="right_column">
 					<div class="section">
-						New right column
+						Search Box
 					</div>
-					<div id="quote">
-						<p>Quote of the day</p>
-						<p>Today is the day!</p>
+					<div class="section">
+						Free Ad
 					</div>
-				</div><!-- end of right_column -->
+					<div class="section">
+						Premium Ad
+					</div>
+				</div>{# end of left_column #}
 				
-				<div class="clear"> </div><!-- end of clear -->
+				<div id="main_column">
+					{% block body %}{% endblock %}
+				</div>{# end of main_column #}
+				
+				<div class="clear"> </div>{# end of clear #}
 			</div>{# end of bd #}
 		
 			<div id="footer">
-				<p id="copyright">Copyright © 2006 - 2009 Travis Anderson.</p>
+				<p id="copyright">Copyright © 2000 - 2010 Modern Arrangements.</p>
 			</div>{# end of footer #}
 		</div>{# end of page_container #}
 	</body>
