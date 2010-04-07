@@ -1,0 +1,34 @@
+{# templates/ads/addetail.html #}
+{% extends "site_base.html" %}
+
+{% block head_title %}{{ ad }}{% endblock head_title %}
+
+{% block body %}
+	<div class="section" id="wide_column">
+		{% if not ad.premod %}
+			<div class="rowheader">This ad is waiting to be approved</div><br/><br/>
+		{% endif %}
+		<div class='addetail_{% if not ad.premod %}{% ifequal request.user ad.creator %}visible{% else %}hidden{% endifequal %}{% else %}visible{% endif %}'>
+			<div class="rowheader">{{ ad }}</div>
+			<div>
+				{% for photo in ad.photos.all %}
+					<img src="{{ photo.get_thumbnail_url }}" class="pic" alt="{{ photo }}"></img>
+				{% endfor %}
+				<div>
+					{{ ad.description }}
+				</div><br/>
+				<div>
+					<a href='{% url profile user.id %}'>{{ user }}</a>
+				</div><br/>
+				<div>
+					<h2>Resort</h2>
+					<a href='/'>{{ ad.resort }} - {{ ad.resort.name }}</a>
+					<img src="{{ ad.resort.picture.get_thumbnail_url }}" class="pic" alt="{{ ad.resort }}_photo"></img>
+				</div>
+			</div>
+			<div class='clearer'></div>
+		</div>
+	</div>
+
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{# templates/profiler/index.html #}
+{% extends "site_base.html" %}
+
+{% block head_title %}All Users{% endblock head_title %}
+
+{% block body %}
+	<div class="section" id="wide_column">
+		<h1>All Users</h1><br/><br/>
+		
+		
+		{% for u in users %}
+			<a href='{% url profile u.id %}'>{{ u }}</a><br/>
+		{% endfor %}
+	</div>
+
+
+{% endblock %}

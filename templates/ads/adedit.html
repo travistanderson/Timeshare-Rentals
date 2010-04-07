@@ -1,0 +1,45 @@
+{# templates/ads/adedit.html #}
+{% extends "site_base.html" %}
+
+{% block head_title %}Edit -- {{ ad }}{% endblock head_title %}
+
+{% block body %}
+	<div class="section" id="wide_column">
+		<div class="row">
+			{% if ad.premod %}
+				<div class="rowheader">Edit -- {{ ad }}</div>
+				<div>
+					{% for photo in ad.photos.all %}
+						<img src="{{ photo.get_thumbnail_url }}" class="pic" alt="{{ photo }}"></img>
+					{% endfor %}
+					<div>
+						{{ ad.description }}
+					</div><br/>
+					<div>
+						<a href='{% url profile user.id %}'>{{ user }}</a>
+					</div>
+				</div>
+				<div class='clearer'></div>
+			{% else %}
+				<div class="rowheader">This ad is waiting to be approved</div><br/><br/>
+				{% ifequal request.user ad.creator %}
+					<div class="rowheader">{{ ad }}</div>
+					<div>
+						{% for photo in ad.photos.all %}
+							<img src="{{ photo.get_thumbnail_url }}" class="pic" alt="{{ photo }}"></img>
+						{% endfor %}
+						<div>
+							{{ ad.description }}
+						</div><br/>
+						<div>
+							<a href='{% url profile user.id %}'>{{ user }}</a>
+						</div>
+						<div class='clearer'></div>
+					</div>
+				{% endifequal %}
+			{% endif %}
+		</div>{# end of row #}
+	</div>
+
+
+{% endblock %}

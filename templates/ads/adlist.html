@@ -1,0 +1,65 @@
+{# templates/ads/adlist.html #}
+{% extends "site_base.html" %}
+
+{% block head_title %}Ad List{% endblock head_title %}
+
+{% block body %}
+	<div class="section" id="wide_column">
+		{% for ad in adp_list %}
+			<div class="row">
+				<div class="rowheader">
+					<a href="{% url addetail ad.id %}">{{ ad.name }}</a>
+				</div>{# end of rowheader #}
+				<div class='rowfooter'>
+					<div class='rowphotos'>
+						{% for photo in ad.photos.all %}
+							<img src="{{ photo.get_thumbnail_url }}" class="pic" alt="{{ photo }}"></img>
+						{% endfor %}
+					</div>
+					<div class='rowdescription'>
+						{{ ad.description|truncatewords:20 }}
+					</div>
+					<div class='rowinfo'>
+						{{ ad.resort }}<br/>
+						<img src="{{ ad.resort.picture.get_fingernail_url }}" class="pic" alt="{{ photo }}"></img><br/>
+						{{ ad.resort.name }}
+					</div>
+					<div class='rowinfo'>
+						{{ ad.creator }}<br/>
+						{{ ad.start_room }} - {{ ad.end_room }}
+					</div>
+					<div class='rowcountry'>
+						{{ ad.resort.address_country }}
+						<img src="{{ ad.resort.address_country.flag }}" class="pic" alt="pic" height="15px"></img>
+						
+					</div>
+				</div>
+			</div>{# end of row #}<div class='clearer'></div>
+		{% endfor %}<br/><br/><br/>
+		
+		{% for ad in adf_list %}
+			<div class="rowheader">
+				<a href="{% url addetail ad.id %}">{{ ad.name }}</a>
+			</div>{# end of rowheader #}
+		
+		{% endfor %}
+
+	</div>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+               
+
+
+
+

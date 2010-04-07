@@ -1,15 +1,35 @@
+{# templates/homepage/homepage.html #}
 {% extends "site_base.html" %}
 
 {% block show %}0{% endblock show %}
 {% block head_title %}HOME{% endblock head_title %}
-{% load pagination_tags %}
-
+{% block extra_head %}
+    <script src="/site_media/js/timer.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" charset="utf-8">
+		feature({{ adp_list.count }});
+	</script>
+{% endblock extra_head %}
 {% block body %}
-timesharerentals.com
+{% include "includes/left-column.html" %}
 
-{% for ad in adp_list %}
-	{{ ad.name }}<br/>
-{% endfor %}
+	<div id="main_column">
+		<div class="section">
+			<h1>Google Ads</h1>
+		</div>
+		<div class="section">
+			<h1>Featured Timeshares</h1><br/>
+			{% for ad in adp_list %}
+			<div class="featured_ts" id="fts{{ forloop.counter }}">
+				{% for photo in ad.photos.all %}
+					{% ifequal forloop.counter 1 %}
+						<img src="{{ photo.get_front_url }}"></p>
+					{% endifequal %}
+				{% endfor %}
+				<h2>{{ ad.name }}</h2><br/>
+				{{ ad.description|truncatewords:15 }}
+			</div>	
+			{% endfor %}
+		</div>
+	</div>{# end of main_column #}
 	
-
 {% endblock %}

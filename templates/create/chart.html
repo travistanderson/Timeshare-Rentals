@@ -1,0 +1,63 @@
+{# templates/create/chart.html #}
+{% extends "site_base.html" %}
+
+{% block head_title %}Create and Ad{% endblock head_title %}
+
+{% block body %}
+	<div class="section" id="wide_column">
+		<h1>Which ad is right for you?</h1><br/><br/>
+		
+		<table class="graph">
+			<tr>
+				<th id='firstcol'></th>
+				<th id='secondcol'><h2>Free</h2></th>
+				<th id='thirdcol'><h2>Premium</h2></th>
+			</tr>
+			<tr>
+				<td class='descgraph'>Words</td>
+				<td>40 words</td>
+				<td>unlimited words</td>
+			</tr>
+			<tr>
+				<td class='descgraph'>Pictures</td>
+				<td>2 pictures</td>
+				<td>10 pictures</td>
+			</tr>
+			<tr>
+				<td class='descgraph'>Featured Listing</td>
+				<td>no</td>
+				<td>yes</td>
+			</tr>
+			<tr>
+				<td class='descgraph'>Length</td>
+				<td>3 months</td>
+				<td>6/12 months/ Unlimited</td>
+			</tr>
+			<tr>
+				<td class='descgraph'>Private Messaging</td>
+				<td>yes</td>
+				<td>yes</td>
+			</tr>
+			<tr>
+				<td class='descgraph'>Statistics</td>
+				<td>no</td>
+				<td>yes</td>
+			</tr>
+			<tr>
+				<td class='descgraph'>Price</td>
+				<td>Free</td>
+				<td>$80 / $120 / $250</td>
+			</tr>
+		</table>
+		<a href="{% url freecreate %}" id='freepicchart'>
+			<img src="/site_media/images/bt_free.gif" class="pic" alt="bt_free"></img>
+		</a>
+		<a href="{% url premiumcreate %}"  id='prempicchart'>
+			<img src="/site_media/images/bt_pre.gif" class="pic" alt="bt_pre"></img>
+		</a>
+		
+
+	</div>
+
+
+{% endblock %}

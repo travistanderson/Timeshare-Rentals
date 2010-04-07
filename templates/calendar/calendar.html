@@ -1,0 +1,21 @@
+{# templates/calendar/calendar.html #}
+{% extends "site_base.html" %}
+
+{% block show %}0{% endblock show %}
+{% block head_title %}Calendar{% endblock head_title %}
+{% block extra_head %}
+    <script src="/site_media/js/timer.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" charset="utf-8">
+		feature({{ adp_list.count }});
+	</script>
+{% endblock extra_head %}
+{% block body %}
+{# {% include "includes/left-column.html" %} #}
+
+	<div id="main_column">
+		<div class="section">
+			<h1>calendar</h1>
+		</div>
+	</div>{# end of main_column #}
+	
+{% endblock %}

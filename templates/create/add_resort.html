@@ -1,0 +1,57 @@
+{# templates/create/add_resort.html #}
+{% extends "site_base.html" %}
+
+{% block head_title %}Add a Resort to your Ad{% endblock head_title %}
+
+{% block extra_head %}
+	<link rel="stylesheet" href="/site_media/css/widgets.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	{# // <script src="/site_media/js/widgets.js" type="text/javascript" charset="utf-8"></script> #}
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function() {
+			// dateranger();
+			
+			$('#new_resort_name').css({'display':'none'});
+			$('#add_resort').click(function(){
+				// $('.somediv').append($('#add_resort')[0].checked);
+				var $newname = $('#ad_the_resort > #id_name');
+				var $oldname = $('#id_resort > #id_name');
+				if($('#add_resort')[0].checked){
+					$('#ad_the_resort').css({'display':'block'});
+					$oldname.val(0);
+					$oldname.attr("disabled", true);
+				}else{
+					$('#ad_the_resort').css({'display':'none'});
+					$oldname.removeAttr("disabled");
+				}
+			})
+		});
+		
+	</script>
+	<style type="text/css" media="screen">
+		#ad_the_resort{display:none;}
+	</style>
+{% endblock extra_head %}
+
+{% block body %}
+	<div class="section" id="wide_column">
+		<h1>Add a New Resort Branch</h1><br/><br/>
+
+
+		
+		<form action="." method="POST">
+			<div>{{ form.name.errors }}</div>
+			<div class="leftcol">{{ form.name.label_tag }}</div>
+			<div class="rightcol" id='id_resort'>
+				{{ form.name }}
+			</div>
+			<div class="clearer"></div>			
+			
+
+			<div id="add_next"><input type="submit" value="Add Resort" /></div>
+		</form>
+		
+
+	</div>
+
+
+{% endblock %}

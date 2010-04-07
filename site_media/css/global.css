@@ -1,62 +1,80 @@
 html, body {height:100%;}
 html, body, div, p, ul, ol, li, h1, h2, h3, h4, pre, form, p, button, img {border:0 none;margin:0;padding:0;}
-body {
--x-system-font:none;background-image:url(/site_media/images/bg6.gif);background-color:#FFFFFF;
-color:#8D8D85;font-family:Tahoma,Arial,sans-serif;font-size:11px;font-size-adjust:none;font-stretch:normal;
-font-style:normal;font-variant:normal;font-weight:normal;line-height:16px;}
+body {-x-system-font:none;background:#F2D686 url(/site_media/images/leftback.jpg) repeat-x;color:#8D8D85;
+	font-family:Tahoma,Arial,sans-serif;font-size:11px;font-size-adjust:none;font-stretch:normal;
+	font-style:normal;font-variant:normal;font-weight:normal;line-height:16px;}
 ul, li {list-style-type:none;}
 a {outline-color:-moz-use-text-color;outline-style:none;outline-width:medium;text-decoration:none;}
 a:hover {cursor:pointer;text-decoration:none;}
-a span, button span, ul#navigation span, h2 span, h3 span {display:none;}
 input, textarea {-x-system-font:none;color:#3A3A35;font-family:Tahoma,Arial,sans-serif;font-size:11px;font-size-adjust:none;font-stretch:normal;font-style:normal;font-variant:normal;font-weight:normal;line-height:17px;}
 button {cursor:pointer;display:block;}
 div.clear {clear:both;font-size:1px;height:1px;line-height:1px;position:relative;}
-#page_container {margin:0 auto;padding:0 0 30px;text-align:left;width:920px;}
-#bd {background:transparent url(../img/backgrounds/content.gif) repeat-y scroll 0 0;margin:40px 0 0 15px;width:890px;}
+#page_container {margin:0 auto;padding:0 0 30px;text-align:left;width:1100px;}
+#bd {width:1100px;float:left;min-height:614px;background:url(/site_media/images/tree.jpg) no-repeat top right;padding:20px 0 0 0;}
+/*#tree{width:200px;float:left;min-height:614px;background:url(/site_media/images/tree.jpg) no-repeat;}*/
 a, h4 a {/*border-bottom:1px solid #D7E1E9;*/color:#7AAA1B;}
+a span{display:none;}
 p a:hover, h4 a:hover {border-bottom:1px solid #AAA;color:#333;}
 p.link {padding:0 0 0 19px;}
-h3 {height:10px;}
+h1{color:#EE2A7B;font-size:26px;}
+h2{color:#7AAA1B;font-weight:bold;}
+h3{color:#7AAA1B;height:10px;}
 /*===================== header ===============================*/
-#header {height:90px;}
-#header #logo {float:left;height:48px;padding:20px 0 0 0px;width:135px;}
-#header h1 {background:transparent url(/site_media/images/logo/travis2.gif) no-repeat scroll 0 0;cursor:pointer;display:block;height:48px;text-indent:-9999px;}
-#header h1:hover {background-position:0 -48px;}
-#header h1 a {display:block;height:48px;width:132px;}
-#header .contact {float:right;margin:0px;padding:0px;width:115px;position:relative;top:6px;}
+#header {height:249px;background:url(/site_media/images/header.jpg) no-repeat;}
+#ts_home{padding:95px 0 0 340px;font-size:60px;height:50px;width:450px;}
+.userinfo{height:15px;font-size:10px;margin:0 0 0 600px;color:#EE2A7B;}
+.userinfo a{color:#fff;}
 /*===================== navigation ===============================*/
-ul#navigation {height:50px;}
-ul#navigation li {float:left;width:230px;}
-ul#navigation li a {cursor:pointer;display:block;height:50px;}
-ul#navigation li a#life {background:transparent url(/site_media/images/navigation/life.gif) no-repeat scroll 0 0;}
-ul#navigation li a#work {background:transparent url(/site_media/images/navigation/work.gif) no-repeat scroll 0 0;}
-ul#navigation li a#mission {background:transparent url(/site_media/images/navigation/mission.gif) no-repeat scroll 0 0;}
-ul#navigation li a#hobby {background:transparent url(/site_media/images/navigation/hobby.gif) no-repeat scroll 0 0;}
-ul#navigation li a#life:hover, ul#navigation li a#work:hover, ul#navigation li a#mission:hover, ul#navigation li a#hobby:hover {background-position:0 -50px;}
+#ts_nav{padding:0px;font-size:20px;margin:40px 0 0 0;}
+ul#navigation {height:46px;}
+ul#navigation li {float:left;min-width:130px;padding:0 30px;}
+ul#navigation li a {cursor:pointer;display:block;height:46px;}
+ul#navigation li a#home {background:transparent url(/site_media/images/navigation/home.jpg) no-repeat scroll 0 0;width:125px;}
+ul#navigation li a#advertise {background:transparent url(/site_media/images/navigation/advertise.jpg) no-repeat scroll 0 0;width:198px;}
+ul#navigation li a#calendar {background:transparent url(/site_media/images/navigation/calendar.jpg) no-repeat scroll 0 0;width:190px;}
+ul#navigation li a#contact {background:transparent url(/site_media/images/navigation/contact.jpg) no-repeat scroll 0 0;width:172px;}
+ul#navigation li a#home:hover, ul#navigation li a#advertise:hover, ul#navigation li a#calendar:hover, ul#navigation li a#contact:hover {background-position:0 -46px;}
 
-#subnavigation{margin:30px 0 0 100px;color:#7AAA1B;font-size:1.25em;height:30px;width:800px;}
-#subnavigation li{display:none;padding:0 0 0 50px;float:left;}
-#subnavigation a:link{text-decoration:none;color:gray;}
-#subnavigation a:visited{text-decoration:none;color:gray;}
-#subnavigation a:hover{color:#7AAA1B;}
-#subnavigation a:active{color:gray;}
 /*===================== generic ===================================*/
 .left{float:left;}
 .right{float:right;}
 .clearer{clear:both;}
 .italicer{font-style:italic;}
+.errorlist{color:red;font-size:9px;border:1px solid red;width:200px;padding:0 0 0 10px;}
 /*===================== left column ===============================*/
-#left_column {float:left;padding:0 0 27px;width:215px;}
-.section{border:1px solid gray;padding:10px;margin:5px;}
+#left_column {float:left;padding:0 0 30px;width:330px;}
+.section{border:1px solid gray;padding:10px;margin:5px;-moz-border-radius:.75em;-webkit-border-radius:.75em;}
+#searchbox{min-height:150px;}
 /*===================== main column ===============================*/
-#main_column{float:left;width:674px;}
+#main_column{float:left;width:590px;}
+#wide_column{width:900px;}
+
+.addetail_hidden{visibility:hidden;}
+
+.graph{width:820px;height:600px;margin:0 0 0 40px;background-color:#7AAA1B;font-size:20px;}
+.graph td, th{background:#ddd;padding:20px;border:4px solid #7AAA1B;}
+.graph #firstcol{width:100px;}
+.graph #secondcol, #thirdcol{width:300px;}
+.graph .descgraph{font-size:16px;color:#EE2A7B;font-weight:bold;}
+#freepicchart{padding:0px 0 0 200px;}
+#prempicchart{padding:0px 0 0 40px;}
+
+.row{height:110px;}
+.rowheader{font-size:14px;font-weight:bold;height:20px;}
+.rowfooter{height:90px;}
+.rowphotos{float:left;width:230px;}
+.rowdescription{float:left;width:200px;height:90px;overflow:hidden;}
+.rowinfo{float:left;width:100px;}
 /*===================== footer ===============================*/
-#footer {margin:0 0 0 15px;padding:26px 0;}
+#footer{color:white;height:300px;margin:0;padding:150px 0 0 200px;background:#464646 url(/site_media/images/grass2.jpg) repeat-x;}
 /*============================================================*/
 
 
 /*===================== colors ===============================*/
 /* #7AAA1B -- green*/
 /* #DCDCDC -- gray*/
+/* #464646 -- gray for footer */
+/* #F2D686 -- Tan for the beach*/
+/* #EE2A7B -- Purple light for h1's and logo*/
 
 /*===================== end ==================================*/

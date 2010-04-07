@@ -1,0 +1,44 @@
+{# templates/create/add_pictures.html #}
+{% extends "site_base.html" %}
+
+{% block head_title %}Add Photos to your Ad{% endblock head_title %}
+{% block extra_head %}
+	<link rel="stylesheet" href="/site_media/css/widgets.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	{# // <script src="/site_media/js/widgets.js" type="text/javascript" charset="utf-8"></script> #}
+	{# <script type="text/javascript" charset="utf-8"> #}
+	{# 	$(document).ready(function() { #}
+	{# 		//nothing now #}
+	{# 	}); #}
+	{# </script> #}
+{% endblock extra_head %}
+
+{% block body %}
+	<div class="section" id="wide_column">
+		<h1>Add Photos to your Ad</h1><br/><br/>	
+		
+		
+		<form enctype="multipart/form-data" method="POST" action=".">
+			<div>{{ form.image.errors }}</div>
+			<div class="leftcol">{{ form.image.label_tag }}</div>
+			<div class="rightcol">{{ form.image }}</div>
+			<div class="clearer"></div>
+			
+			<div>{{ form.caption.errors }}</div>
+			<div class="clearer"></div>
+			<div class="leftcol">{{ form.caption.label_tag }}</div>
+			<div class="rightcol">{{ form.caption }}</div>
+			<div class="clearer"></div>								
+	
+			{# {{ form }} #}
+			<div id="add_next"><input type="submit" value="Next" /></div>
+		</form><br/><br/><br/>
+		{% for photo in photos %}
+			<img src="{{ photo.get_thumbnail_url }}" class="pic" alt="{{ photo }}"></img><br/>
+			{{ photo }}
+		{% endfor %}
+		
+
+	</div>
+
+
+{% endblock %}

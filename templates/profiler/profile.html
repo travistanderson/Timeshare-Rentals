@@ -1,0 +1,53 @@
+{# templates/profiler/profile.html #}
+{% extends "site_base.html" %}
+
+{% block head_title %}{{ theuser }}{% endblock head_title %}
+
+{% block body %}
+	<div class="section" id="wide_column">
+		<h1>Your Profile</h1><br/><br/>
+		<h3>{{ theuser }}</h3><br/>
+
+
+		{% if premypads or premyfads %}
+			<h2>Waiting for Approval</h2>
+			{% if premypads %}
+				<h4>Premium Ads</h4><br/>
+				{% for ad in premypads %}
+					<a href='{% url ad_detail ad.id %}'>{{ ad }}</a> <a href='{% url ad_edit ad.id %}'>edit</a><br/>
+				{% endfor %}<br/><br/>
+			{% endif %}
+			
+			{% if premyfads %}
+				<h4>Free Ads</h4><br/>
+				{% for ad in premyfads %}
+					<a href='{% url ad_detail ad.id %}'>{{ ad }}</a> <a href='{% url ad_edit ad.id %}'>edit</a><br/>
+				{% endfor %}
+			{% endif %}
+		
+			<br/><br/>
+		{% endif %}		
+		
+		{% if mypads or myfads %}
+			<h2>Ads</h2>
+
+			{% if mypads %}
+				<h4>Premium Ads</h4><br/>
+				{% for ad in mypads %}
+					<a href='{% url ad_detail ad.id %}'>{{ ad }}</a> <a href='{% url ad_edit ad.id %}'>edit</a><br/>
+				{% endfor %}<br/><br/>
+			{% endif %}
+
+			{% if myfads %}
+				<h4>Free Ads</h4><br/>
+				{% for ad in myfads %}
+					<a href='{% url ad_detail ad.id %}'>{{ ad }}</a> <a href='{% url ad_edit ad.id %}'>edit</a><br/>
+				{% endfor %}<br/><br/>
+			{% endif %}
+		{% endif %}
+		
+		{{ theuser.date_joined }}
+	</div>
+
+
+{% endblock %}

@@ -1,6 +1,6 @@
 # ts/admin.py
 from django.contrib import admin
-from ts.models import Comment, ResortType, Resort, Ad, Email, Country
+from ts.models import Ad, Comment, Country, Email, PhotoOrder, Resort, ResortType
 
 class AdAdmin(admin.ModelAdmin):
     list_display = ('name', 'resort', 'creator', 'premium','premod')
@@ -16,8 +16,9 @@ class ResortAdmin(admin.ModelAdmin):
     # prepopulated_fields = {'title_slug': ('title',)}
 
 admin.site.register(Ad, AdAdmin)
-admin.site.register(Resort, ResortAdmin)
-admin.site.register(ResortType)
-admin.site.register(Email)
 admin.site.register(Comment)
 admin.site.register(Country)
+admin.site.register(Email)
+admin.site.register(PhotoOrder)
+admin.site.register(Resort, ResortAdmin)
+admin.site.register(ResortType)

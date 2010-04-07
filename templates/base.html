@@ -1,61 +1,52 @@
+{# templates/base.html #}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML...TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 	<head>
 		<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
 		<meta content="Timeshare Rentals, Rentals, Timeshare, Vacation" name="keywords"/>
 		<meta content="2010" name="year"/>
-		<meta content="Web Design" name="category"/>
+		<meta content="Timeshare Rental" name="category"/>
 		<meta content="index,follow" name="robots"/>
 		<meta content="en" name="content-language"/>
 		<title>{% block head_title %}{% endblock %} - TimeshareRentals.com</title>
 		<link rel="stylesheet" type="text/css" href="/site_media/css/global.css" >
 		<script type="text/javascript" src="/site_media/js/jquery-1.3.2.min.js"></script>
 		<script type="text/javascript" src="/site_media/js/navigate.js"></script>
-		<script type="text/javascript" charset="utf-8">
-			subnav({% block show %}{% endblock show %});
-		</script>
+		{# // <script type="text/javascript" src="http://use.typekit.com/gis0abx.js"></script> #}
+		{# // <script type="text/javascript">try{Typekit.load();}catch(e){}</script> #}
 		{% block extra_head %}{% endblock extra_head %}
 	</head>
 	<body>
 		<div id="page_container">
 			<div id="header">
-				<div id="logo">
-					<h1 title="Take me home!">
-						<a href="/">home</a>
-					</h1>
-				</div>
-				<div class="contact">
-					<a href="/admin/"><img src="/site_media/images/logo/self.bmp"></img></a>
-				</div>
+				<div class='userinfo'>
+					{% if user.is_authenticated %}
+						{% if user.is_staff %}
+							<a href="/admin/">Admin</a> | 
+						{% endif %}
+						<a href="{% url profile user.id %}">{{ user }}</a> | 
+						<a href="/">Logout</a>
+					{% else %}
+						<a href="/">Login</a>/
+						<a href="/">Sign Up</a>
+					{% endif %}
+				</div>{# end of userinfo #}
+				<h1 id="ts_home"><a href="/"><span>TimeShareRentals.com</span></a></h1>
+				<div id="ts_nav">{% block navigation %}{% endblock navigation %}</div>
 			</div>{# end of header #}
 
-			{% block navigation %}{% endblock navigation %}
-
-			{% block subnavigation %}{% endblock subnavigation %}
-
 			<div id="bd">
-				<div id="left_column">
-					<div class="section">
-						Search Box
-					</div>
-					<div class="section">
-						Free Ad
-					</div>
-					<div class="section">
-						Premium Ad
-					</div>
-				</div>{# end of left_column #}
-				
-				<div id="main_column">
-					{% block body %}{% endblock %}
-				</div>{# end of main_column #}
-				
+				{% block body %}{% endblock %}
 				<div class="clear"> </div>{# end of clear #}
 			</div>{# end of bd #}
+			<div class="clearer"></div>
 		
-			<div id="footer">
-				<p id="copyright">Copyright © 2000 - 2010 Modern Arrangements.</p>
-			</div>{# end of footer #}
 		</div>{# end of page_container #}
+		<div id="footer">
+			<p id="copyright">Copyright © 2000 - 2010 Modern Arrangements.</p>
+		</div>{# end of footer #}
 	</body>
 </html>
+
+
+

@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 
 import sys
+
 sys.path.insert(0, "/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/site-packages")
+sys.path.insert(0, "/Library/Python/2.6/site-packages")
 sys.path.insert(0, "/Users/travis/Dropbox/webs_travis/dev_timesharerentals/timeshare/apps")
 
 from django.core.management import execute_manager

@@ -3,43 +3,21 @@
 
 {% block navigation %}
 	<ul id="navigation">
-		<li class="nav1">
-			<a id="life" title="Life: See who I am" href="{% url home %}">
-			<span>Home</span>
-			</a>
+		<li>
+			<a href="{% url home %}" id="home"><span>Home</span></a>
 		</li>
-		<li class="nav2">
-			<a id="work" title="Work: See What I do" href="{% url home %}">
-			<span>Search Timeshares</span>
-			</a>
+		<li>
+			<a href="{% url adlist %}" id="advertise"><span>Advertise</span></a>
 		</li>
-		<li class="nav3">
-			<a id="mission" title="Mission: See where I live" href="{% url home %}">
-			<span>Calendar</span>
-			</a>
+		<li>
+			<a href="{% url calendar %}" id="calendar"><span>Calendar</span></a>
 		</li>
-		<li class="nav4">
-			<a id="hobby" title="Hobby: See what I am up to" href="{% url home %}">
-			<span>Contact</span>
-			</a>
+		<li>
+			<a href="{% url contact %}" id="contact"><span>Contact</span></a>
 		</li>
 	</ul>
 {% endblock %}
 
-{% block subnavigation %}
-	<ul id="subnavigation">
-		<!-- home -->
-		<li class="subs sub0"><a href="{% url home %}">RECENT</a></li>
-		<li class="subs sub0"><a href="{% url home %}">BEST POSTS</a></li>
-		<li class="subs sub0"><a href="{% url home %}">MOST COMMENTED</a></li>
-		<li class="subs sub0"><a href="{% url home %}">ABOUT DUKE</a></li>
-		<!-- Life -->
-		<li class="subs sub1"><a href="{% url home %}">FAMILY</a></li>
-		<li class="subs sub1"><a href="{% url home %}">PHOTOS</a></li>
-		<li class="subs sub1"><a href="{% url home %}">VIDEOS</a></li>
-		<li class="subs sub1"><a href="{% url home %}">ABRAHAM'S BLOG</a></li>
-	</ul>
-{% endblock %}
 
 
 
