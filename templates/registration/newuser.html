@@ -1,0 +1,30 @@
+{# templates/registration/newuser.html #}
+{% extends "registration/base.html" %}
+
+{% block body %}
+
+	<div class='section' style='width:300px;margin:50px 0 0 300px;padding:20px 0 20px 30px;'>
+		<H2>Create Your Account</H2><br/>
+
+		<form method="post" action=".">
+			<table>
+				{% for field in form %}
+					{% if field.errors %}
+						<tr><td colspan='2'>{{ field.errors }}</td></tr>
+					{% endif %}
+					<tr>
+						<td>{{ field.label_tag }}</td>
+						<td>{{ field }}</td>
+					</tr>
+				{% endfor %}
+
+				<tr><td>&nbsp;</td></tr>
+				<tr>
+					<td><input type="hidden" name="next" value="{{ next }}" /></td>
+					<td><input type="submit" value="Create Account" /></td>
+				</tr>
+			</table><br/>
+		</form>
+	</div>
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{# templates/registration/usercreated.html #}
+{% extends "registration/base.html" %}
+{% block head_title %}Success{% endblock head_title %}
+
+{% block body %}
+
+	<div class='section' style='width:300px;margin:50px 0 0 300px;padding:20px 0 20px 30px;'>
+		<H2>Your Account Has Been Created</H2><br/>
+		
+		Here are some of the things you can do now:
+		<ul>
+			<li><a href='{% url profile user.id %}'>Edit your profile</a></li>
+			<li><a href='{% url chart %}'>Create an ad for your timeshare</a></li>
+			<li><a href='{% url adlist %}'>Contact owners of other timeshares</a></li>
+		</ul>
+	</div>
+
+{% endblock %}

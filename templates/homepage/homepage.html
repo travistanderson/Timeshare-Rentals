@@ -14,18 +14,19 @@
 
 	<div id="main_column">
 		<div class="section">
-			<h1>Google Ads</h1>
+			{# <h1>Google Ads</h1> #}
+			<img src="/site_media/images/googleads.jpg" alt="googleads"></img>
 		</div>
 		<div class="section">
-			<h1>Featured Timeshares</h1><br/>
+			<h1 style='padding:5px 0 0 19px;'>Featured Timeshares</h1><br/>
 			{% for ad in adp_list %}
 			<div class="featured_ts" id="fts{{ forloop.counter }}">
 				{% for photo in ad.photos.all %}
 					{% ifequal forloop.counter 1 %}
-						<img src="{{ photo.get_front_url }}"></p>
+						<a href='{% url ad_detail ad.id %}'><img src="{{ photo.get_front_url }}"></a>
 					{% endifequal %}
 				{% endfor %}
-				<h2>{{ ad.name }}</h2><br/>
+				<a href='{% url ad_detail ad.id %}'><h2>{{ ad.name }}</h2></a><br/>
 				{{ ad.description|truncatewords:15 }}
 			</div>	
 			{% endfor %}

@@ -7,7 +7,7 @@
 	<div class="section" id="wide_column">
 		<div class="row">
 			{% if ad.premod %}
-				<div class="rowheader">Edit -- {{ ad }}</div>
+				<div class="rowheader">Edit -- {{ ad }}<span><a href='{% url createpictures ad.id %}'>Upload Pictures</a></span></div>
 				<div>
 					{% for photo in ad.photos.all %}
 						<img src="{{ photo.get_thumbnail_url }}" class="pic" alt="{{ photo }}"></img>

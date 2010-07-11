@@ -5,6 +5,13 @@
 
 {% block body %}
 	<div class="section" id="wide_column">
+		<div class='row'>
+			{# Here are some Google Ads #}
+			<img src="/site_media/images/googleads.jpg" alt="googleads" style='padding:0 0 0 171px;'></img>
+		</div>
+		
+		
+		<div class='rowh3'><h3>Premium Ads</h3></div>
 		{% for ad in adp_list %}
 			<div class="row">
 				<div class="rowheader">
@@ -13,7 +20,9 @@
 				<div class='rowfooter'>
 					<div class='rowphotos'>
 						{% for photo in ad.photos.all %}
-							<img src="{{ photo.get_thumbnail_url }}" class="pic" alt="{{ photo }}"></img>
+							{% ifequal forloop.counter 1 %}
+								<img src="{{ photo.get_thumbnail_url }}" class="pic" alt="{{ photo }}"></img>
+							{% endifequal %}
 						{% endfor %}
 					</div>
 					<div class='rowdescription'>
@@ -30,18 +39,41 @@
 					</div>
 					<div class='rowcountry'>
 						{{ ad.resort.address_country }}
-						<img src="{{ ad.resort.address_country.flag }}" class="pic" alt="pic" height="15px"></img>
-						
+						<img src="{{ ad.resort.address_country.flag }}" class="pic" alt="pic" height="15px"></img><br/>
+						{{ ad.resort.address_country }}
 					</div>
-				</div>
+				</div>{# end of rowfooter #}
 			</div>{# end of row #}<div class='clearer'></div>
-		{% endfor %}<br/><br/><br/>
-		
+		{% endfor %}
+
+
+
+		<div class='rowh3'><h3>Free Ads</h3></div>		
 		{% for ad in adf_list %}
-			<div class="rowheader">
-				<a href="{% url addetail ad.id %}">{{ ad.name }}</a>
-			</div>{# end of rowheader #}
-		
+			<div class='rowfree'>
+				<div class="rowheaderfree">
+					<a href="{% url addetail ad.id %}">{{ ad.name }}</a>
+				</div>{# end of rowheader #}
+				<div class='rowfooterfree'>
+					<div class='rowdescriptionfree'>
+						{{ ad.description|truncatewords:20 }}
+					</div>
+					<div class='rowinfofree'>
+						{{ ad.resort }}<br/>
+						<img src="{{ ad.resort.picture.get_fingernail_url }}" class="pic" alt="{{ photo }}"></img><br/>
+						{{ ad.resort.name }}
+					</div>
+					<div class='rowinfofree'>
+						{{ ad.creator }}<br/>
+						{{ ad.start_room }} - {{ ad.end_room }}
+					</div>
+					<div class='rowcountryfree'>
+						{{ ad.resort.address_country }}
+						<img src="{{ ad.resort.address_country.flag }}" class="pic" alt="pic" height="15px"></img><br/>
+						{{ ad.resort.address_country }}
+					</div>
+				</div>{# end of rowfooter #}
+			</div>{# end of rowfree #}
 		{% endfor %}
 
 	</div>

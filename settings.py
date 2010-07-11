@@ -76,6 +76,8 @@ ROOT_URLCONF = 'timeshare.urls'
 TEMPLATE_DIRS = (
     "/templates",
 )
+LOGIN_URL = '/profile/login'
+LOGIN_REDIRECT_URL = '/'
 
 INSTALLED_APPS = (
     'django.contrib.auth',

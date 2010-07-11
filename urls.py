@@ -15,7 +15,7 @@ urlpatterns = patterns('',
 	(r'^profile/', include('profiler.urls')),
 	(r'^photologue/', include('photologue.urls')),
 	
-    (r'^admin/', include('admints.urls')),
+    # (r'^admin/', include('admints.urls')),
 	(r'^admin/', include(admin.site.urls)),
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 

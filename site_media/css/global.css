@@ -16,8 +16,8 @@ a, h4 a {/*border-bottom:1px solid #D7E1E9;*/color:#7AAA1B;}
 a span{display:none;}
 p a:hover, h4 a:hover {border-bottom:1px solid #AAA;color:#333;}
 p.link {padding:0 0 0 19px;}
-h1{color:#EE2A7B;font-size:26px;}
-h2{color:#7AAA1B;font-weight:bold;}
+h1{color:#EE2A7B;font-size:26px;font-weight:bold;font-family:'Droid Serif',arial,serif;}
+h2{color:#7AAA1B;font-size:20px;font-weight:bold;font-family:'Droid Serif',arial,serif;}
 h3{color:#7AAA1B;height:10px;}
 /*===================== header ===============================*/
 #header {height:249px;background:url(/site_media/images/header.jpg) no-repeat;}
@@ -44,7 +44,11 @@ ul#navigation li a#home:hover, ul#navigation li a#advertise:hover, ul#navigation
 /*===================== left column ===============================*/
 #left_column {float:left;padding:0 0 30px;width:330px;}
 .section{border:1px solid gray;padding:10px;margin:5px;-moz-border-radius:.75em;-webkit-border-radius:.75em;}
-#searchbox{min-height:150px;}
+#searchbox{min-height:50px;}
+#searchbox #searcher{width:180px;-moz-border-radius:.5em;-webkit-border-radius:.5em;}
+#searchbox input{color:#7AAA1B;font-weight:bold;font-size:14px;}
+
+
 /*===================== main column ===============================*/
 #main_column{float:left;width:590px;}
 #wide_column{width:900px;}
@@ -59,12 +63,26 @@ ul#navigation li a#home:hover, ul#navigation li a#advertise:hover, ul#navigation
 #freepicchart{padding:0px 0 0 200px;}
 #prempicchart{padding:0px 0 0 40px;}
 
-.row{height:110px;}
+.row{height:110px;border-bottom:1px solid gray;padding:3px 0 0 0;}
+.rowh3{height:20px;border-bottom:1px solid gray;}
+.rowh3 h3{color:#EE2A7B;padding:2px 0 0 200px;}
 .rowheader{font-size:14px;font-weight:bold;height:20px;}
 .rowfooter{height:90px;}
 .rowphotos{float:left;width:230px;}
 .rowdescription{float:left;width:200px;height:90px;overflow:hidden;}
 .rowinfo{float:left;width:100px;}
+.rowcountry{}
+
+.rowfree{height:50px;border-bottom:1px solid gray;padding:3px 0 0 0;}
+.rowheaderfree{font-size:14px;font-weight:bold;height:20px;}
+.rowfooterfree{height:90px;}
+.rowdescriptionfree{float:left;width:200px;height:90px;overflow:hidden;}
+.rowinfofree{float:left;width:100px;}
+.rowcountryfree{}
+
+.featured_ts{padding:0px 0 0 19px;}
+.featured_ts img{padding:0px 0 10px 0px;}
+
 /*===================== footer ===============================*/
 #footer{color:white;height:300px;margin:0;padding:150px 0 0 200px;background:#464646 url(/site_media/images/grass2.jpg) repeat-x;}
 /*============================================================*/

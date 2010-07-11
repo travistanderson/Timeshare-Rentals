@@ -2,6 +2,7 @@
 {% extends "site_base.html" %}
 
 {% block head_title %}{{ ad }}{% endblock head_title %}
+{% block extra_head %}{% include "includes/photopickerhead.html" %}{% endblock %}
 
 {% block body %}
 	<div class="section" id="wide_column">
@@ -11,14 +12,13 @@
 		<div class='addetail_{% if not ad.premod %}{% ifequal request.user ad.creator %}visible{% else %}hidden{% endifequal %}{% else %}visible{% endif %}'>
 			<div class="rowheader">{{ ad }}</div>
 			<div>
-				{% for photo in ad.photos.all %}
-					<img src="{{ photo.get_thumbnail_url }}" class="pic" alt="{{ photo }}"></img>
-				{% endfor %}
+				{% include "includes/photopicker.html" %}
+
 				<div>
 					{{ ad.description }}
 				</div><br/>
 				<div>
-					<a href='{% url profile user.id %}'>{{ user }}</a>
+					Member: <a href='{% url profile user.id %}'>{{ user }}</a>
 				</div><br/>
 				<div>
 					<h2>Resort</h2>

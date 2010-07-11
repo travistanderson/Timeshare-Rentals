@@ -15,10 +15,3 @@ def home(request):
 	return render_to_response('homepage/homepage.html', {"adp_list":ap},
 		context_instance = RequestContext(request),
 	)
-
-# def travdetail(request, trav_slug):
-# 	t = Trav.objects.latest('created')
-# 	
-# 	return render_to_response('homepage/trav_d.html', {'trav': t,},
-# 		context_instance = RequestContext(request),
-# 	)

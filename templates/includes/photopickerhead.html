@@ -1,0 +1,16 @@
+<script type="text/javascript" charset="utf-8">
+	var photoids = new Array();
+	var photodisplays = new Array();
+	var photothumbs = new Array();		
+	var photocaptions = new Array();
+	{% for photo in ad.photos.all %}
+		photoids[{{ forloop.counter0 }}] = '{{ photo.id }}';
+		photodisplays[{{ forloop.counter0 }}] = '{{ photo.get_display_url }}';
+		photothumbs[{{ forloop.counter0 }}] = '{{ photo.get_thumbnail_url }}';
+		photocaptions[{{ forloop.counter0 }}] = '{{ photo.caption }}';
+	{% endfor %}
+	var positions = new Array();
+	for(i=0;i<photoids.length;i++){
+		positions[i]=i;
+	}
+</script>
