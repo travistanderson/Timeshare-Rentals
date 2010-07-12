@@ -19,11 +19,13 @@ class Country(models.Model):
 	def __unicode__(self):
 		return self.name
 
+
 class Comment(models.Model):
 	comment = models.TextField(blank=True)
 	user = models.ForeignKey(User)
 	premod = models.BooleanField(default=False)
 	date_created = models.DateField(blank=True,auto_now_add=True)
+
 
 class ResortType(models.Model):
 	name = models.CharField(max_length=200)
@@ -51,6 +53,7 @@ class Resort(models.Model):
 		# 	return self.name.name + " " + self.branch
 		# else:
 		# 	return self.branch
+
 
 class Ad(models.Model):
 	DURATION_CHOICES = ((1,'6 Month'),(2,'12 Months'),(3,'Lifetime'),)
