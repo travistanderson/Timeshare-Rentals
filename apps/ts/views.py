@@ -16,9 +16,7 @@ def adlist(request):
 	ap = Ad.objects.filter(premium=True, premod=True)
 	af = Ad.objects.filter(premium=False, premod=True)
 	
-	return render_to_response('ads/adlist.html', {"adp_list":ap,"adf_list":af,},
-		context_instance = RequestContext(request),
-	)
+	return render_to_response('ads/adlist.html', {"adp_list":ap,"adf_list":af,},context_instance = RequestContext(request),)
 
 	
 def addetail(request,ad_id):		

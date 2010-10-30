@@ -2,12 +2,13 @@
 <div id="left_column">
 	<div class="section" id="searchbox">
 		<form action="/search" method="get" accept-charset="utf-8">
-			<input type="text" name="search" value="" id="searcher">
+			<input type="text" name="search" value="" id="searcher" size='30'>
 			<input type="submit" value="search">
 		</form>
-		Search by Country<br/>
-		Search by Date<br/>
-		Search by Resort<br/>
+		<div class='searchchoice' id='searchcountry'>Search by Country</div>
+		<div class='searchchoice' id='searchdate'>Search by Date</div>
+		<div class='searchchoice searchchoiceactive' id='searchresort'>Search by Resort</div>
+		{# <div class='searchchoice' id='searchall'>All</div> #}
 	</div>
 	<div class="section">
 		<h2>get an ad</h2><br/>

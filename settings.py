@@ -93,6 +93,7 @@ INSTALLED_APPS = (
     'threadedcomments',
 	'photologue',
 	'photos',
+	'gravatar',
 	
 	'homepage',
 	'ts',

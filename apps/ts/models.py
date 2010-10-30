@@ -53,6 +53,10 @@ class Resort(models.Model):
 		# 	return self.name.name + " " + self.branch
 		# else:
 		# 	return self.branch
+	class Meta:
+		verbose_name = 'Resort'
+		verbose_name_plural = 'Resorts'
+		ordering = ('name',)
 
 
 class Ad(models.Model):
@@ -94,4 +98,4 @@ class PhotoOrder(models.Model):
 	theorders = models.IntegerField(default=1)
 	
 	def __unicode__(self):
-		return str(self.orders)
+		return str(self.theorders)

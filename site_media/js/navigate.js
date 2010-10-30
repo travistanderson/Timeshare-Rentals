@@ -1,28 +1,14 @@
 //site_media/js/navigate.js
-// var current=0;
 
-// this one will handle the navigation
-// function subnav(show){
-// 	$(document).ready(function(){
-// 		$(".sub" + show).css({"display":"block"});
-// 		$("#navigation > li").hover(
-// 			function () {
-// 				for(i=0;i<4;i++){
-// 					if($(this).hasClass("nav" + String(i+1))){current = i+1;}
-// 				}
-// 				$(".subs").css({"display":"none"});
-// 				c = ".sub" + String(current);
-// 	        	$(c).css({"display":"block"});
-// 		    }, 
-// 			function () {
-// 	        	// $(c).css({"display":"none"});
-// 	      	}
-// 	    );
-// 	})
-// }
+$(document).ready(function() {
+	$('.searchchoice').click(function(){
+		// alert('clicked');
+		$('.searchchoice').removeClass('searchchoiceactive');
+		$(this).addClass('searchchoiceactive');
+	})
+});
 
-// this one will hide all the extra featured ads and call the rotater
-function feature(how_many){
+function feature(how_many){		// this one will hide all the extra featured ads and call the rotater
 	$(document).ready(function(){
 		$(".featured_ts").css({"display":"none"});
 		$("#fts1").css({"display":"block"});

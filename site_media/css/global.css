@@ -18,7 +18,7 @@ p a:hover, h4 a:hover {border-bottom:1px solid #AAA;color:#333;}
 p.link {padding:0 0 0 19px;}
 h1{color:#EE2A7B;font-size:26px;font-weight:bold;font-family:'Droid Serif',arial,serif;}
 h2{color:#7AAA1B;font-size:20px;font-weight:bold;font-family:'Droid Serif',arial,serif;}
-h3{color:#7AAA1B;height:10px;}
+h3{color:#7AAA1B;height:10px;font-family:'Droid Serif',arial,serif;}
 /*===================== header ===============================*/
 #header {height:249px;background:url(/site_media/images/header.jpg) no-repeat;}
 #ts_home{padding:95px 0 0 340px;font-size:60px;height:50px;width:450px;}
@@ -44,11 +44,16 @@ ul#navigation li a#home:hover, ul#navigation li a#advertise:hover, ul#navigation
 /*===================== left column ===============================*/
 #left_column {float:left;padding:0 0 30px;width:330px;}
 .section{border:1px solid gray;padding:10px;margin:5px;-moz-border-radius:.75em;-webkit-border-radius:.75em;}
-#searchbox{min-height:50px;}
-#searchbox #searcher{width:180px;-moz-border-radius:.5em;-webkit-border-radius:.5em;}
-#searchbox input{color:#7AAA1B;font-weight:bold;font-size:14px;}
-
-
+#searchbox{min-height:53px;}
+#searchbox #searcher{width:230px;-moz-border-radius:.5em;-webkit-border-radius:.5em;margin-bottom:8px;}
+#searchbox input{color:#7AAA1B;font-weight:bold;font-size:14px;margin-left:3px;}
+#searchbox .searchchoice{color:#7AAA1B;cursor:pointer;float:left;height:15px;background:white;padding:1px 3px 2px 3px;-moz-border-radius:4px;
+	-webkit-border-radius:4px;border-top:1px solid #bbb;border-left:1px solid #bbb;border-right:1px solid #999;border-bottom:1px solid #999;}
+#searchbox .searchchoiceactive{background:#aaa;color:#fff;}
+#searchbox #searchcountry{width:89px;margin-right:13px;}
+#searchbox #searchdate{width:73px;margin-right:13px;}
+#searchbox #searchresort{width:83px;}
+#searchbox #searchall{width:15px;}
 /*===================== main column ===============================*/
 #main_column{float:left;width:590px;}
 #wide_column{width:900px;}
@@ -64,21 +69,32 @@ ul#navigation li a#home:hover, ul#navigation li a#advertise:hover, ul#navigation
 #prempicchart{padding:0px 0 0 40px;}
 
 .row{height:110px;border-bottom:1px solid gray;padding:3px 0 0 0;}
-.rowh3{height:20px;border-bottom:1px solid gray;}
-.rowh3 h3{color:#EE2A7B;padding:2px 0 0 200px;}
-.rowheader{font-size:14px;font-weight:bold;height:20px;}
-.rowfooter{height:90px;}
-.rowphotos{float:left;width:230px;}
-.rowdescription{float:left;width:200px;height:90px;overflow:hidden;}
-.rowinfo{float:left;width:100px;}
-.rowcountry{}
+.rowh3{height:35px;border-bottom:1px solid gray;}
+.rowh3 h3{color:#EE2A7B;padding:2px 0 0 20px;}
+.rowh3 div{float:left;}
+.rowh3 .desc{width:120px;padding-left:70px;margin-left:240px;}
+.rowh3 .date{width:70px;padding-left:50px;}
+.rowh3 .rest{width:70px;padding-left:20px;}
+.rowh3 .user{width:70px;padding-left:20px;}
+.rowh3 .con{width:50px;padding-left:20px;}
+.rowleft{width:250px;height:100px;font-size:14px;font-weight:bold;float:left;padding:5px 0 0 0px;}
+.rowphotos{width:230px;padding:8px 0 0 30px;}                                                         
+.rowright{height:95px;width:650px;float:left;padding:10px 0 0 0;}                                                    
+.rowdescription{float:left;width:200px;height:90px;overflow:hidden;}                               
+.rowdate{float:left;width:100px;padding-left:20px;}
+.rowuser{float:left;width:70px;padding:5px;margin:20px 30px 10px 20px;background:#ccc;color:#fff;-moz-border-radius: 5px;-webkit-border-radius: 5px;height:40px;}
+.rowresort{float:left;width:100px;}
+.rowcountry{float:left;width:80px;padding:30px 0 0 20px;}
 
-.rowfree{height:50px;border-bottom:1px solid gray;padding:3px 0 0 0;}
+
+.rowfree{height:75px;border-bottom:1px solid gray;padding:3px 0 0 0;}
 .rowheaderfree{font-size:14px;font-weight:bold;height:20px;}
-.rowfooterfree{height:90px;}
-.rowdescriptionfree{float:left;width:200px;height:90px;overflow:hidden;}
+.rowfooterfree{height:61px;}
+.rowdescriptionfree{float:left;width:400px;height:61px;overflow:hidden;margin-left:30px;}
 .rowinfofree{float:left;width:100px;}
-.rowcountryfree{}
+.rowdatefree{float:left;width:100px;}
+.rowcountryfree{float:left;width:80px;padding-left:20px;}
+
 
 .featured_ts{padding:0px 0 0 19px;}
 .featured_ts img{padding:0px 0 10px 0px;}
