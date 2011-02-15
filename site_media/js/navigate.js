@@ -6,6 +6,12 @@ $(document).ready(function() {
 		$('.searchchoice').removeClass('searchchoiceactive');
 		$(this).addClass('searchchoiceactive');
 	})
+	$('#searcher').val('Find a timeshare to rent').css({'color':'#8f8'});
+	$('#searcher').focus(function(){
+		if($(this).val() == 'Find a timeshare to rent'){
+			$(this).val('').css({'color':''});
+		}
+	})
 });
 
 function feature(how_many){		// this one will hide all the extra featured ads and call the rotater

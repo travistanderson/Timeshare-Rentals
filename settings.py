@@ -87,17 +87,14 @@ INSTALLED_APPS = (
 	'django.contrib.markup',
 	'django.contrib.admin',
 	'django.contrib.admindocs',
-	
 	'mailer',
 	'pagination',
     'threadedcomments',
 	'photologue',
 	'photos',
 	'gravatar',
-	
 	'homepage',
 	'ts',
-	
 )
 
 SITE_NAME = "timesharerentals.com"

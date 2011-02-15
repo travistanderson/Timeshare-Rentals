@@ -19,6 +19,7 @@ p.link {padding:0 0 0 19px;}
 h1{color:#EE2A7B;font-size:26px;font-weight:bold;font-family:'Droid Serif',arial,serif;}
 h2{color:#7AAA1B;font-size:20px;font-weight:bold;font-family:'Droid Serif',arial,serif;}
 h3{color:#7AAA1B;height:10px;font-family:'Droid Serif',arial,serif;}
+/*img{border:8px solid #fff;-webkit-box-shadow: #888 10px 10px 5px;-moz-box-shadow: #888 10px 10px 5px;}*/
 /*===================== header ===============================*/
 #header {height:249px;background:url(/site_media/images/header.jpg) no-repeat;}
 #ts_home{padding:95px 0 0 340px;font-size:60px;height:50px;width:450px;}
@@ -45,10 +46,11 @@ ul#navigation li a#home:hover, ul#navigation li a#advertise:hover, ul#navigation
 #left_column {float:left;padding:0 0 30px;width:330px;}
 .section{border:1px solid gray;padding:10px;margin:5px;-moz-border-radius:.75em;-webkit-border-radius:.75em;}
 #searchbox{min-height:53px;}
-#searchbox #searcher{width:230px;-moz-border-radius:.5em;-webkit-border-radius:.5em;margin-bottom:8px;}
+#searchbox #searcher{width:215px;-moz-border-radius:.5em;-webkit-border-radius:.5em;margin-bottom:8px;}
 #searchbox input{color:#7AAA1B;font-weight:bold;font-size:14px;margin-left:3px;}
 #searchbox .searchchoice{color:#7AAA1B;cursor:pointer;float:left;height:15px;background:white;padding:1px 3px 2px 3px;-moz-border-radius:4px;
-	-webkit-border-radius:4px;border-top:1px solid #bbb;border-left:1px solid #bbb;border-right:1px solid #999;border-bottom:1px solid #999;}
+	-webkit-border-radius:4px;border-top:1px solid #bbb;border-left:1px solid #bbb;border-right:1px solid #999;border-bottom:1px solid #999;
+	font-size:10px;}
 #searchbox .searchchoiceactive{background:#aaa;color:#fff;}
 #searchbox #searchcountry{width:89px;margin-right:13px;}
 #searchbox #searchdate{width:73px;margin-right:13px;}
