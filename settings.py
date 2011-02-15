@@ -86,7 +86,7 @@ INSTALLED_APPS = (
 	'django.contrib.sites',
 	'django.contrib.markup',
 	'django.contrib.admin',
-	'django.contrib.admindocs',
+	# 'django.contrib.admindocs',
 	'mailer',
 	'pagination',
 	'threadedcomments',
