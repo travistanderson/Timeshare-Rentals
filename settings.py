@@ -52,15 +52,15 @@ SECRET_KEY = 'qylt*edr7=z*f)67cr9ge5g(pa#ng4fb#z(q!w$1&#a38d_fno'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.load_template_source',
-    'django.template.loaders.app_directories.load_template_source',
-#     'django.template.loaders.eggs.load_template_source',
+	'django.template.loaders.filesystem.load_template_source',
+	'django.template.loaders.app_directories.load_template_source',
+	# 'django.template.loaders.eggs.load_template_source',
 )
 
 MIDDLEWARE_CLASSES = (
-    'django.middleware.common.CommonMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
+	'django.middleware.common.CommonMiddleware',
+	'django.contrib.sessions.middleware.SessionMiddleware',
+	'django.contrib.auth.middleware.AuthenticationMiddleware',
 	# 'pagination.middleware.PaginationMiddleware',
 )
 
@@ -69,27 +69,27 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 	'django.core.context_processors.debug',
 	'django.core.context_processors.media',
 	'django.core.context_processors.request',
-	)
+)
 
 ROOT_URLCONF = 'timeshare.urls'
 
 TEMPLATE_DIRS = (
-    "/templates",
+	"/templates",
 )
 LOGIN_URL = '/profile/login'
 LOGIN_REDIRECT_URL = '/'
 
 INSTALLED_APPS = (
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.sites',	
+	'django.contrib.auth',
+	'django.contrib.contenttypes',
+	'django.contrib.sessions',
+	'django.contrib.sites',
 	'django.contrib.markup',
 	'django.contrib.admin',
 	'django.contrib.admindocs',
 	'mailer',
 	'pagination',
-    'threadedcomments',
+	'threadedcomments',
 	'photologue',
 	'photos',
 	'gravatar',
@@ -100,6 +100,6 @@ INSTALLED_APPS = (
 SITE_NAME = "timesharerentals.com"
 
 try:
-    from local_settings import *
+	from local_settings import *
 except ImportError:
-    pass
+	pass
