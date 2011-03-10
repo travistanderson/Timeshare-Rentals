@@ -31,10 +31,10 @@ ul#navigation {height:46px;}
 ul#navigation li {float:left;min-width:130px;padding:0 30px;}
 ul#navigation li a {cursor:pointer;display:block;height:46px;}
 ul#navigation li a#home {background:transparent url(/site_media/images/navigation/home.jpg) no-repeat scroll 0 0;width:125px;}
+ul#navigation li a#rent {background:transparent url(/site_media/images/navigation/rent.jpg) no-repeat scroll 0 0;width:190px;}
 ul#navigation li a#advertise {background:transparent url(/site_media/images/navigation/advertise.jpg) no-repeat scroll 0 0;width:198px;}
-ul#navigation li a#calendar {background:transparent url(/site_media/images/navigation/calendar.jpg) no-repeat scroll 0 0;width:190px;}
 ul#navigation li a#contact {background:transparent url(/site_media/images/navigation/contact.jpg) no-repeat scroll 0 0;width:172px;}
-ul#navigation li a#home:hover, ul#navigation li a#advertise:hover, ul#navigation li a#calendar:hover, ul#navigation li a#contact:hover {background-position:0 -46px;}
+ul#navigation li a#home:hover, ul#navigation li a#advertise:hover, ul#navigation li a#rent:hover, ul#navigation li a#contact:hover {background-position:0 -46px;}
 
 /*===================== generic ===================================*/
 .left{float:left;}
