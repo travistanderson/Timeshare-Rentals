@@ -1,0 +1,9 @@
+login/sign up button- would like it to be bigger and a little more to the right
+
+change "advertise" button to "rent"
+
+take off "premium ads" and "free ads" on the "rent" page. i don't want people to know what type of ad they are viewing. also, i need to think about how i want the ads to show up. i think on the "rent" page i want a table to be at the top and it would have all the search functions in it, and then it would have all the ads listed...i just don't know how to have them paginate...whether by date created, or alphabetical...not sure yet. 
+
+Contact Us page- just a simple customer service form 
+
+Calendar- years 2011-2021 dates. Fri-Fri, Sat-Sat, Sun-Sun
