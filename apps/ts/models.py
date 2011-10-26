@@ -3,7 +3,23 @@ from django.db import models
 from datetime import datetime, timedelta
 from django.contrib.auth.models import User
 from photologue.models import Photo, Gallery
+import settings
 
+
+class Photoo(Photo):
+	orderer = models.IntegerField(default=1,blank=True, null=True)
+	
+	def ad(self):
+		try:
+			return self.ad_set.all()[0]
+		except Exception, e:
+			return 'hello'
+			
+	def user(self):
+		try:
+			return self.ad_set.all()[0].creator
+		except Exception, e:
+			return 'hello'
 
 class Country(models.Model):
 	name = models.CharField(blank=True,  max_length=128)
@@ -27,32 +43,21 @@ class Comment(models.Model):
 	date_created = models.DateField(blank=True,auto_now_add=True)
 
 
-class ResortType(models.Model):
-	name = models.CharField(max_length=200)
-	premod = models.BooleanField(default=False)
-	
-	def __unicode__(self):
-		return self.name
-
 	
 class Resort(models.Model):
-	name = models.ForeignKey(ResortType, blank=True, null=True)
-	branch = models.CharField(max_length=200)
-	description = models.TextField()	
+	name = models.CharField(max_length=200)
+	branch = models.CharField(max_length=200,blank=True, null=True)
+	description = models.TextField(blank=True, null=True)	
 	picture = models.ForeignKey(Photo, blank=True, null=True)
 	email = models.EmailField(blank=True, null=True)
 	url = models.URLField(blank=True, null=True)
 	address = models.CharField(max_length=200, blank=True,)
-	address_country = models.ForeignKey(Country)
+	address_country = models.ForeignKey(Country,blank=True,null=True)
 	premod = models.BooleanField(default=False)
-	comment = models.ForeignKey(Comment, blank=True, null=True)
+	comment = models.ManyToManyField(Comment, blank=True, null=True)
 	
 	def __unicode__(self):
-		return self.branch
-		# if self.name.name:
-		# 	return self.name.name + " " + self.branch
-		# else:
-		# 	return self.branch
+		return self.name
 	class Meta:
 		verbose_name = 'Resort'
 		verbose_name_plural = 'Resorts'
@@ -60,23 +65,32 @@ class Resort(models.Model):
 
 
 class Ad(models.Model):
-	DURATION_CHOICES = ((1,'6 Month'),(2,'12 Months'),(3,'Lifetime'),)
-	name = models.CharField(max_length=100)
+	ADTYPES = ((1,'Free'),(2,'Bronze'),(3,'Silver'),(4,'Gold'),)
+	name = models.CharField(max_length=80)
+	slug = models.SlugField(max_length=100)
 	description = models.TextField()
-	photos = models.ManyToManyField(Photo, blank=True, null=True)
+	photos = models.ManyToManyField(Photoo, blank=True, null=True)
 	resort = models.ForeignKey(Resort, blank=True, null=True)
 	creator = models.ForeignKey(User)
 	start_ad = models.DateField(blank=True,auto_now_add=True)
 	start_room = models.DateField(blank=True)
 	end_room = models.DateField(blank=True)
-	premium = models.BooleanField(default=False)
+	adtype = models.IntegerField(choices=ADTYPES,blank=True, null=True)
 	premod = models.BooleanField(default=False)
-	duration = models.IntegerField(choices=DURATION_CHOICES,blank=True,default=1)
-	add_resort = models.BooleanField(default=False)
-	new_resort_name = models.CharField(blank=True,  max_length=80)
+	paid = models.BooleanField(default=False)
+	expiration_date = models.DateField(blank=True,)
 	
 	def __unicode__(self):
 		return self.name
+
+	def first(self):
+		for photo in self.photos.all():
+			if photo.orderer == 1:
+				return photo
+				break
+
+	def photolist(self):
+		return self.photos.order_by('orderer')		
 
 
 class Email(models.Model):
@@ -84,18 +98,10 @@ class Email(models.Model):
 	name = models.CharField(max_length=100)
 	content = models.TextField()
 	days = models.IntegerField(blank=True, null=True)
-	before = models.BooleanField(default=True)
 	event = models.IntegerField(choices=EVENT_CHOICES,blank=True, null=True)
 	
 	def __unicode__(self):
 		return self.name
 		
-		
-		
-class PhotoOrder(models.Model):
-	ad = models.ForeignKey(Ad)
-	photo = models.ForeignKey(Photo)
-	theorders = models.IntegerField(default=1)
-	
-	def __unicode__(self):
-		return str(self.theorders)
+
+

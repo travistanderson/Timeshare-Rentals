@@ -2,7 +2,7 @@ html, body {height:100%;}
 html, body, div, p, ul, ol, li, h1, h2, h3, h4, pre, form, p, button, img {border:0 none;margin:0;padding:0;}
 body {-x-system-font:none;background:#F2D686 url(/site_media/images/leftback.jpg) repeat-x;color:#8D8D85;
 	font-family:Tahoma,Arial,sans-serif;font-size:11px;font-size-adjust:none;font-stretch:normal;
-	font-style:normal;font-variant:normal;font-weight:normal;line-height:16px;}
+	font-style:normal;font-variant:normal;font-weight:normal;line-height:22px;}
 ul, li {list-style-type:none;}
 a {outline-color:-moz-use-text-color;outline-style:none;outline-width:medium;text-decoration:none;}
 a:hover {cursor:pointer;text-decoration:none;}
@@ -16,9 +16,9 @@ a, h4 a {/*border-bottom:1px solid #D7E1E9;*/color:#7AAA1B;}
 a span{display:none;}
 p a:hover, h4 a:hover {border-bottom:1px solid #AAA;color:#333;}
 p.link {padding:0 0 0 19px;}
-h1{color:#EE2A7B;font-size:26px;font-weight:bold;font-family:'Droid Serif',arial,serif;}
-h2{color:#7AAA1B;font-size:20px;font-weight:bold;font-family:'Droid Serif',arial,serif;}
-h3{color:#7AAA1B;height:10px;font-family:'Droid Serif',arial,serif;}
+h1{color:#EE2A7B;font-size:26px;font-weight:bold;font-family:'Droid Serif',arial,serif;line-height:40px;}
+h2{color:#7AAA1B;font-size:20px;font-weight:bold;font-family:'Droid Serif',arial,serif;line-height:34px;}
+h3{color:#7AAA1B;height:16px;font-family:'Droid Serif',arial,serif;line-height:26px;}
 /*img{border:8px solid #fff;-webkit-box-shadow: #888 10px 10px 5px;-moz-box-shadow: #888 10px 10px 5px;}*/
 /*===================== header ===============================*/
 #header {height:249px;background:url(/site_media/images/header.jpg) no-repeat;}
@@ -42,6 +42,8 @@ ul#navigation li a#home:hover, ul#navigation li a#advertise:hover, ul#navigation
 .clearer{clear:both;}
 .italicer{font-style:italic;}
 .errorlist{color:red;font-size:9px;border:1px solid red;width:200px;padding:0 0 0 10px;}
+.buttoner{background:#eee;-moz-border-radius:5px;-webkit-border-radius:5px;padding:2px 4px 2px 6px;font-weight:bold;cursor:pointer;
+	border:1px solid #aaa;-moz-box-shadow:1px 1px 1px #444;-webkit-box-shadow:1px 1px 1px #444;box-shadow:1px 1px 1px #444;display:block;}
 /*===================== left column ===============================*/
 #left_column {float:left;padding:0 0 30px;width:330px;}
 .section{border:1px solid gray;padding:10px;margin:5px;-moz-border-radius:.75em;-webkit-border-radius:.75em;}
@@ -59,16 +61,27 @@ ul#navigation li a#home:hover, ul#navigation li a#advertise:hover, ul#navigation
 /*===================== main column ===============================*/
 #main_column{float:left;width:590px;}
 #wide_column{width:900px;}
+.centered{margin-left:200px;}
+.padder{padding:10px;}
 
-.addetail_hidden{visibility:hidden;}
 
-.graph{width:820px;height:600px;margin:0 0 0 40px;background-color:#7AAA1B;font-size:20px;}
-.graph td, th{background:#ddd;padding:20px;border:4px solid #7AAA1B;}
+.graph{width:820px;height:600px;margin:0 0 0 0px;font-size:20px;border-collapse:collapse;}
+.graph th{background:#777;padding:20px 0 5px 20px;background-image:
+	-webkit-gradient(linear,left top,left bottom,color-stop(1, rgb(153,150,153)),color-stop(0.67, rgb(90,92,92)));
+	-moz-linear-gradient(center top,rgb(153,150,153) 100%,rgb(90,92,92) 67%);}
+.graph th h2{color:#efefef;height:46px;}
+.graph th .freeh2{background:url(/site_media/images/medals.png) no-repeat 90px -150px;}
+.graph th .bronzeh2{background:url(/site_media/images/medals.png) no-repeat 90px -100px;}
+.graph th .silverh2{background:url(/site_media/images/medals.png) no-repeat 90px -50px;}
+.graph th .goldh2{background:url(/site_media/images/medals.png) no-repeat 90px 0;}
+.graph th#firstcol{background:#F2D686;}
+.graph td{padding:20px;}
 .graph #firstcol{width:100px;}
-.graph #secondcol, #thirdcol{width:300px;}
-.graph .descgraph{font-size:16px;color:#EE2A7B;font-weight:bold;}
-#freepicchart{padding:0px 0 0 200px;}
-#prempicchart{padding:0px 0 0 40px;}
+.graph #secondcol, #thirdcol{}
+.graph .descgraph{font-size:16px;color:#7AAA1B;font-weight:bold;}
+.graph .adtag{width:150px;height:65px;}
+.graph .picchart{padding:0px 0 0 0px;margin-left:-20px;}
+
 
 .row{height:110px;border-bottom:1px solid gray;padding:3px 0 0 0;}
 .rowh3{height:35px;border-bottom:1px solid gray;}
@@ -97,9 +110,44 @@ ul#navigation li a#home:hover, ul#navigation li a#advertise:hover, ul#navigation
 .rowdatefree{float:left;width:100px;}
 .rowcountryfree{float:left;width:80px;padding-left:20px;}
 
+.rowheader{margin:0 0 10px;}
+.resortheader{width:100px;background:url(/site_media/images/thin-line.png) repeat-x 0 16px;padding:0 400px;}
+.resortheader span{background:#F2D686;padding:0 10px;}
+
+.news-detail-photo{float:right;width:592px;margin:0 0 0 15px;}
+.resortpic{float:left;padding:0 20px 20px 0;}
 
 .featured_ts{padding:0px 0 0 19px;}
 .featured_ts img{padding:0px 0 10px 0px;}
+
+/*===================== form stuff ===============================*/
+/*form input{width:300px;}
+form textarea{width:300px;}
+form #submit{width:100px;font-weight:bold;font-size:16px;}*/
+#newform{margin:30px;}
+#newform input{width:450px;}
+#newform #submit{width:100px;font-weight:bold;font-size:16px;}
+#newform textarea{width:450px;}
+#newform #id_start_room,#newform #id_end_room{width:180px;}
+#newform .formlabel{font-size:16px;font-weight:bold;text-align:right;width:150px;padding:10px 20px 10px 0;}
+/*============================================================*/
+
+/*===================== profiler stuff ===============================*/
+#profile{border-collapse:collapse;width:900px;}
+#profile th{padding:10px;border-bottom:3px solid #c4a039;font-weight:bold;text-align:center;}
+#profile td{padding:10px;border-bottom:1px solid #c4a039;}
+#profile .proname{font-weight:bold;font-size:16px;}
+#profile .editad{background:url(/admin_media/img/admin/icon_changelink.gif) no-repeat right;display:block;width:40px;}
+#profile .expad{background:url(/admin_media/img/admin/icon_clock.gif) no-repeat right;display:block;width:120px;}
+#profile .premod1{background:url(/admin_media/img/admin/icon_success.gif) no-repeat;display:block;width:30px;}
+#profile .premod0{background:url(/admin_media/img/admin/icon_error.gif) no-repeat;display:block;width:30px;}
+#profile .medalholder1{background:url(/site_media/images/medals.png) no-repeat 0 -150px;display:block;width:46px;height:46px;overflow:hidden;}
+#profile .medalholder2{background:url(/site_media/images/medals.png) no-repeat 0 -100px;display:block;width:46px;height:46px;overflow:hidden;}
+#profile .medalholder3{background:url(/site_media/images/medals.png) no-repeat 0 -50px;display:block;width:46px;height:46px;overflow:hidden;}
+#profile .medalholder4{background:url(/site_media/images/medals.png) no-repeat 0 0px;display:block;width:46px;height:46px;overflow:hidden;}
+#profile .promedti{font-weight:bold;text-align:center;}
+#profile .prodesc{width:250px;}
+/*============================================================*/
 
 /*===================== footer ===============================*/
 #footer{color:white;height:300px;margin:0;padding:150px 0 0 200px;background:#464646 url(/site_media/images/grass2.jpg) repeat-x;}
@@ -107,10 +155,11 @@ ul#navigation li a#home:hover, ul#navigation li a#advertise:hover, ul#navigation
 
 
 /*===================== colors ===============================*/
-/* #7AAA1B -- green*/
-/* #DCDCDC -- gray*/
+/* #7AAA1B -- green */
+/* #DCDCDC -- gray */
 /* #464646 -- gray for footer */
-/* #F2D686 -- Tan for the beach*/
-/* #EE2A7B -- Purple light for h1's and logo*/
+/* #F2D686 -- Tan for the beach */
+/* #EE2A7B -- Purple light for h1's and logo */
+/* #F2D686 -- tan for background */
 
 /*===================== end ==================================*/

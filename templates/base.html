@@ -11,7 +11,13 @@
 		<meta content="en" name="content-language"/>
 		<title> TimeshareRentals.com - {% block head_title %}{% endblock %}</title>
 		<link rel="stylesheet" type="text/css" href="/site_media/css/global.css" >
-		<script type="text/javascript" src="/site_media/js/jquery-1.3.2.min.js"></script>
+		{% ifequal settings.WHICH_ENVIRONMENT 'development' %}
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/jquery-ui.min.js"></script>
+		{% else %}
+		<script type="text/javascript" src="/site_media/js/jquery-1.5.1.min.js"></script>
+		<script type="text/javascript" src="/site_media/js/jquery-ui-min.js"></script>
+		{% endifequal %}
 		<script type="text/javascript" src="/site_media/js/navigate.js"></script>
 		{# // <script type="text/javascript" src="http://use.typekit.com/gis0abx.js"></script> #}
 		{# // <script type="text/javascript">try{Typekit.load();}catch(e){}</script> #}

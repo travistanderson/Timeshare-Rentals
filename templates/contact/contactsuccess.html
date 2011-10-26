@@ -1,0 +1,28 @@
+{# templates/contactsuccess.html #}
+{% extends "site_base.html" %}
+
+{% block head_title %}Contact Success{% endblock %}
+
+{% block extra_head %}
+    <script src="/site_media/js/timer.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" charset="utf-8">
+		feature({{ adp_list.count }});
+	</script>
+	<style type="text/css" media="screen">
+		.section{padding:20px;margin:30px 0 0 180px;}
+		#theh1{margin-bottom:1em;}
+
+	</style>
+{% endblock extra_head %}
+
+{% block body %}
+
+	<div id="main_column">
+		<div class="section">
+			<h1 id='theh1'>Contact Page</h1>
+			Your message has been sent. Thanks for your input.
+			{# Contact Us #}
+		</div>
+	</div>{# end of main_column #}
+
+{% endblock body %}

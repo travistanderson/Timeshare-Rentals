@@ -1,0 +1,60 @@
+{# templates/create/newadcreate.html #}
+{% extends "site_base.html" %}
+
+{% block head_title %}Create a {{ adtype|capfirst }} Ad{% endblock head_title %}
+{% block extra_head %}
+	{# <link rel="stylesheet" href="/site_media/css/widgets.css" type="text/css" media="screen" title="no title" charset="utf-8"> #}
+	<link rel="stylesheet" href="/site_media/css/ui-lightness/jquery-ui-1.8.14.custom.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	{# // <script src="/site_media/js/widgets.js" type="text/javascript" charset="utf-8"></script> #}
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function(){
+			$arn = $('#id_addedresortname').parent().parent();		// this is the whole form row for the added resort field
+			$arn.css({'display':'none'});
+			// $('#id_resort').prepend('<option value="10000" id="addresortoption">My resort isn\'t here. Add a new one.</option>');
+			$('#id_resort').change(function(){
+				if($("#id_resort option:selected").text() == "My resort isn't here. Add a new one."){
+					// alert($(this).val())
+					$arn.slideDown('slow');
+				}else{
+					$arn.hide();
+				};
+			})
+			$(function() {
+				var dates = $( "#id_start_room, #id_end_room" ).datepicker({
+					defaultDate: "",
+					changeMonth: true,
+					numberOfMonths: 3,
+					dateFormat: 'yy-mm-dd',
+					onSelect: function( selectedDate ) {
+						var option = this.id == "from" ? "minDate" : "maxDate",
+							instance = $( this ).data( "datepicker" ),
+							date = $.datepicker.parseDate(
+								instance.settings.dateFormat ||
+								$.datepicker._defaults.dateFormat,
+								selectedDate, instance.settings );
+						dates.not( this ).datepicker( "option", option, date );
+					}
+				});
+			});
+		});
+	</script>
+{% endblock extra_head %}
+
+{% block body %}
+	<div class="section" id="wide_column">
+		<img src="/site_media/images/adlogos/{{ adtype }}.png" class="right" alt="bt_free"></img>
+		<h1 class="adformh1">
+			{{ adtype|capfirst }} Ad
+		</h1>
+		<form action="." method="POST">
+			{% include 'includes/form.html' %}
+		</form>
+		<div class="somediv"></div>
+	</div>{# end of section #}
+{% endblock %}
+
+
+
+
+
+

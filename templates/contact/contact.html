@@ -1,8 +1,7 @@
 {# templates/contact/contact.html #}
 {% extends "site_base.html" %}
 
-{% block show %}0{% endblock show %}
-{% block head_title %}Calendar{% endblock head_title %}
+{% block head_title %}Contact{% endblock head_title %}
 {% block extra_head %}
     <script src="/site_media/js/timer.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript" charset="utf-8">
@@ -10,12 +9,27 @@
 	</script>
 {% endblock extra_head %}
 {% block body %}
-{# {% include "includes/left-column.html" %} #}
-
-	<div id="main_column">
-		<div class="section">
+	<div id="main_column" class='centered'>
+		<div class="section" style='padding:20px;'>
 			<h1>Contact Page</h1>
-			Contact Us
+			<br/><br/>
+			<form action="" method="POST">
+				<table class='tsrform'>
+					{% for field in form %}
+						<tr>
+						<td class='formlabel'>{{ field.label }}</td>
+						<td class='fields'>
+							{% if field.errors %}<div>{{ field.errors }}</div><br/>{% endif %}
+							{{ field }}							
+						</td>
+						</tr>
+					{% endfor %}
+					<tr>
+						<td class='label'>&nbsp;</td>
+						<td class='fields'><input type="submit" value="Send &rarr;" id='submit'></td>
+					</tr>
+				</table>
+			</form>
 		</div>
 	</div>{# end of main_column #}
 	

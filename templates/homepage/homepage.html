@@ -10,13 +10,9 @@
 	</script>
 {% endblock extra_head %}
 {% block body %}
-{% include "includes/left-column.html" %}
 
 	<div id="main_column">
-		<div class="section">
-			{# <h1>Google Ads</h1> #}
-			<img src="/site_media/images/googleads.jpg" alt="googleads"></img>
-		</div>
+
 		<div class="section">
 			<h1 style='padding:5px 0 0 19px;'>Featured Timeshares</h1><br/>
 			{% for ad in adp_list %}
@@ -31,7 +27,36 @@
 			</div>	
 			{% endfor %}
 		</div>
+		<div class="section">
+			{# <h1>Google Ads</h1> #}
+			<img src="/site_media/images/googleads.jpg" alt="googleads"></img>
+		</div>
 	</div>{# end of main_column #}
-	
+	<div id="left_column">
+		<div class="section" id="searchbox">
+			<form action="/search" method="get" accept-charset="utf-8">
+				<input type="text" name="search" value="" id="searcher" size='30'>
+				<input type="submit" value="search">
+			</form>
+			<div class='searchchoice' id='searchcountry'>Search by Country</div>
+			<div class='searchchoice' id='searchdate'>Search by Date</div>
+			<div class='searchchoice searchchoiceactive' id='searchresort'>Search by Resort</div>
+			{# <div class='searchchoice' id='searchall'>All</div> #}
+		</div>
+		<div class="section">
+			<h2>get an ad</h2><br/>
+			<a href="{% url chart %}">
+				<img src="/site_media/images/adlogos/bt_pre.gif" class="pic" alt="bt_pre"></img>
+			</a><br/>
+			{# <h2>free ad</h2><br/> #}
+			<a href="{% url chart %}">
+				<img src="/site_media/images/adlogos/bt_free.gif" class="pic" alt="bt_free"></img>
+			</a><br/>
+		</div>
+		<div class='section'>
+			<h2>Who We Are.</h2><br/>
+			<p>Cras sed ante. Phasellus in massa. Curabitur dolor eros, gravida et, hendrerit ac, cursus non, massa. Aliquam lorem. In hac habitasse platea dictumst. Cras eu mauris. Quisque lacus. Donec ipsum. Nullam vitae sem at nunc pharetra ultricies. Vivamus elit eros, ullamcorper a, adipiscing sit amet, porttitor ut, nibh. Maecenas adipiscing mollis massa. Nunc ut dui eget nulla venenatis aliquet. Sed luctus posuere justo. Cras vehicula varius turpis. Vivamus eros metus, tristique sit amet, molestie dignissim, malesuada et, urna.</p>
+		</div>
+	</div>{# end of left_column #}
 {% endblock %}
 

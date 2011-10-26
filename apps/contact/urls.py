@@ -5,7 +5,8 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-   
+	url(r'^success$', 'contact.views.contactsuccess', name="contactsuccess"),   
 	url(r'^$', 'contact.views.contact', name='contact'),
-	# url(r'^(?P<trav_slug>[-\w]+)/$', 'homepage.views.travdetail', name='trav'),
 )
+
+

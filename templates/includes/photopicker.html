@@ -1,20 +1,18 @@
 <div class="news-detail-photo">
 	{% for photo in ad.photos.all %}
-		{% ifequal forloop.counter0 0 %}
-			<div class="mainpic" id="{{ forloop.counter0 }}_thumbpic" >
-				<img class="gold5" src="{{ photo.get_display_url }}" />
-			</div>
-			<div class="caption" style="padding:0 0 15px 0;">
+		{% ifequal forloop.counter 1 %}
+			<img class="gold5" id="{{ forloop.counter0 }}_thumbpic" src="{{ photo.get_display_url }}" />
+			<div class="caption">
 				{{ photo.caption }}
 			</div>
 		{% endifequal %}
 	{% endfor %}
 
-	<div>{# thumbnails #}
+	<div class='thumbnails'>{# thumbnails #}
 		{% for photo in ad.photos.all %}
-			{% ifnotequal forloop.counter0 0 %}
-				<span class='thumbpic' id="{{ forloop.counter0 }}_thumbpic" style="padding:0 2px 3px 0;">
-					<img class="gold5" src="{{ photo.get_thumbnail_url }}" />
+			{% ifnotequal forloop.counter 1 %}
+				<span class='thumbrow' style="padding:0 2px 3px 0;">
+					<img class="thumbpic" id="{{ forloop.counter0 }}_thumbpic" src="{{ photo.get_displaythumb_url }}" />
 				</span>
 			{% endifnotequal %}
 		{% endfor %}

@@ -10,31 +10,43 @@
 		<table class="graph">
 			<tr>
 				<th id='firstcol'></th>
-				<th id='secondcol'><h2>Free</h2></th>
-				<th id='thirdcol'><h2>Premium</h2></th>
+				<th id='secondcol'><h2 class='freeh2'>Free</h2></th>
+				<th id='thirdcol'><h2 class='bronzeh2'>Bronze</h2></th>
+				<th id='thirdcol'><h2 class='silverh2'>Silver</h2></th>
+				<th id='thirdcol'><h2 class='goldh2'>Gold</h2></th>
 			</tr>
 			<tr>
 				<td class='descgraph'>Words</td>
 				<td>40 words</td>
+				<td>100 words</td>
+				<td>unlimited words</td>
 				<td>unlimited words</td>
 			</tr>
 			<tr>
 				<td class='descgraph'>Pictures</td>
-				<td>2 pictures</td>
+				<td>1 pictures</td>
+				<td>3 pictures</td>
+				<td>10 pictures</td>
 				<td>10 pictures</td>
 			</tr>
 			<tr>
 				<td class='descgraph'>Featured Listing</td>
 				<td>no</td>
 				<td>yes</td>
+				<td>yes</td>
+				<td>yes</td>
 			</tr>
 			<tr>
 				<td class='descgraph'>Length</td>
-				<td>3 months</td>
-				<td>6/12 months/ Unlimited</td>
+				<td>2 months</td>
+				<td>6 months</td>
+				<td>12 months</td>
+				<td>Lifetime</td>
 			</tr>
 			<tr>
 				<td class='descgraph'>Private Messaging</td>
+				<td>yes</td>
+				<td>yes</td>
 				<td>yes</td>
 				<td>yes</td>
 			</tr>
@@ -42,19 +54,42 @@
 				<td class='descgraph'>Statistics</td>
 				<td>no</td>
 				<td>yes</td>
+				<td>yes</td>
+				<td>yes</td>
 			</tr>
 			<tr>
 				<td class='descgraph'>Price</td>
 				<td>Free</td>
-				<td>$80 / $120 / $250</td>
+				<td>$80</td>
+				<td>$120</td>
+				<td>$250</td>
+			</tr>
+			<tr>
+				<td class='descgraph'>&nbsp;</td>
+				<td>
+					<a href="{% url newadcreate 'free' %}" class='picchart'>
+						<img src="/site_media/images/adlogos/freetag.png" class="adtag" alt="bt_free"></img>
+					</a>
+				</td>
+				<td>
+					<a href="{% url newadcreate 'bronze' %}"  class='picchart'>
+						<img src="/site_media/images/adlogos/bronzetag.png" class="adtag" alt="bronze"></img>
+					</a>
+				</td>
+				<td>
+					<a href="{% url newadcreate 'silver' %}"  class='picchart'>
+						<img src="/site_media/images/adlogos/silvertag.png" class="adtag" alt="silver"></img>
+					</a>
+				</td>
+				<td>
+					<a href="{% url newadcreate 'gold' %}"  class='picchart'>
+						<img src="/site_media/images/adlogos/goldtag.png" class="adtag" alt="gold"></img>
+					</a>
+				</td>
 			</tr>
 		</table>
-		<a href="{% url freecreate %}" id='freepicchart'>
-			<img src="/site_media/images/bt_free.gif" class="pic" alt="bt_free"></img>
-		</a>
-		<a href="{% url premiumcreate %}"  id='prempicchart'>
-			<img src="/site_media/images/bt_pre.gif" class="pic" alt="bt_pre"></img>
-		</a>
+		
+		
 		
 
 	</div>

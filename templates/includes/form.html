@@ -1,0 +1,16 @@
+{# templates/includes/form.html #}
+{# <form action="." method="POST"> #}
+	<table id='newform'>
+		{{ form.error_list }}
+		{% for field in form %}
+			<tr>
+				<td class='formlabel'>{{ field.label }}</td>
+				<td><span>{{ field.errors }}</span>{{ field }}</td>
+			</tr>
+		{% endfor %}
+		<tr>
+			<td>&nbsp;</td>
+			<td><input type="submit" value="Next" id='submit'/></td>
+		</tr>
+	</table>
+{# </form> #}

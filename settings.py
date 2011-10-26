@@ -1,51 +1,44 @@
 # Django settings for timeshare project.
+try:
+	 from local_settings import WHICH_ENVIRONMENT
+except ImportError, exp:
+	 WHICH_ENVIRONMENT = 'production'
 
-DEBUG = True
-TEMPLATE_DEBUG = DEBUG
+if WHICH_ENVIRONMENT == 'development':			# Django settings on the local dev server for TSR project.
+	DEBUG = True
+	TEMPLATE_DEBUG = DEBUG
+	TEMPLATE_DIRS = ('/Users/travis/Dropbox/webs_travis/dev_timesharerentals/timeshare/templates',)
+	MEDIA_ROOT = '/Users/travis/Dropbox/webs_travis/dev_timesharerentals/timeshare/site_media'
+	MEDIA_URL = '/site_media/'
+	ADMIN_MEDIA_PREFIX = '/admin_media/'
 
-ADMINS = (
-    # ('Your Name', 'your_email@domain.com'),
-)
+	DATABASE_ENGINE = 'mysql'
+	DATABASE_NAME = 'timeshare'
+	DATABASE_USER = 'tsruser'
+	DATABASE_PASSWORD = '8AGiXg3Q'
+	DATABASE_HOST = '192.168.254.153'
+	DATABASE_PORT = ''
+	
+else:			# WHICH_ENVIRONMENT == 'production'			# Django settings on the server for TSR project.
+	DEBUG = False
+	TEMPLATE_DEBUG = DEBUG
+	TEMPLATE_DIRS = ('/home/travis/timesharerentals.com/timeshare/templates')
+	MEDIA_ROOT = '/home/travis/timesharerentals.com/timeshare/media/site_media'
+	MEDIA_URL = '/site_media/'
+	ADMIN_MEDIA_PREFIX = '/admin_media/'
 
-MANAGERS = ADMINS
+	DATABASE_ENGINE = 'mysql'
+	DATABASE_NAME = 'timeshare'
+	DATABASE_USER = 'travisnuser'
+	DATABASE_PASSWORD = 'Ot1kHQdgbvVU1X'
+	DATABASE_HOST = ''
+	DATABASE_PORT = ''
 
-DATABASE_ENGINE = 'sqlite3'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-DATABASE_NAME = 'dev.db'             # Or path to database file if using sqlite3.
-DATABASE_USER = ''             # Not used with sqlite3.
-DATABASE_PASSWORD = ''         # Not used with sqlite3.
-DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
-DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
 
-# Local time zone for this installation. Choices can be found here:
-# http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
-# although not all choices may be available on all operating systems.
-# If running in a Windows environment this must be set to the same as your
-# system time zone.
 TIME_ZONE = 'US/Eastern'
-
-# Language code for this installation. All choices can be found here:
-# http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'en-us'
-
 SITE_ID = 1
-
-# If you set this to False, Django will make some optimizations so as not
-# to load the internationalization machinery.
 USE_I18N = False
-
-# Absolute path to the directory that holds media.
-# Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = '/site_media/'
-
-# URL that handles the media served from MEDIA_ROOT. Make sure to use a
-# trailing slash if there is a path component (optional in other cases).
-# Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = '/site_media/'
-
-# URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
-# trailing slash.
-# Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = '/admin_media/'
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'qylt*edr7=z*f)67cr9ge5g(pa#ng4fb#z(q!w$1&#a38d_fno'
@@ -73,9 +66,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 ROOT_URLCONF = 'timeshare.urls'
 
-TEMPLATE_DIRS = (
-	"/templates",
-)
 LOGIN_URL = '/profile/login'
 LOGIN_REDIRECT_URL = '/'
 
@@ -95,11 +85,11 @@ INSTALLED_APPS = (
 	'gravatar',
 	'homepage',
 	'ts',
+	'widget_tweaks',
 )
 
 SITE_NAME = "timesharerentals.com"
 
-try:
-	from local_settings import *
-except ImportError:
-	pass
+NUMPHOTOS = (('free','1'),('bronze','3'),('silver','10'),('gold','10'))
+DAYS = {'free':61,'bronze':183,'silver':365,'gold':10000,}
+TYPES = {'free':1,'bronze':2,'silver':3,'gold':4,}

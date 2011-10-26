@@ -8,17 +8,7 @@ from photologue.models import Photo
 # from calendarer.models import Calendarer
 
 def calendar(request):
-	# ap = Ad.objects.filter(premium=True, premod=True)
 	p = Photo.objects.filter(is_public=True)
-	# t = Trav.objects.all()
-	
-	return render_to_response('calendar/calendar.html', {"photos":p},
-		context_instance = RequestContext(request),
-	)
+	return render_to_response('calendar/calendar.html', {"photos":p},context_instance = RequestContext(request),)
 
-# def travdetail(request, trav_slug):
-# 	t = Trav.objects.latest('created')
-# 	
-# 	return render_to_response('homepage/trav_d.html', {'trav': t,},
-# 		context_instance = RequestContext(request),
-# 	)
+

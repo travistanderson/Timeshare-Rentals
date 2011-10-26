@@ -8,23 +8,12 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from datetime import datetime, timedelta
 from photologue.models import Photo, Gallery
-from ts.models import Ad, Comment, PhotoOrder, Resort, ResortType
-from ts.forms import AdPicForm, FreeForm, PremiumForm, ResortForm, ResortTypeForm, GenericForm
+from ts.models import Ad, Comment, Resort, ResortType
 
-
-# def proindex(request):
-# 	# ap = Ad.objects.filter(premium=True, premod=True)
-# 	# af = Ad.objects.filter(premium=False, premod=True)
-# 	u = User.objects.all()
-# 	
-# 	return render_to_response('profiler/index.html', {'users':u,},
-# 		context_instance = RequestContext(request),
-# 	)
 
 
 @login_required	
 def adminindex(request):		
-	# u = User.objects.get(id=user_id)
 	a = Ad.objects.filter(premod=False)
 	c = Comment.objects.filter(premod=False)
 	r = Resort.objects.filter(premod=False)

@@ -2,43 +2,47 @@
 {% extends "site_base.html" %}
 
 {% block head_title %}Add Photos to your Ad{% endblock head_title %}
-{% block extra_head %}
-	<link rel="stylesheet" href="/site_media/css/widgets.css" type="text/css" media="screen" title="no title" charset="utf-8">
-	{# // <script src="/site_media/js/widgets.js" type="text/javascript" charset="utf-8"></script> #}
-	{# <script type="text/javascript" charset="utf-8"> #}
-	{# 	$(document).ready(function() { #}
-	{# 		//nothing now #}
-	{# 	}); #}
-	{# </script> #}
-{% endblock extra_head %}
 
 {% block body %}
 	<div class="section" id="wide_column">
-		<h1>Add Photos to your Ad</h1><br/><br/>	
-		
-		
-		<form enctype="multipart/form-data" method="POST" action=".">
-			<div>{{ form.image.errors }}</div>
-			<div class="leftcol">{{ form.image.label_tag }}</div>
-			<div class="rightcol">{{ form.image }}</div>
-			<div class="clearer"></div>
-			
-			<div>{{ form.caption.errors }}</div>
-			<div class="clearer"></div>
-			<div class="leftcol">{{ form.caption.label_tag }}</div>
-			<div class="rightcol">{{ form.caption }}</div>
-			<div class="clearer"></div>								
-	
-			{# {{ form }} #}
-			<div id="add_next"><input type="submit" value="Next" /></div>
+		<h1>Add Photos to your Ad</h1><br/><br/>
+		<div class='photodeleter'>
+			Select photo to delete <br/>
+			{% for photo in ad.photolist %}
+				<div class='deletepic' id='{{ photo.id }}_deletepic'>
+					<img src="{{ photo.get_thumbnail_url }}"></img><br/>
+					{{ photo.orderer }} - {{ photo.caption }}
+				</div>
+			{% endfor %}
+			<a href='{% url profile user.id %}' class='buttoner thisbuttoner'>Cancel</a>
+			<p class='clearer'></p>
+			You have a {{ ad.get_adtype_display }} ad.
+		</div><div class='clearer'></div>
+
+		<form enctype="multipart/form-data" method="POST" action="." class=>
+			{% include 'includes/form.html' %}
 		</form><br/><br/><br/>
-		{% for photo in photos %}
-			<img src="{{ photo.get_thumbnail_url }}" class="pic" alt="{{ photo }}"></img><br/>
-			{{ photo }}
-		{% endfor %}
-		
-
 	</div>
-
-
 {% endblock %}
+
+{% block extra_head %}
+	<style type="text/css" media="screen">
+		.photodeleter{display:none;width:560px;margin:0 auto;}
+		.photodeleter div{width:100px;height:100px;float:left;margin:5px;padding:5px;cursor:pointer;}
+		.deleteselected{border:3px solid red;-moz-border-radius:3px;-webkit-border-radius:3px;}
+		.thisbuttoner{width:100px;float:right;}
+	</style>
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function(){
+			if($('#id_deleter')){
+				$('.photodeleter').css({'display':'block'});
+			}
+			$('.deletepic').click(function(){
+				$('.deletepic').removeClass('deleteselected');
+				whichone = $(this).attr('id').split('_')[0];
+				$(this).addClass('deleteselected');
+				$('#id_deleter').val(whichone);
+			})
+		});
+	</script>
+{% endblock extra_head %}

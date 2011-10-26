@@ -5,46 +5,35 @@
 
 {% block body %}
 	<div class="section" id="wide_column">
-		<h1>Your Profile</h1><br/><br/>
-		<h3>{{ theuser }}</h3><br/>
-
-
-		{% if premypads or premyfads %}
-			<h2>Waiting for Approval</h2>
-			{% if premypads %}
-				<h4>Premium Ads</h4><br/>
-				{% for ad in premypads %}
-					<a href='{% url ad_detail ad.id %}'>{{ ad }}</a> <a href='{% url ad_edit ad.id %}'>edit</a><br/>
-				{% endfor %}<br/><br/>
-			{% endif %}
-			
-			{% if premyfads %}
-				<h4>Free Ads</h4><br/>
-				{% for ad in premyfads %}
-					<a href='{% url ad_detail ad.id %}'>{{ ad }}</a> <a href='{% url ad_edit ad.id %}'>edit</a><br/>
+		<h1>{% if me %}Your{% else %}{{ theuser }}'s{% endif %} Profile</h1><br/><br/>
+		
+		{% if me %}
+			<h2 class='resortheader'><span>Ads</span></h2><br/><br/>
+			<table id='profile'>
+				<tr>
+					<th>Name</th>
+					<th>Approved</th>
+					<th>Photo(s)</th>
+					<th>Expiration Date</th>
+					<th>Type</th>
+					<th>Description</th>
+					<th>&nbsp;</th>
+				</tr>
+				{% for ad in ads %}
+					<tr>
+						<td><a href='{% url ad_detail ad.id %}' class='proname'>{{ ad.name }}</a></td>
+						<td><div class='premod{{ ad.premod }}'>&nbsp;</div></td>
+						<td><div class='prothumb'>{% include 'includes/justthumbs.html' %}</div></td>
+						<td><div class='expad'>{{ ad.expiration_date|date:"F d, Y" }}</div></td>
+						<td><span class='medalholder{{ ad.adtype }}'></span><span class='promedti'>{{ ad.get_adtype_display }}</span></td>
+						<td><p class='prodesc'>{{ ad.description|truncatewords:"30" }}</p></td>
+						<td><a href='{% url ad_edit ad.id %}' class='buttoner'><span class='editad'>edit</span></a></td>
+					</tr>
 				{% endfor %}
-			{% endif %}
-		
-			<br/><br/>
-		{% endif %}		
-		
-		{% if mypads or myfads %}
-			<h2>Ads</h2>
-
-			{% if mypads %}
-				<h4>Premium Ads</h4><br/>
-				{% for ad in mypads %}
-					<a href='{% url ad_detail ad.id %}'>{{ ad }}</a> <a href='{% url ad_edit ad.id %}'>edit</a><br/>
-				{% endfor %}<br/><br/>
-			{% endif %}
-
-			{% if myfads %}
-				<h4>Free Ads</h4><br/>
-				{% for ad in myfads %}
-					<a href='{% url ad_detail ad.id %}'>{{ ad }}</a> <a href='{% url ad_edit ad.id %}'>edit</a><br/>
-				{% endfor %}<br/><br/>
-			{% endif %}
+			</table><br/><br/>
 		{% endif %}
+		
+
 		
 		TSR member since {{ theuser.date_joined|date:"F Y" }}
 	</div>
