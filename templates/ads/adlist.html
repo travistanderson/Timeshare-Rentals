@@ -5,105 +5,97 @@
 
 {% block head_title %}Ad List{% endblock head_title %}
 
+{% block extra_head %}
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function(){
+			sort = '{{ sort }}';
+			direc = '{{ direc }}';
+			$('#' + sort).addClass('active').addClass(direc);
+			if(direc == 'asc'){
+				current = $('#' + sort).attr('href');
+				current = current + '&direc=desc';
+				$('#' + sort).attr('href',current);
+			}
+			$('#desc').click(function(e){
+				e.preventDefault();
+			})
+		});
+	</script>
+	<style type="text/css" media="screen">
+		.searchholder{padding:30px 0 0 20px;}
+	</style>
+{% endblock %}
+
 {% block body %}
 	<div class="section" id="wide_column">
 		<div class='row'>
 			{# Here are some Google Ads #}
-			<img src="/site_media/images/googleads.jpg" alt="googleads" style='padding:0 0 0 171px;'></img>
+			<img src="/site_media/images/googleads.jpg" alt="googleads" style='padding:0 50px 0 0;float:right;'></img>
+			<div class='searchholder'>{% include "includes/searchbox.html" %}</div>
+			<div class='clearer'></div>
+		</div>
+		<div class='rowtitle'>
+			<a href='?sort=name' class='rowtitlet' id='name'>Name</a>
+			<a href='?sort=date' class='rowtitlet' id='date'>Date</a>
+			<a href='' class='rowtitlet' id='desc'>Description</a>
+			<a href='?sort=resort' class='rowtitlet' id='resort'>Resort</a>
+			<a href='?sort=country' class='rowtitlet' id='country'>Country</a>
 		</div>
 		
-		<div class='rowh3'>
-			<h3>Premium Ads</h3>
-			<div class='desc'>Description</div>
-			<div class='date'>Date</div>
-			<div class='user'>User</div>
-			<div class='rest'>Resort</div>
-			<div class='con'>Country</div>
-		</div>
-		
-		{% for ad in adp_list %}
-			<div class="row">
+		{% for ad in ads.object_list %}
+			<div class="row{% ifequal ad.adtype 1 %} rowfree{% else %} rowprem{% endifequal %}">
 				<div class="rowleft">
-					<a href="{% url addetail ad.id %}">{{ ad.name }}</a>
-					<div class='rowphotos'>
-						{% for photo in ad.photos.all %}
-							{% ifequal forloop.counter 1 %}
-								<img src="{{ photo.get_thumbnail_url }}" class="pic" alt="{{ photo }}"></img>
-							{% endifequal %}
-							{% ifequal forloop.counter 2 %}
-								<img src="{{ photo.get_thumbnail_url }}" class="pic" alt="{{ photo }}"></img>
-							{% endifequal %}
-						{% endfor %}
+					<a href="{% url addetail ad.slug %}">{{ ad.name }}</a>
+					<div class='rowdate'>
+						Available<br/>
+						{{ ad.start_room|date:'M d' }} - {{ ad.end_room|date:'d, Y' }}
 					</div>
+				
 				</div>{# end of rowheader #}
 				<div class='rowright'>
+					{% ifnotequal ad.adtype 1 %}
+						<div class='rowphotos'>
+							{% for photo in ad.photos.all %}
+								{% ifequal forloop.counter 1 %}
+									<img src="{{ photo.get_thumbnail_url }}" class="pic" alt="{{ photo }}"></img>
+								{% endifequal %}
+								{% ifequal forloop.counter 2 %}
+									<img src="{{ photo.get_thumbnail_url }}" class="pic" alt="{{ photo }}"></img>
+								{% endifequal %}
+							{% endfor %}
+						</div>
+					{% endifnotequal %}
 					<div class='rowdescription'>
 						{{ ad.description|truncatewords:20 }}
 					</div>
-					<div class='rowdate'>
-						Available<br/>
-						{{ ad.start_room }} - {{ ad.end_room }}
-					</div>
-					<div class='rowuser'>
-						{{ ad.creator }}<br/>
-						{# {% gravatar ad.creator 40 %}<br/> #}
-						send message
-					</div>
 					<div class='rowresort'>
 						{{ ad.resort }}<br/>
-						<img src="{{ ad.resort.picture.get_fingernail_url }}" class="pic" alt="{{ photo }}"></img><br/>
-						{{ ad.resort.name }}
+						{# <img src="{{ ad.resort.picture.get_fingernail_url }}" class="pic" alt="{{ photo }}"></img> #}
 					</div>
 					<div class='rowcountry'>
-						<img src="/site_media/images/flags/{{ ad.resort.address_country.iso }}.gif" class="pic" alt="{{ ad.resort.address_country }}" style="width:32px;height:22px;"></img><br/>
-						{{ ad.resort.address_country }}
+						<img src="/site_media/images/flagsbig/{{ ad.resort.address_country.iso }}.png" class="pic" alt="{{ ad.resort.address_country }}"></img>
+						<p>{{ ad.resort.address_country }}</p>
 					</div>
-
+					{# <div>{{ ad.adtype }}</div> #}
 				</div>{# end of rowfooter #}
 			</div>{# end of row #}<div class='clearer'></div>
 		{% endfor %}
+		<div class="pagination">
+		    <span class="step-links">
+		        {% if ads.has_previous %}
+		            <a href="?page={{ ads.previous_page_number }}&amp;sort={{ sort }}&amp;direc={{ direc }}">previous</a>
+		        {% endif %}
 
+		        <span class="current">
+		            Page {{ ads.number }} of {{ ads.paginator.num_pages }}.
+		        </span>
 
-
-		<div class='rowh3'>
-			<h3>Free Ads</h3>
-			<div class='desc'>Description</div>
-			<div class='date'>Date</div>
-			<div class='user'>User</div>
-			<div class='rest'>Resort</div>
-			<div class='con'>Country</div>
-		</div>		
-		{% for ad in adf_list %}
-			<div class='rowfree'>
-				<div class="rowheaderfree">
-					<a href="{% url addetail ad.id %}">{{ ad.name }}</a>
-				</div>{# end of rowheader #}
-				<div class='rowfooterfree'>
-					<div class='rowdescriptionfree'>
-						{{ ad.description|truncatewords:20 }}
-					</div>
-					<div class='rowdatefree'>
-						Available<br/>
-						{{ ad.start_room }} - {{ ad.end_room }}
-					</div>
-					<div class='rowinfofree'>
-						{{ ad.creator }}<br/>
-						{{ ad.start_room }} - {{ ad.end_room }}
-					</div>
-					<div class='rowinfofree'>
-						{{ ad.resort }}<br/>
-						{{ ad.resort.name }}
-					</div>
-					<div class='rowcountryfree'>
-						<img src="/site_media/images/flags/{{ ad.resort.address_country.iso }}.gif" class="pic" alt="{{ ad.resort.address_country }}" style="width:32px;height:22px;"></img><br/>
-						{{ ad.resort.address_country }}
-					</div>
-				</div>{# end of rowfooter #}
-			</div>{# end of rowfree #}<div class='clearer'></div>
-		{% endfor %}
-
-	</div>
-
+		        {% if ads.has_next %}
+		            <a href="?page={{ ads.next_page_number }}&amp;sort={{ sort }}&amp;direc={{ direc }}">next</a>
+		        {% endif %}
+		    </span>
+		</div>
+	</div>{# end of section #}
 
 {% endblock %}
 

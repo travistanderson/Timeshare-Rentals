@@ -1,0 +1,106 @@
+{# templates/resorts/resorts.html #}
+{% extends "site_base.html" %}
+
+{% load gravatar %}
+
+{% block head_title %}Resort List{% endblock head_title %}
+
+{% block extra_head %}
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function(){
+			sort = '{{ sort }}';
+			direc = '{{ direc }}';
+			$('#' + sort).addClass('active').addClass(direc);
+			if(direc == 'asc'){
+				current = $('#' + sort).attr('href');
+				current = current + '&direc=desc';
+				$('#' + sort).attr('href',current);
+			}
+			$('#desc').click(function(e){
+				e.preventDefault();
+			})
+		});
+	</script>
+	<style type="text/css" media="screen">
+		.rowtitle{}
+		.rowtitle #name{}	
+		.rowtitle #desc{padding-left:465px;}	
+		.rowtitle #country{padding-left:208px;}
+		.rowleft{width:250px;}
+		.rowleft .ads{padding:20px 0 0 0;font-size:11px;}
+		.rowright{width:650px;}
+		.rowphotos{width:100px;padding:8px 20px 0 0;}
+		.rowdescription{width:400px;float:left;padding:0 30px 0 0;}
+		.rowcountry{float:left;width:80px;padding:0;}
+		.rowcountry img{height:62px;width:67px;margin:13px 0 -20px 0;}
+		.rowcountry p{width:67px;margin:-5 auto 0 auto;text-align:center;}
+	</style>
+{% endblock %}
+
+{% block body %}
+	<div class="section" id="wide_column">
+		<div class='row'>
+			{# Here are some Google Ads #}
+			<img src="/site_media/images/googleads.jpg" alt="googleads" style='padding:0 0 0 171px;'></img>
+		</div>
+		<h1>Resorts</h1>
+		<div class='rowtitle'>
+			<a href='?sort=name' class='rowtitlet' id='name'>Name</a>
+			<a href='' class='rowtitlet' id='desc'>Description</a>
+			<a href='?sort=country' class='rowtitlet' id='country'>Country</a>
+		</div>
+		
+		{% for resort in resorts.object_list %}
+			<div class="row">
+				<div class="rowleft">
+					<a href="{% url resortdetail resort.slug %}">{{ resort.name }}</a>
+					<div class='ads'>{{ resort.ads|length }} timeshare{{ resort.ads|length|pluralize }} at this resort.</div>
+				</div>{# end of rowheader #}
+				<div class='rowright'>
+					<div class='rowphotos'>
+						<img src="{{ resort.picture.get_thumbnail_url }}" class="pic" alt="{{ resort.picture }}"></img>
+					</div>
+					<div class='rowdescription'>
+						{{ resort.description|truncatewords:30 }}
+					</div>
+					<div class='rowcountry'>
+						<img src="/site_media/images/flagsbig/{{ resort.address_country.iso }}.png" class="pic" alt="{{ resort.address_country }}"></img>
+						<p>{{ resort.address_country }}</p>
+					</div>
+					{# <div>{{ ad.adtype }}</div> #}
+				</div>{# end of rowfooter #}
+			</div>{# end of row #}<div class='clearer'></div>
+		{% endfor %}
+		<div class="pagination">
+		    <span class="step-links">
+		        {% if resorts.has_previous %}
+		            <a href="?page={{ resorts.previous_page_number }}&amp;sort={{ sort }}&amp;direc={{ direc }}">previous</a>
+		        {% endif %}
+
+		        <span class="current">
+		            Page {{ resorts.number }} of {{ resorts.paginator.num_pages }}.
+		        </span>
+
+		        {% if resorts.has_next %}
+		            <a href="?page={{ resorts.next_page_number }}&amp;sort={{ sort }}&amp;direc={{ direc }}">next</a>
+		        {% endif %}
+		    </span>
+		</div>
+	</div>{# end of section #}
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+               
+
+
+
+

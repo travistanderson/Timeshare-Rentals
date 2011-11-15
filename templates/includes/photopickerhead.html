@@ -1,16 +1,22 @@
 <script type="text/javascript" charset="utf-8">
 	var photoids = new Array();
 	var photodisplays = new Array();
-	var photothumbs = new Array();		
 	var photocaptions = new Array();
 	{% for photo in ad.photos.all %}
 		photoids[{{ forloop.counter0 }}] = '{{ photo.id }}';
-		photodisplays[{{ forloop.counter0 }}] = '{{ photo.get_display_url }}';
-		photothumbs[{{ forloop.counter0 }}] = '{{ photo.get_thumbnail_url }}';
+		photodisplays[{{ forloop.counter0 }}] = '{{ photo.get_detail_url }}';
 		photocaptions[{{ forloop.counter0 }}] = '{{ photo.caption }}';
 	{% endfor %}
-	var positions = new Array();
-	for(i=0;i<photoids.length;i++){
-		positions[i]=i;
-	}
+	$(document).ready(function(){
+		$('.thumbpic').click(function(){
+			clicked = $(this).attr('id').split('_')[1];
+			$('#pic_0').attr('src',photodisplays[clicked]);
+		})
+	});
 </script>
+<style type="text/css" media="screen">
+	.news-detail-photo{}
+	.news-detail-photo .caption{margin:-6px 0 2px 0;}
+	.thumbnails{}
+	.thumbnails img{padding:0 4px 1px 0;cursor:pointer;}
+</style>

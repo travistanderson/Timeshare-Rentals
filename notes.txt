@@ -7,3 +7,42 @@ take off "premium ads" and "free ads" on the "rent" page. i don't want people to
 Contact Us page- just a simple customer service form 
 
 Calendar- years 2011-2021 dates. Fri-Fri, Sat-Sat, Sun-Sun
+
+
+
+
+
+
+
+
+
+todo list:
+	-repoint dns record to new site
+	-write the system that sends emails to Annie when ads are created and paid for and stuff (maybe when an ad is edited or when pictures are added as well)
+	-write the system that checks expiration dates and send out notice emails
+	-check permission to edit ad and pictures
+	-build a redirector for existing pages on old site
+	-put paypal buttons in everywhere they should pay
+	-fix paypal buttons (create gold, silver and bronze and include ad numbers variable)
+	-fix the date problem on the new ad form
+	-ad commenting to the resorts
+	-create a hover account and transfer tsr domain to hover.com
+	-build messaging system
+	-transfer data to new site
+	-include nav elements in footer
+	-include Terms of Service in footer and anything else
+	-put "what is it question marks" on new ad form
+	-build statistics system
+	-integrate google ads
+	-ad a map on every ad page of the timeshare location
+	-spruce up contact form
+	-right "who we are" article on home page
+	-write policy about moderation
+	-improve search
+	-put up a map of resorts
+
+
+Questions for Annie
+can we just ask them to put price and room numbers in their description?
+help with google ads?
+does the old ad number matter?

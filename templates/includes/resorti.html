@@ -1,0 +1,33 @@
+<h2 class='resortheader'><span>Resort</span></h2>
+<div class="rowheader"><h1>{{ object }} - {{ object.branch }}</h1></div>
+
+<style type="text/css" media="screen">
+	.comment{}
+	.rowcountry{float:right;margin-left:20px;}
+	.rowcountry img{height:62px;width:67px;margin:13px 0 -20px 0;}
+</style>
+
+<p>
+	<img src="{{ object.picture.get_resort_url }}" class="resortpic" alt="{{ object }}_photo"></img>
+	<div class='rowcountry'>
+		<img src="/site_media/images/flagsbig/{{ object.address_country.iso }}.png" class="pic" alt="{{ object.address_country }}"></img>
+		<p>{{ object.address_country }}</p>
+	</div>
+	{{ object.description }}<br/><br/>
+	{% if object.url %}
+		More info available here - <a href='{{ object.url }}' target='_blank'>{{ object.url }}</a><br/>
+	{% endif %}
+	{% if object.address %}
+		Address: {{ object.address }}<br/>
+	{% endif %}
+	{% if object.comment %}
+		<div class='clearer'></div>
+		<h2>Comments on this resort</h2>
+		{% for com in object.comment.all %}
+			<div class='comment'>
+				{{ com.user }} - {{ com.comment }}
+			</div>
+		{% endfor %}
+	{% endif %}
+</p>
+<div class='clearer'></div>

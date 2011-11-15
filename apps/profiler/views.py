@@ -53,16 +53,8 @@ def profile(request,user_id):
 	else:
 		me = 0
 	ads = Ad.objects.filter(creator=u)
-	# myp = Ad.objects.filter(adtype__gt=1, creator=u, premod=True)
-	# myf = Ad.objects.filter(adtype__lt=2, creator=u, premod=True)
-	# 
-	# premyp = Ad.objects.filter(adtype__gt=1, creator=u, premod=False)
-	# premyf = Ad.objects.filter(adtype__lt=2, creator=u, premod=False)
-		
-	# return render_to_response('profiler/profile.html', {"theuser":u,'mypads':myp,'myfads':myf,'premypads':premyp,'premyfads':premyf,'me':me,},
-	# 	context_instance = RequestContext(request),
-	# )
-	return render_to_response('profiler/profile.html', {"theuser":u,'ads':ads,'me':me,},context_instance = RequestContext(request),)
+	paidmodads = Ad.objects.filter(creator=u,paid=True,premod=True)
+	return render_to_response('profiler/profile.html', {"theuser":u,'ads':ads,'paidmodads':paidmodads,'me':me,},context_instance = RequestContext(request),)
 	
 	
 	

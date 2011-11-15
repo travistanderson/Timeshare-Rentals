@@ -8,5 +8,5 @@ from photologue.models import Photo
 from ts.models import Resort, Ad
 
 def home(request):
-	ap = Ad.objects.filter(adtype__gt=1, premod=True)
+	ap = Ad.objects.filter(adtype__gt=1, premod=True,paid=True)
 	return render_to_response('homepage/homepage.html', {"adp_list":ap},context_instance = RequestContext(request),)

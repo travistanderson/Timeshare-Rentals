@@ -2,33 +2,89 @@
 {% extends "site_base.html" %}
 
 {% block head_title %}{{ ad }}{% endblock head_title %}
-{% block extra_head %}{% include "includes/photopickerhead.html" %}{% endblock %}
+{% block extra_head %}
+	{% include "includes/photopickerhead.html" %}
+	<style type="text/css" media="screen">
+		.subpadder{padding:0px 20px;}
+		.member{padding:20px 0 0 0;}
+		.editer{width:42px;float:right;margin-right:21px;}
+		.editad{height:20px;}
+		.alert{font-size:13px;border:2px solid red;-moz-border-radius:5px;-webkit-border-radius:5px;padding:20px;margin:0 0 30px 0;}
+		.red{font-weight:bold;font-size:15px;color:red;}
+		.visitor{font-size:15px;padding:0 0 20px 0;}
+	</style>
+{% endblock %}
 
 {% block body %}
 	<div class="section" id="wide_column">
-		{% if ad %}
 		<div class='padder'>
-			<div class="rowheader"><h1>{{ ad }}</h1></div>
-			<div>
-				{% include "includes/photopicker.html" %}
-				{{ ad.description }}
-			</div><div class='clearer'></div>
-			<div>
-				Member: <a href='{% url profile user.id %}'>{{ user }}</a>
-			</div><br/>
-			<h2 class='resortheader'><span>Resort</span></h2>
-			<div class="rowheader"><h1>{{ ad.resort }} - {{ ad.resort.name }}</h1></div>
+			<div class='subpadder'>
 
-			<p>
-				<img src="{{ ad.resort.picture.get_thumbnail_url }}" class="resortpic" alt="{{ ad.resort }}_photo"></img>
-				{{ ad.resort.description }}
-			</p>
-			<div class='clearer'></div>
+				{% if not ad.expired %}{# this checks to see if it is expired #}
+					{% ifequal user ad.creator %}{# it is me, the ads creator #}
+						<a href='{% url ad_edit ad.id %}' class='buttoner editer'><div class='editad'>edit</div></a>
+						<div class="rowheader"><h1>{{ ad }}</h1></div>
+						{% if ad.premod %}{# it has been approved #}
+							{% if ad.paid %}{# it has been paid for #}
+								{% include 'ads/adincludes/adbody.html' %}
+							{% else %}{# premodded but not paid for yet, weird #}
+								{% include "ads/adincludes/alertdollar.html" %}
+								{% include 'ads/adincludes/adbody.html' %}
+							{% endif %}{# paid #}
+						{% else %}{# it has not been approved #}
+							{% if ad.paid %}{# it has been paid for #}
+								{% include "ads/adincludes/alertmod.html" %}
+								{% include 'ads/adincludes/adbody.html' %}
+							{% else %}{# it has not been paid for #}
+								{% include "ads/adincludes/alertdollar.html" %}
+								{% include "ads/adincludes/alertmod.html" %}
+								{% include 'ads/adincludes/adbody.html' %}
+							{% endif %}{# end of paid for #}
+						{% endif %}{# end of premod #}
+					{% else %}{# I am not the creator but I am viewing it #}
+						{% if ad.premod %}{# it has been approved #}
+							{% if ad.paid %}{# it has been paid for #}
+								<div class="rowheader"><h1>{{ ad }}</h1></div>
+								{% include 'ads/adincludes/adbody.html' %}
+							{% else %}{# premodded but not paid for yet, weird #}
+								{% include "ads/adincludes/alertvisitor.html" %}
+							{% endif %}{# paid #}
+						{% else %}{# it has not been approved #}
+							{% include "ads/adincludes/alertvisitor.html" %}
+						{% endif %}{# end of premod #}
+					{% endifequal %} {# end of it is me check #}
+				{% else %}	{# it is expired #}
+					{% ifequal user ad.creator %}{# it is me, the ads creator #}
+						This ad has expired. You can renew it <a href='{% url profile ad.creator.id %}'>here</a>.
+					{% else %}{# I am not the creator but I am viewing it #}
+						This ad has expired.
+					{% endifequal %} {# end of it is me check #}
+				{% endif %} {# expired check #}
+				
+			</div>{# end of subpadder #}
 		</div>{# end of padder #}
-		{% else %}
-			This ad is expired
-		{% endif %}
 	</div>{# end of section #}
 
 
 {% endblock %}
+
+
+if me 
+	yes - show title and check for premod
+		yes - check for paid
+			yes-show ad
+			no-show $ message
+		no - check for paid
+			yes - show me message about mod
+			no - show me message and $ message
+			
+	
+	no - Don't show title and do check for premod
+		yes-check for paid
+			yes - show ad
+			no - show message to visitor
+		no-show message to visitor
+		
+		
+		
+		

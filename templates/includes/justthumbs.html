@@ -1,15 +1,19 @@
-{% for photo in ad.photos.all %}
-	{% ifequal forloop.counter 1 %}
-		<img class="" src="{{ photo.get_displaythumb_url }}" />
-	{% endifequal %}
-{% endfor %}
-{% if ad.photos.all %}
-	{% ifequal ad.photos.all|length_is:"1" 1 %}
+<a href='{% url createpictures ad.id %}'>
+	{% for photo in ad.photos.all %}
+		{% ifequal forloop.counter 1 %}
+			<img class="" src="{{ photo.get_displaythumb_url }}" />
+		{% endifequal %}
+	{% endfor %}
+	{% if ad.photos.all %}
+		{# {% ifequal ad.photos.all|length_is:"1" 1 %} #}
+		{# 	edit #}
+		{# {% else %} #}
+		{# 	<br/>and {{ ad.photos.all|length|add:"-1" }} other{{ ad.photos.all|length|add:"-1"|pluralize }} #}
+		{# {% endifequal %} #}
+		<a href='{% url createpictures ad.id %}' class='buttoner editerpic'><span class='editad'>edit</span></a>
 	{% else %}
-		<br/>and {{ ad.photos.all|length|add:"-1" }} other{{ ad.photos.all|length|add:"-1"|pluralize }}
-	{% endifequal %}
-{% else %}
-	<a href=''>Upload a photo <br/>
-	for this ad.</a>
-{% endif %}
-
+		<a href='{% url createpictures ad.id %}' class='buttoner uploader'><span class='editad'>add</span></a>
+		<div class='clearer'></div>
+		a photo for this ad.
+	{% endif %}
+</a>

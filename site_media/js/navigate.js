@@ -1,12 +1,11 @@
 //site_media/js/navigate.js
 
 $(document).ready(function() {
-	$('.searchchoice').click(function(){
-		// alert('clicked');
-		$('.searchchoice').removeClass('searchchoiceactive');
-		$(this).addClass('searchchoiceactive');
-	})
-	$('#searcher').val('Find a timeshare to rent').css({'color':'#8f8'});
+	// $('.searchchoice').click(function(){
+	// 	$('.searchchoice').removeClass('searchchoiceactive');
+	// 	$(this).addClass('searchchoiceactive');
+	// })
+	$('#searcher').val('Find a timeshare to rent').css({'color':'#ccc'});
 	$('#searcher').focus(function(){
 		if($(this).val() == 'Find a timeshare to rent'){
 			$(this).val('').css({'color':''});

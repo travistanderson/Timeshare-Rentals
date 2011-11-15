@@ -14,6 +14,7 @@ urlpatterns = patterns('',
 	(r'^contact/', include('contact.urls')),	
 	(r'^profile/', include('profiler.urls')),
 	(r'^photologue/', include('photologue.urls')),
+	(r'^search/', include('search.urls')),
 	
     # (r'^admin/', include('admints.urls')),
 	(r'^admin/', include(admin.site.urls)),

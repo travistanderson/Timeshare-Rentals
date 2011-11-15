@@ -1,0 +1,19 @@
+<style type="text/css" media="screen">
+	.datebox{font-weight:bold;padding:0 0 10px 0;}
+	.datebox div{font-size:14px;}
+</style>
+<div>
+	{% include "includes/photopicker.html" %}
+	<div class='datebox'>
+		<div>Available:</div>
+	{{ ad.start_room|date:'M d' }} - {{ ad.end_room|date:'d, Y' }}
+	</div>
+	{# {{ ad.start_date }} - {{ ad.end_date }} #}
+	{{ ad.description }}
+</div><div class='clearer'></div>
+<div class='member'>
+	Owner: <a href='{% url profile ad.creator.id %}'>{{ ad.creator }}</a>
+</div><br/>
+{% with ad.resort as object %}
+	{% include 'includes/resorti.html' %}
+{% endwith %}

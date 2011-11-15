@@ -3,12 +3,18 @@ from django.db import models
 from datetime import datetime, timedelta
 from django.contrib.auth.models import User
 from photologue.models import Photo, Gallery
+from django.utils.safestring import mark_safe
 import settings
+ADTYPES = ((1,'Free'),(2,'Bronze'),(3,'Silver'),(4,'Gold'),)
 
 
 class Photoo(Photo):
 	orderer = models.IntegerField(default=1,blank=True, null=True)
 	
+	class Meta:
+		ordering = ['orderer']
+		get_latest_by = "orderer"
+		
 	def ad(self):
 		try:
 			return self.ad_set.all()[0]
@@ -23,9 +29,7 @@ class Photoo(Photo):
 
 class Country(models.Model):
 	name = models.CharField(blank=True,  max_length=128)
-	iso = models.CharField(max_length=2,)
-	iso3 = models.CharField(max_length=3, null=True)
-	flag = models.URLField(blank=True,)
+	iso = models.CharField(max_length=20,)
 	
 	class Meta:
 		verbose_name = 'Country'
@@ -34,6 +38,10 @@ class Country(models.Model):
 		
 	def __unicode__(self):
 		return self.name
+	
+	def flag(self):
+		return mark_safe('<img src="/site_media/images/flagsbig/' + str(self.iso) + '.png" style="width:80px;"></img>')
+	flag.allow_tags=True
 
 
 class Comment(models.Model):
@@ -41,11 +49,15 @@ class Comment(models.Model):
 	user = models.ForeignKey(User)
 	premod = models.BooleanField(default=False)
 	date_created = models.DateField(blank=True,auto_now_add=True)
+	
+	def __unicode__(self):
+		return str(self.user) + ' - ' + str(self.id) + ' - ' + str(self.comment[0:20])
 
 
 	
 class Resort(models.Model):
 	name = models.CharField(max_length=200)
+	slug = models.SlugField(max_length=200)	
 	branch = models.CharField(max_length=200,blank=True, null=True)
 	description = models.TextField(blank=True, null=True)	
 	picture = models.ForeignKey(Photo, blank=True, null=True)
@@ -65,7 +77,6 @@ class Resort(models.Model):
 
 
 class Ad(models.Model):
-	ADTYPES = ((1,'Free'),(2,'Bronze'),(3,'Silver'),(4,'Gold'),)
 	name = models.CharField(max_length=80)
 	slug = models.SlugField(max_length=100)
 	description = models.TextField()
@@ -79,7 +90,9 @@ class Ad(models.Model):
 	premod = models.BooleanField(default=False)
 	paid = models.BooleanField(default=False)
 	expiration_date = models.DateField(blank=True,)
-	
+	# also needs to have price, 
+	# also needs number of beds 
+	# also needs number of baths
 	def __unicode__(self):
 		return self.name
 
@@ -90,7 +103,10 @@ class Ad(models.Model):
 				break
 
 	def photolist(self):
-		return self.photos.order_by('orderer')		
+		return self.photos.order_by('orderer')
+		
+	class Meta:
+		ordering = ('-start_ad',)
 
 
 class Email(models.Model):

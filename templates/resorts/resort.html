@@ -1,0 +1,36 @@
+{# templates/resort/resortdetail.html #}
+{% extends "site_base.html" %}
+
+{% block head_title %}{{ resort }}{% endblock head_title %}
+{% block extra_head %}
+	{% include "includes/photopickerhead.html" %}
+	<style type="text/css" media="screen">
+		.subpadder{padding:0px 20px;}
+		.subpadder img{float:left;padding:6px 40px 20px 0;}
+		.subpadder .resortad{font-size:13px;font-weight:bold;}
+	</style>
+{% endblock %}
+
+{% block body %}
+	<div class="section" id="wide_column">
+		{% if resort.premod %}
+			<div class='padder'>
+				<div class='subpadder'>
+					{% with resort as object %}
+						{% include 'includes/resorti.html' %}
+					{% endwith %}
+					{% if resort.ads %}
+						<h2 class='resortheader'><span>Timeshares</span></h2><br/>
+						{% for ad in resort.ads %}
+							<div class='resortad'><a href='{% url addetail ad.slug %}'>{{ ad }}</a></div>
+						{% endfor %}
+					{% endif %}
+				</div>{# end of subpadder #}
+			</div>{# end of padder #}
+		{% else %}
+			This resort page is coming soon. {# It hasn't been moderated yet. #}
+		{% endif %}
+	</div>{# end of section #}
+
+
+{% endblock %}

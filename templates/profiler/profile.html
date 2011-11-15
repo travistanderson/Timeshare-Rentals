@@ -2,41 +2,74 @@
 {% extends "site_base.html" %}
 
 {% block head_title %}{{ theuser }}{% endblock head_title %}
+{% block extra_head %}
+	<style type="text/css" media="screen">
+		.paybutton{display:block;}
+		.editer{width:42px;float:right;}
+		.editerpic{width:42px;margin:0 auto;}
+		.uploader{width:42px;margin:0 auto;}
+		.dbuttoner{color:red;}
+	</style>
+{% endblock %}
 
 {% block body %}
 	<div class="section" id="wide_column">
-		<h1>{% if me %}Your{% else %}{{ theuser }}'s{% endif %} Profile</h1><br/><br/>
+		<div class='padder'>
+			<h1>{% if me %}Your{% else %}{{ theuser }}'s{% endif %} Profile</h1><br/><br/>
 		
-		{% if me %}
-			<h2 class='resortheader'><span>Ads</span></h2><br/><br/>
-			<table id='profile'>
-				<tr>
-					<th>Name</th>
-					<th>Approved</th>
-					<th>Photo(s)</th>
-					<th>Expiration Date</th>
-					<th>Type</th>
-					<th>Description</th>
-					<th>&nbsp;</th>
-				</tr>
-				{% for ad in ads %}
+			{% if me %}
+				<h2 class='resortheader'><span>Ads</span></h2><br/><br/>
+				<table id='profile'>
 					<tr>
-						<td><a href='{% url ad_detail ad.id %}' class='proname'>{{ ad.name }}</a></td>
-						<td><div class='premod{{ ad.premod }}'>&nbsp;</div></td>
-						<td><div class='prothumb'>{% include 'includes/justthumbs.html' %}</div></td>
-						<td><div class='expad'>{{ ad.expiration_date|date:"F d, Y" }}</div></td>
-						<td><span class='medalholder{{ ad.adtype }}'></span><span class='promedti'>{{ ad.get_adtype_display }}</span></td>
-						<td><p class='prodesc'>{{ ad.description|truncatewords:"30" }}</p></td>
-						<td><a href='{% url ad_edit ad.id %}' class='buttoner'><span class='editad'>edit</span></a></td>
+						<th>Name</th>
+						<th>Approved</th>
+						<th>Photo(s)</th>
+						<th>Expires</th>
+						<th>Type</th>
+						<th>Description</th>
+						<th>Paid</th>
+						<th>Delete</th>
 					</tr>
-				{% endfor %}
-			</table><br/><br/>
-		{% endif %}
+					{% for ad in ads %}
+						<tr>
+							<td><a href='{% url addetail ad.slug %}' class='proname'>{{ ad.name }}</a></td>
+							<td><div class='premod{{ ad.premod }}'>&nbsp;</div></td>
+							<td><div class='prothumb'>{% include 'includes/justthumbs.html' %}</div></td>
+							<td><div class='expad'>{% ifequal ad.adtype 4 %}Lifetime{% else %}{{ ad.expiration_date|date:"F d" }}<br/>{{ ad.expiration_date|date:"Y" }}{% endifequal %}</div></td>
+							<td><span class='medalholder{{ ad.adtype }}'></span><p class='promedti'>{{ ad.get_adtype_display }}</p></td>
+							<td><p class='prodesc'>{{ ad.description|truncatewords:"25" }}<a href='{% url ad_edit ad.id %}' class='buttoner editer'><span class='editad'>edit</span></a></p></td>
+							<td><div class='paid'>{% if ad.paid %}
+								<img src="/admin_media/img/admin/icon_success.gif" class="pic" alt="pic"></img>{% else %}
+								<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+								<input type="hidden" name="cmd" value="_s-xclick">
+								<input type="hidden" name="hosted_button_id" value="GWMAUVWHJD2UU">
+								{# <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal"> #}
+								<input type="submit" name="submit" alt="PayPal" class='buttoner' value='pay now $' style='color:#7AAA1B;'>
+								{# <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"> #}
+								</form>{% endif %}</div>
+							</td>
+							<td><a href='{% url ad_delete ad.id %}' class='buttoner dbuttoner'><span class='deletead'>delete</span></a></td>
+						</tr>
+					{% endfor %}
+				</table><br/><br/>
+			{% else %} 		{# this is when other people come to your page. #}
+				{% if paidmodads %}
+					<h3>Timeshares</h3><br/>
+					<ul>
+						{% for ad in paidmodads %}
+							<li><a href='{% url addetail ad.slug %}'>{{ ad }}</a></li>
+						{% endfor %}
+					</ul><br/>
+				{% else %}
+					{{ theuser }} doesn't have any timeshares ready to view.<br/><br/>
+				{% endif %}
+			{% endif %}
 		
 
 		
-		TSR member since {{ theuser.date_joined|date:"F Y" }}
-	</div>
+			TSR member since {{ theuser.date_joined|date:"F Y" }}
+		</div>{# end of padder #}
+	</div>{# end of section #}
 
 
 {% endblock %}

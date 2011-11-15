@@ -1,0 +1,45 @@
+{# templates/search/search.html #}
+{% extends "site_base.html" %}
+
+{% block extra_head %}
+	<style type="text/css" media="screen">
+		.padder{}
+		.sleft{float:left;width:300px;height:200px;}
+		.results{width:560px;padding:0 0 0 300px;}
+
+	</style>
+{% endblock %}
+
+{% block body %}
+	<div class="section" id="wide_column">
+		<div class='padder'>
+			<div class='sleft'>
+				<h1>Search</h1>
+				{% include 'includes/searchbox.html' %}
+			</div>
+			<div class='results'>
+				<h1>Results</h1><br/>
+				{% if adresults %}
+					Ads matching your search <br/>
+					<ul>
+						{% for result in adresults %}
+							<li><a href='{% url addetail result.slug %}'>{{ result.name }}</a></li>
+						{% endfor %}
+					</ul>
+				{% endif %}
+				{% if resortresults %}
+					<br/><br/>
+					Resorts matching your search <br/>
+					<ul>
+						{% for result in resortresults %}
+							<li><a href='{% url resortdetail result.slug %}'>{{ result.name }}</a></li>
+						{% endfor %}
+					</ul>
+				{% endif %}
+				{% if empty %}
+					No results for "{{ search }}"
+				{% endif %}
+			</div>{# end of results #}
+		</div>{# end of padder #}
+	</div>{# end of wide column #}
+{% endblock %}

@@ -3,46 +3,99 @@
 
 {% block head_title %}Add Photos to your Ad{% endblock head_title %}
 
-{% block body %}
-	<div class="section" id="wide_column">
-		<h1>Add Photos to your Ad</h1><br/><br/>
-		<div class='photodeleter'>
-			Select photo to delete <br/>
-			{% for photo in ad.photolist %}
-				<div class='deletepic' id='{{ photo.id }}_deletepic'>
-					<img src="{{ photo.get_thumbnail_url }}"></img><br/>
-					{{ photo.orderer }} - {{ photo.caption }}
-				</div>
-			{% endfor %}
-			<a href='{% url profile user.id %}' class='buttoner thisbuttoner'>Cancel</a>
-			<p class='clearer'></p>
-			You have a {{ ad.get_adtype_display }} ad.
-		</div><div class='clearer'></div>
-
-		<form enctype="multipart/form-data" method="POST" action="." class=>
-			{% include 'includes/form.html' %}
-		</form><br/><br/><br/>
-	</div>
-{% endblock %}
-
 {% block extra_head %}
 	<style type="text/css" media="screen">
-		.photodeleter{display:none;width:560px;margin:0 auto;}
-		.photodeleter div{width:100px;height:100px;float:left;margin:5px;padding:5px;cursor:pointer;}
-		.deleteselected{border:3px solid red;-moz-border-radius:3px;-webkit-border-radius:3px;}
+		#sortable{list-style-type:none;width:640px;margin:0 auto;}
+		#sortable li{width:100px;height:125px;float:left;margin:2px;padding:0 8px 5px 8px;background:wheat;border:3px solid #F2D686;cursor:pointer;}
+		#sortable .deleteselected{border:3px solid red;-moz-border-radius:5px;-webkit-border-radius:5px;}
 		.thisbuttoner{width:100px;float:right;}
+		.thumbboxprev{float:left;margin:0 15px 0 0;cursor:pointer;}
+		.thumbboxprevspacer{width:16px;float:left;margin:0 15px 0 0;}
+		.thumbboxnext{float:left;margin:0 0 0 0;cursor:pointer;}
+		.thumbboxdelete{cursor:pointer;float:right;}
+		#message{display:none;margin:0 0 30px 180px;font-size:15px;}
+		#grayboxholder{width:100%;height:0;}
+			#graybox{display:none;background:rgba(90,90,90,.5);width:630px;height:270px;position:relative;top:5px;left:130px;-moz-border-radius:20px;-webkit-border-radius:20px;}
+		#graybox #loading{width:32px;height:32px;margin:115px 0 0 305px;}
+		.extrapic{margin:0px 0 0 365px;}
+		.dnd{margin:0 0 0 200px;}
 	</style>
 	<script type="text/javascript" charset="utf-8">
 		$(document).ready(function(){
-			if($('#id_deleter')){
-				$('.photodeleter').css({'display':'block'});
+			showntf = {% if ad.canaddmore %}1{% else %}0{% endif %};
+			$idd = $('#id_deleter').parent().parent();
+			$idd.hide();
+			if(showntf==0){
+				$('#newthumbform').hide();
+				$('#message').show();
 			}
-			$('.deletepic').click(function(){
-				$('.deletepic').removeClass('deleteselected');
-				whichone = $(this).attr('id').split('_')[0];
-				$(this).addClass('deleteselected');
+			$('.thumbboxdelete').click(function(){
+				$('.thumbbox').removeClass('deleteselected');
+				whichone = $(this).attr('id').split('-')[1];
+				$(this).parent().addClass('deleteselected');
 				$('#id_deleter').val(whichone);
+				$('#newthumbform').show();
+				$idd.hide();
 			})
+			var times = 0;
+			$(function(){
+				$("#sortable").sortable({
+					update:function(e,ui){
+						var order = $("#sortable").sortable('toArray');
+						$('#graybox').css({'display':'block'});						// put up a gray box and a progress wheel
+						url = '/ads/create/picture/order/{{ ad.id }}/?order=' + String(order);
+						$.get(url,function(data){
+							result = JSON.parse(data);
+							$('#graybox').css({'display':'none'});
+						})
+					}
+				});
+				$( "#sortable" ).disableSelection();
+			});
 		});
 	</script>
 {% endblock extra_head %}
+
+{% block body %}
+	<div class="section" id="wide_column">
+		<a href='{% url profile user.id %}' class='buttoner thisbuttoner'>Cancel</a>
+		<h1>Add Photos to</h1>
+		<h2>{{ ad.get_adtype_display }} Ad - {{ ad }}</h2><br/><br/>
+		<div id='grayboxholder'><div id='graybox'><img src="/site_media/images/loading2.gif" id="loading"></img></div></div>
+		<div class='thumbnails'>
+			{% ifnotequal ad.adtype 1 %}
+				<div class='dnd'>Drag and drop to re-order your photos.</div>
+			{% endifnotequal %}
+			{% if ad.photolist %}
+				<ul id="sortable">
+				{% for photo in ad.photolist %}
+					<li class="thumbbox" id="list-{{ forloop.counter }}">
+						{{ photo.caption }}<br/>
+						<img src="{{ photo.get_thumbnail_url }}"></img><br/>
+						<img src="/admin_media/img/admin/icon_deletelink.gif" class="thumbboxdelete" id="tbd-{{ photo.id }}"></img>
+					</li>
+				{% endfor %}
+				</ul>
+			{% else %}
+				<p class='extrapic'>You have not uploaded any photos yet.</p>
+			{% endif %}
+			<p class='clearer'></p>
+			{% if ad.howmanymore %}
+				<p class='extrapic'>You can add {{ ad.howmanymore }} more picture{{ ad.howmanymore|pluralize }}.</p>
+			{% endif %}
+		</div>{# end of thumbnails #}
+		
+		<div class='clearer'></div>
+
+		<form enctype="multipart/form-data" method="POST" action="." class='' id='newthumbform'>
+			{% include 'includes/form.html' %}
+			<p></p>
+		</form><br/><br/><br/>
+		<div id='message'>Please select a photo to delete before adding a new one.</div>
+		<a href='{% url profile user.id %}' class='buttoner thisbuttoner'>Go to my profile</a><br/>
+	</div>
+{% endblock %}
+
+
+{# can add more pictures - yes/no #}
+{# can add x more pictures #}

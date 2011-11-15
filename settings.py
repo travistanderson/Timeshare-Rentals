@@ -16,7 +16,7 @@ if WHICH_ENVIRONMENT == 'development':			# Django settings on the local dev serv
 	DATABASE_NAME = 'timeshare'
 	DATABASE_USER = 'tsruser'
 	DATABASE_PASSWORD = '8AGiXg3Q'
-	DATABASE_HOST = '192.168.254.153'
+	DATABASE_HOST = '192.168.254.155'
 	DATABASE_PORT = ''
 	
 else:			# WHICH_ENVIRONMENT == 'production'			# Django settings on the server for TSR project.
@@ -86,10 +86,15 @@ INSTALLED_APPS = (
 	'homepage',
 	'ts',
 	'widget_tweaks',
+	'search',
+	# 'paypal.standard.ipn',
 )
 
 SITE_NAME = "timesharerentals.com"
 
 NUMPHOTOS = (('free','1'),('bronze','3'),('silver','10'),('gold','10'))
 DAYS = {'free':61,'bronze':183,'silver':365,'gold':10000,}
-TYPES = {'free':1,'bronze':2,'silver':3,'gold':4,}
+# TYPES = {'free':1,'bronze':2,'silver':3,'gold':4,}
+
+# PAYPAL_RECEIVER_EMAIL = "travistanderson@gmail.com"
+# PAYPAL_RECEIVER_EMAIL = "service@timesharerentals.com"
