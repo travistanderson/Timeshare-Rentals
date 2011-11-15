@@ -23,7 +23,7 @@ else:			# WHICH_ENVIRONMENT == 'production'			# Django settings on the server fo
 	DEBUG = True
 	TEMPLATE_DEBUG = DEBUG
 	TEMPLATE_DIRS = ('/home/travis/timesharerentals.com/timeshare/templates')
-	MEDIA_ROOT = '/home/travis/timesharerentals.com/timeshare/media/site_media'
+	MEDIA_ROOT = '/home/travis/timesharerentals.com/media/site_media'
 	MEDIA_URL = '/site_media/'
 	ADMIN_MEDIA_PREFIX = '/admin_media/'
 
