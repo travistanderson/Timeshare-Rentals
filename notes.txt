@@ -22,8 +22,8 @@ todo list:
 	-write the system that checks expiration dates and send out notice emails
 	-check permission to edit ad and pictures
 	-build a redirector for existing pages on old site
-	-put paypal buttons in everywhere they should pay
 	-fix paypal buttons (create gold, silver and bronze and include ad numbers variable)
+	-put paypal buttons in everywhere they should pay
 	-fix the date problem on the new ad form
 	-ad commenting to the resorts
 	-create a hover account and transfer tsr domain to hover.com
