@@ -1,5 +1,5 @@
 {# templates/contact/contact.html #}
-{% extends "site_base.html" %}
+{% extends "base.html" %}
 
 {% block head_title %}Contact{% endblock head_title %}
 {% block extra_head %}
@@ -12,7 +12,7 @@
 	<div id="main_column" class='centered'>
 		<div class="section" style='padding:20px;'>
 			<h1>Contact Page</h1>
-			<br/><br/>
+			<br/>
 			<form action="" method="POST">
 				<table class='tsrform'>
 					{% for field in form %}

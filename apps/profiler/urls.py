@@ -11,6 +11,10 @@ urlpatterns = patterns('',
 	url(r'^user-created/$', 'profiler.views.usercreated', name='usercreated'),
 	
 	url(r'^$','profiler.views.allusers', name='allusers',),
+	url(r'^messages/(?P<user_id>\d+)/$', 'profiler.views.messages', name='messages'),
+	url(r'^messages/(?P<user_id>\d+)/(?P<message_id>\d+)/$', 'profiler.views.message', name='message'),
+	url(r'^messages/(?P<user_id>\d+)/compose/(?P<object_id>\d+)/(?P<reco>[-\w]+)/$', 'profiler.views.compose', name='compose'),
+	url(r'^settings/(?P<user_id>\d+)/$', 'profiler.views.settings', name='settings'),
 	url(r'^(?P<user_id>\d+)/$', 'profiler.views.profile', name='profile'),
 )
 

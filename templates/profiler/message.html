@@ -1,0 +1,53 @@
+{# templates/profiler/message.html #}
+{% extends "base.html" %}
+
+{% block head_title %}{{ theuser }}'s Messages{% endblock head_title %}
+{% block extra_head %}
+	<style type="text/css" media="screen">
+		.profilelinks{float:right;width:300px;border-bottom:1px solid gray;padding:0 0 0 20px;}
+		.profilelinks li{float:left;border:1px solid gray;margin:0 10px -1px 0;padding:1px 10px 2px 10px;background:#e1c575;cursor:pointer;
+			-moz-border-radius-topleft:4px;-moz-border-radius-topright:4px;-webkit-border-top-left-radius:4px;-webkit-border-top-right-radius:4px;}
+		.profilelinks li.active{border-bottom:1px solid #F2D686;background:#F2D686;}
+		.message{}
+		.message .leftm{float:left;width:185px;font-size:16px;font-weight:bold;text-align:right;padding-bottom:20px;}
+		.message .rightm{float:left;width:600px;padding-left:20px;padding-bottom:20px;}
+		.message .subj{font-size:16px;}
+		.breply{float:right;}
+		.bmess{float:right;}
+	</style>
+{% endblock %}
+
+{% block body %}
+	<div class="section" id="wide_column">
+		<div class='padder'>
+			<ul class='profilelinks'>
+				<li><a href='{% url profile theuser.id %}'>Ads</a></li>
+				<li class='active'>Messages</li>
+				<li><a href='{% url settings theuser.id %}'>Settings</a></li>
+			</ul>
+			
+			<h1>{{ theuser }}'s Profile</h1><br/><br/>
+		
+			<h2 class='resortheader'><span>Messages</span></h2><br/><br/>
+			
+			<a href='{% url compose theuser.id mess.id "reply" %}' class='buttoner breply'><span class='reply'>Reply</span></a>
+			<div class='clearer'></div>
+			
+			<div class='message'>
+				<div class='leftm'>Subject: </div><div class='rightm subj'> {{ mess.subject }}</div>
+				<div class='leftm'>From: </div> <div class='rightm'>{% if mess.name %}{{ mess.name }} - {{ mess.email }}{% else %}{{ mess.sender.username }}{% endif %}</div>
+				<div class='leftm'>Sent: </div> <div class='rightm'>{{ mess.written|date:'M d, Y' }}</div>
+				<div class='leftm'>Message: </div> <div class='rightm'>{{ mess.message }}</div>
+				 
+			</div>
+			<div class='clearer'></div><br/>
+
+			<a href='{% url messages theuser.id %}' class='buttoner bmess'>Back to messages</a>
+			<div class='clearer'></div>
+		
+
+		</div>{# end of padder #}
+	</div>{# end of section #}
+
+
+{% endblock %}

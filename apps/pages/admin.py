@@ -3,7 +3,7 @@ from django import forms
 from django.contrib import admin
 from pages.models import Page, Revpage
 from django.db.models import get_model
-from pages.forms import PageAdminModelForm, PageBrickAdminModelForm
+from pages.forms import PageAdminModelForm
 
 
 class PageAdmin(admin.ModelAdmin):

@@ -16,6 +16,3 @@ class PageAdminModelForm(forms.ModelForm):
 
 	class Meta:
 		model = get_model('pages', 'page')
-
-class PageBrickAdminModelForm(forms.ModelForm):
-	content = forms.CharField(widget=WMDEditor())

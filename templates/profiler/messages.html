@@ -1,0 +1,66 @@
+{# templates/profiler/messages.html #}
+{% extends "base.html" %}
+
+{% block head_title %}{{ theuser }}'s Messages{% endblock head_title %}
+{% block extra_head %}
+	<style type="text/css" media="screen">
+		.profilelinks{float:right;width:300px;border-bottom:1px solid gray;padding:0 0 0 20px;}
+		.profilelinks li{float:left;border:1px solid gray;margin:0 10px -1px 0;padding:1px 10px 2px 10px;background:#e1c575;cursor:pointer;
+			-moz-border-radius-topleft:4px;-moz-border-radius-topright:4px;-webkit-border-top-left-radius:4px;-webkit-border-top-right-radius:4px;}
+		.profilelinks li.active{border-bottom:1px solid #F2D686;background:#F2D686;}
+		.read{width:50px;}
+		.readt{background:url(/admin_media/img/admin/selector-removeall.gif)no-repeat center center;}
+		.from{width:100px;}
+		.received{width:150px;}
+		.subject{width:400px;}
+		#profile th{text-align:left;}
+	</style>
+{% endblock %}
+
+{% block body %}
+	<div class="section" id="wide_column">
+		<div class='padder'>
+			<ul class='profilelinks'>
+				<li><a href='{% url profile theuser.id %}'>Ads</a></li>
+				<li class='active'>Messages {% if unread %}{{ unread|length }}{% endif %}</li>
+				<li><a href='{% url settings theuser.id %}'>Settings</a></li>
+			</ul>
+			
+			<h1>{{ theuser }}'s Profile</h1><br/><br/>
+		
+			<h2 class='resortheader'><span>Messages</span></h2><br/><br/>
+			{# <a href='{% url compose theuser.id 0 %}'>Compose</a> #}
+			<table id='profile'>
+				<tr>
+					<th>Unread</th>
+					<th>From</th>
+					<th>Received</th>
+					<th>Subject</th>
+					<th>Reply</th>
+				</tr>
+				{% if mess %}
+					{% for message in mess %}
+						<tr>
+							<td><div class='read {% ifequal message.unread 1 %}readt{% endifequal %}'>&nbsp;</div></td>
+							<td><div class='from'>{% if message.name %}{{ message.name }} - {{ message.email }}{% else %}{{ message.sender.username }}{% endif %}</div></td>
+							<td><div class='received'>{{ message.written|date:'M d, Y - h:m' }}</div></td>
+							<td><div class='subject'><a href='{% url message theuser.id message.id %}'>{{ message.subject }}</a></div></td>
+							<td><div class=''>{% if not message.name %}<a href='{% url compose theuser.id message.id "reply" %}' class='buttoner breply'><span class='reply'>Reply</span></a>{% endif %}</div></td>
+
+
+						</tr>
+					{% endfor %}
+				{% else %}
+					<tr><td>No messages yet.</td></tr>
+				{% endif %}
+				
+			</table><br/><br/>
+			
+				{{ message }}
+
+
+		</div>{# end of padder #}
+	</div>{# end of section #}
+
+
+{% endblock %}

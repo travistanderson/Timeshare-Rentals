@@ -1,5 +1,6 @@
 {# templates/homepage/homepage.html #}
-{% extends "site_base.html" %}
+{% extends "base.html" %}
+{% load bunks %}
 
 {% block show %}0{% endblock show %}
 {% block head_title %}HOME{% endblock head_title %}
@@ -12,16 +13,7 @@
 {% block body %}
 	<div id="left_column">
 		<div class="section" id="searchbox">
-			{# <form action="/search" method="get" accept-charset="utf-8"> #}
-			{# 	<input type="text" name="search" value="" id="searcher" size='30'> #}
-			{# 	<input type="submit" value="search"> #}
-			{# </form> #}
 			{% include 'includes/searchbox.html' %}
-			
-			{# <div class='searchchoice' id='searchcountry'>Search by Country</div> #}
-			{# <div class='searchchoice' id='searchdate'>Search by Date</div> #}
-			{# <div class='searchchoice searchchoiceactive' id='searchresort'>Search by Resort</div> #}
-			{# <div class='searchchoice' id='searchall'>All</div> #}
 		</div>
 		<div class="section">
 			<h2>create an ad</h2><br/>
@@ -34,8 +26,8 @@
 			</a><br/>
 		</div>
 		<div class='section'>
-			<h2>who we are</h2><br/>
-			<p>Cras sed ante. Phasellus in massa. Curabitur dolor eros, gravida et, hendrerit ac, cursus non, massa. Aliquam lorem. In hac habitasse platea dictumst. Cras eu mauris. Quisque lacus. Donec ipsum. Nullam vitae sem at nunc pharetra ultricies. Vivamus elit eros, ullamcorper a, adipiscing sit amet, porttitor ut, nibh. Maecenas adipiscing mollis massa. Nunc ut dui eget nulla venenatis aliquet. Sed luctus posuere justo. Cras vehicula varius turpis. Vivamus eros metus, tristique sit amet, molestie dignissim, malesuada et, urna.</p>
+			<h2>who we are</h2>
+			<p class='whoweare'>{% bunk 'who-we-are' %}</p>
 		</div>
 	</div>{# end of left_column #}
 	<div id="main_column">

@@ -14,11 +14,12 @@ class NewAdForm(forms.ModelForm):
 	addedresortname = forms.CharField(widget=forms.TextInput(attrs={'size':'35'}),label='Name of Resort',required=False)
 	start_room = forms.CharField(widget=forms.TextInput(attrs={'size':'8'}),label='Start Date')
 	end_room = forms.CharField(widget=forms.TextInput(attrs={'size':'8'}),label='End Date')
+	price = forms.CharField(widget=forms.TextInput(attrs={'size':'8'}),label='Price')
 		
 	class Meta:
 		model = Ad
 		exclude = ('creator','adtype','premod','photos','expiration_date')
-		fields = ('name','description','resort','addedresortname','start_room','end_room')
+		fields = ('name','description','resort','addedresortname','start_room','end_room','price',)
 
 	 
 class EditAdForm(forms.ModelForm):
@@ -27,11 +28,12 @@ class EditAdForm(forms.ModelForm):
 	addedresortname = forms.CharField(widget=forms.TextInput(attrs={'size':'35'}),label='Name of Resort',required=False)
 	start_room = forms.CharField(widget=forms.TextInput(attrs={'size':'8'}),label='Start Date')
 	end_room = forms.CharField(widget=forms.TextInput(attrs={'size':'8'}),label='End Date')
+	price = forms.CharField(widget=forms.TextInput(attrs={'size':'8'}),label='Price')
 		
 	class Meta:
 		model = Ad
 		exclude = ('creator','adtype','premod','photos','expiration_date')
-		fields = ('name','description','resort','addedresortname','start_room','end_room')
+		fields = ('name','description','resort','addedresortname','start_room','end_room','price',)
 
 
 class AdPicForm(forms.ModelForm):

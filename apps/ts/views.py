@@ -17,6 +17,8 @@ import settings
 from ts.models import Ad, Country, Photoo, Resort, ADTYPES
 from ts.forms import AdPicForm, EditAdForm, NewAdForm
 
+nphr = "--My resort isn't here. Add a new one."
+
 def _getadtype(adtype):
 	for ad in ADTYPES:
 		if adtype == ad[1].lower():
@@ -25,7 +27,7 @@ def _getadtype(adtype):
 
 def adlist(request):
 	today = datetime.today()
-	sort = request.GET.get('sort','chrono')			# sorts = (chrono[standard],name,date,resort,country)
+	sort = request.GET.get('sort','chrono')			# sorts = (chrono[standard],name,date,resort,country,price)
 	direc = request.GET.get('direc','asc')
 	if sort == 'name':
 		if direc == 'asc':
@@ -47,6 +49,11 @@ def adlist(request):
 			adlist = Ad.objects.filter(premod=True,paid=True,expiration_date__gte=today).order_by('resort__address_country')
 		else:
 			adlist = Ad.objects.filter(premod=True,paid=True,expiration_date__gte=today).order_by('-resort__address_country')
+	elif sort == 'price':
+		if direc == 'asc':
+			adlist = Ad.objects.filter(premod=True,paid=True,expiration_date__gte=today).order_by('price')
+		else:
+			adlist = Ad.objects.filter(premod=True,paid=True,expiration_date__gte=today).order_by('-price')			
 	else: # this is the chrono[standard]
 		adlist = Ad.objects.filter(premod=True,paid=True,expiration_date__gte=today).order_by('-adtype')
 		
@@ -76,11 +83,11 @@ def resortlist(request):
 	direc = request.GET.get('direc','asc')
 	if sort == 'country':
 		if direc == 'asc':
-			rlist = Resort.objects.filter(premod=True).exclude(name="My resort isn't here. Add a new one.").order_by('address_country')
+			rlist = Resort.objects.filter(premod=True).exclude(name=nphr).order_by('address_country')
 		else:
-			rlist = Resort.objects.filter(premod=True).exclude(name="My resort isn't here. Add a new one.").order_by('-address_country')
+			rlist = Resort.objects.filter(premod=True).exclude(name=nphr).order_by('-address_country')
 	else: # this is the chrono[standard]
-		rlist = Resort.objects.filter(premod=True).exclude(name="My resort isn't here. Add a new one.").order_by('name')
+		rlist = Resort.objects.filter(premod=True).exclude(name=nphr).order_by('name')
 	for resort in rlist:
 		resort.ads = Ad.objects.filter(resort=resort,paid=True,premod=True)
 	p = Paginator(rlist,8)
@@ -123,7 +130,7 @@ def newadcreate(request, adtype):
 			adform.adtype = _getadtype(adtype)
 			adform.slug = defaultfilters.slugify(adform.name)
 			adform.save()
-			if str(form.cleaned_data['resort']) == "My resort isn't here. Add a new one.":
+			if str(form.cleaned_data['resort']) == nphr:
 				if form.cleaned_data['addedresortname'] != '':
 					newresort = Resort()
 					newresort.name = form.cleaned_data['addedresortname']
@@ -141,13 +148,15 @@ def newadcreate(request, adtype):
 	
 
 @login_required
-def adedit(request,ad_id): # check to make sure only the owner can edit
+def adedit(request,ad_id): 
 	ad = get_object_or_404(Ad,id=ad_id)
+	if not request.user == ad.creator:	# check to make sure only the owner can edit
+		return HttpResponseRedirect(reverse('home'))
 	adtype = ad.get_adtype_display()
 	if request.method == 'POST':
 		form = EditAdForm(request.POST,instance=ad)
 		if form.is_valid():
-			if str(form.cleaned_data['resort']) == "My resort isn't here. Add a new one.":
+			if str(form.cleaned_data['resort']) == nphr:
 				if form.cleaned_data['addedresortname'] != '':
 					newresort = Resort()
 					newresort.name = form.cleaned_data['addedresortname']
@@ -166,10 +175,11 @@ def adedit(request,ad_id): # check to make sure only the owner can edit
 def addelete(request,ad_id):
 	ad = get_object_or_404(Ad,id=ad_id)
 	user = request.user
-	if user == ad.creator:
-		if request.method == 'POST':
-			ad.delete()
-			return HttpResponseRedirect(reverse('profile', args=[str(user.id)]))
+	if not user == ad.creator:	# check to make sure only the owner can edit
+		return HttpResponseRedirect(reverse('home'))
+	if request.method == 'POST':
+		ad.delete()
+		return HttpResponseRedirect(reverse('profile', args=[str(user.id)]))
 	return render_to_response('ads/addelete.html', {'ad':ad,}, context_instance = RequestContext(request),)
 
 
@@ -181,8 +191,11 @@ def _photosquasher(ad):		# This is a helper for reordering the photos - take all
 
 
 @login_required	
-def createpictures(request,ad_id): # check to make sure only the owner can edit
+def createpictures(request,ad_id):
 	ad = Ad.objects.get(id=ad_id)
+	user = request.user
+	if not user == ad.creator:	# check to make sure only the owner can edit
+		return HttpResponseRedirect(reverse('home'))
 	ad.canaddmore = True
 	maxer = int(settings.NUMPHOTOS[ad.adtype-1][1])
 	if len(ad.photos.all()) >= maxer:

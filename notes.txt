@@ -1,48 +1,61 @@
-login/sign up button- would like it to be bigger and a little more to the right
-
-change "advertise" button to "rent"
-
-take off "premium ads" and "free ads" on the "rent" page. i don't want people to know what type of ad they are viewing. also, i need to think about how i want the ads to show up. i think on the "rent" page i want a table to be at the top and it would have all the search functions in it, and then it would have all the ads listed...i just don't know how to have them paginate...whether by date created, or alphabetical...not sure yet. 
-
-Contact Us page- just a simple customer service form 
-
-Calendar- years 2011-2021 dates. Fri-Fri, Sat-Sat, Sun-Sun
-
-
-
-
-
-
-
-
-
 todo list:
-	-repoint dns record to new site
-	-write the system that sends emails to Annie when ads are created and paid for and stuff (maybe when an ad is edited or when pictures are added as well)
-	-write the system that checks expiration dates and send out notice emails
-	-check permission to edit ad and pictures
-	-build a redirector for existing pages on old site
+	w-repoint dns record to new site
 	-fix paypal buttons (create gold, silver and bronze and include ad numbers variable)
 	-put paypal buttons in everywhere they should pay
-	-fix the date problem on the new ad form
-	-ad commenting to the resorts
-	-create a hover account and transfer tsr domain to hover.com
-	-build messaging system
-	-transfer data to new site
-	-include nav elements in footer
-	-include Terms of Service in footer and anything else
-	-put "what is it question marks" on new ad form
+	-get email notifications working with paypal payments (possibly even have the paypal 'paid' signal mark the ad paid automatically)
+	-set up google analytics
+	-add cronjob to server that runs 'python manage.py notify' once everyday
+	-Annie -transfer data to new site(upload photos, copy ad content, create resorts and fill in redirects)
+	-Annie -write account transfer email for the new site.
+	-Annie -include Terms of Service in footer and anything else
+	-Annie -help integrate google ads? (service@timesharerentals.com,tatertot this for analytics also)
+
+
+
+future todo list (anytime after site launches):
+	-spruce up create account page
 	-build statistics system
-	-integrate google ads
-	-ad a map on every ad page of the timeshare location
+	-ad commenting to the resorts
 	-spruce up contact form
-	-right "who we are" article on home page
-	-write policy about moderation
-	-improve search
+	-spruce up grid page
 	-put up a map of resorts
+	-improve search
+	-ad a map on every ad page of the timeshare location
+	-create user settings section (receive email when messaged?, when to notify of expiration?, show email address on ads?)
+	-create a timeshare calendar, Calendar- years 2011-2021 dates. Fri-Fri, Sat-Sat, Sun-Sun (this would let people know the nomenclature for timeshare weeks)
 
 
-Questions for Annie
-can we just ask them to put price and room numbers in their description?
-help with google ads?
-does the old ad number matter?
+
+done list:
+	-login/sign up button- would like it to be bigger and a little more to the right --  ad the word "account" instead of profile
+	-build a redirector for existing pages on old site
+	-Annie -write policy about moderation- 
+	-write the system that checks expiration dates and send out notice emails(We will start with 2 weeks out and day of. We can add more and settings for them later)
+	-transfer tsr domain to hover.com
+	-have all the ads listed...i just don't know how to have them paginate...whether by date created, or alphabetical...not sure yet. 
+	-think about how i want the ads to show up. i think on the "rent" page i want a table to be at the top and it would have all the search functions in it, 
+	-take off "premium ads" and "free ads" on the "rent" page. i don't want people to know what type of ad they are viewing. 
+	-change "advertise" button to "rent"
+	-build Contact Us page- just a simple customer service form 
+	-does the old ad number matter? - The answer is no.
+	-can we just ask them to put price and room numbers in their description?-ad price column and put rooms in description
+	-Annie -write "who we are" article on home page
+	-write system that sends emails when pictures are uploaded
+	-write the system that sends emails to Annie when ads are created and edited
+	-put flag images in for countries
+	-build messaging system
+	-change ad model to include price and change list page
+	-include nav elements in footer
+
+
+notes:
+
+
+Ad Moderation- 
+
+Each ad is reviewed before it is published on our website. We reserve the right to delete any ad we feel includes inappropriate content. We will delete your ad if it includes any of the following- profanity, pornagraphy of any kind, explicit resorts and other content we feel is inappropriate. We thank you for your business and understanding as we work to maintain a tasteful website.  
+
+Sincerely, 
+
+The Timesharerentals.com Team
+

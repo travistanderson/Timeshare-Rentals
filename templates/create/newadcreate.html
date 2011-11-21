@@ -1,43 +1,47 @@
 {# templates/create/newadcreate.html #}
-{% extends "site_base.html" %}
+{% extends "base.html" %}
 
 {% block head_title %}Create a {{ adtype|capfirst }} Ad{% endblock head_title %}
 {% block extra_head %}
-	{# <link rel="stylesheet" href="/site_media/css/widgets.css" type="text/css" media="screen" title="no title" charset="utf-8"> #}
 	<link rel="stylesheet" href="/site_media/css/ui-lightness/jquery-ui-1.8.14.custom.css" type="text/css" media="screen" title="no title" charset="utf-8">
-	{# // <script src="/site_media/js/widgets.js" type="text/javascript" charset="utf-8"></script> #}
 	<script type="text/javascript" charset="utf-8">
 		$(document).ready(function(){
 			$arn = $('#id_addedresortname').parent().parent();		// this is the whole form row for the added resort field
 			$arn.css({'display':'none'});
-			// $('#id_resort').prepend('<option value="10000" id="addresortoption">My resort isn\'t here. Add a new one.</option>');
 			$('#id_resort').change(function(){
 				if($("#id_resort option:selected").text() == "My resort isn't here. Add a new one."){
-					// alert($(this).val())
 					$arn.slideDown('slow');
 				}else{
 					$arn.hide();
 				};
 			})
-			$(function() {
-				var dates = $( "#id_start_room, #id_end_room" ).datepicker({
-					defaultDate: "",
-					changeMonth: true,
-					numberOfMonths: 3,
-					dateFormat: 'yy-mm-dd',
-					onSelect: function( selectedDate ) {
-						var option = this.id == "from" ? "minDate" : "maxDate",
-							instance = $( this ).data( "datepicker" ),
-							date = $.datepicker.parseDate(
-								instance.settings.dateFormat ||
-								$.datepicker._defaults.dateFormat,
-								selectedDate, instance.settings );
-						dates.not( this ).datepicker( "option", option, date );
-					}
-				});
-			});
+			$(function(){
+				$('#id_start_room').datepicker({dateFormat:'yy-mm-dd'});
+				$('#id_end_room').datepicker({dateFormat:'yy-mm-dd'});
+			})
+			m1 = "<img src='/admin_media/img/admin/icon-unknown.gif' class='helper'><span class='popupholder'><div class='popup' id='icon-";
+			m2 = "'>";
+			m3 = "</div></span>";
+			$('#id_name').after(m1+'id_name'+m2+'Give your timeshare ad a name that people will be able to find, like "Beatiful Oceanside Villa".'+m3);
+			$('#id_description').after(m1+'id_description'+m2+'Be sure to include the number of bedrooms and bathrooms as well as a general description about the timeshare.'+m3);
+			$('#id_resort').after(m1+'id_resort'+m2+"Pick the resort where you timeshare is located."+m3);
+			$('#id_start_room').after(m1+'id_start_room'+m2+'Select the first day your timeshare will be available for rent.'+m3);
+			$('#id_end_room').after(m1+'id_end_room'+m2+'Select the last day your timeshare will be available for rent.'+m3);
+			$('#id_price').after(m1+'id_price'+m2+'How much will you charge to rent your timeshare? This is US Dollars.'+m3);
+			$('.helper').hover(function(e){
+				which = $(this).prev().attr('id');
+				$('#icon-' + which).css({'display':'block'});
+			},function(){
+				$('#icon-' + which).css({'display':''});
+			})
 		});
 	</script>
+	<style type="text/css" media="screen">
+		.helper{width:15px;height:15px;padding-left:10px;cursor:pointer;}
+		.popupholder{height:1px;width:1px;margin-left:10px;display:inline;position:relative;left:20px;top:-40px;}
+		.popup{display:none;width:180px;background:rgba(200,200,200,.95);color:#7AAA1B;font-size:13px;
+			-moz-border-radius:5px;-webkit-border-radius:5px;padding:4px 15px 7px 15px;border:1px solid #888;position:absolute;left:1px;top:24px;}
+	</style>
 {% endblock extra_head %}
 
 {% block body %}

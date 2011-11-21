@@ -2,7 +2,6 @@
 from django.db import models
 from django.contrib.sites.models import Site
 import datetime
-from events.models import Event
 # from django.db.models.query import DoesNotExist 
 
 class Page(models.Model):

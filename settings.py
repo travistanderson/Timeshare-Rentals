@@ -54,6 +54,7 @@ MIDDLEWARE_CLASSES = (
 	'django.middleware.common.CommonMiddleware',
 	'django.contrib.sessions.middleware.SessionMiddleware',
 	'django.contrib.auth.middleware.AuthenticationMiddleware',
+	'django.contrib.redirects.middleware.RedirectFallbackMiddleware',
 	# 'pagination.middleware.PaginationMiddleware',
 )
 
@@ -75,8 +76,8 @@ INSTALLED_APPS = (
 	'django.contrib.sessions',
 	'django.contrib.sites',
 	'django.contrib.markup',
+	'django.contrib.redirects',
 	'django.contrib.admin',
-	# 'django.contrib.admindocs',
 	'mailer',
 	'pagination',
 	'threadedcomments',
@@ -87,7 +88,9 @@ INSTALLED_APPS = (
 	'ts',
 	'widget_tweaks',
 	'search',
-	# 'paypal.standard.ipn',
+	'bunks',
+	'profiler',
+	'pages',
 )
 
 SITE_NAME = "timesharerentals.com"
@@ -98,3 +101,14 @@ DAYS = {'free':61,'bronze':183,'silver':365,'gold':10000,}
 
 # PAYPAL_RECEIVER_EMAIL = "travistanderson@gmail.com"
 # PAYPAL_RECEIVER_EMAIL = "service@timesharerentals.com"
+
+EMAIL_CONFIRMATION_DAYS = 2
+EMAIL_DEBUG = DEBUG
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'timesharerentalscontact@gmail.com'
+EMAIL_HOST_PASSWORD = 'Kcc6v6HchHWYXH'
+CONTACT_EMAIL = "timesharerentalscontact@gmail.com"
+EMAIL_USE_TLS = True
+
+

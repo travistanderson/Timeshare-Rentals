@@ -1,5 +1,5 @@
 {# templates/ads/adlist.html #}
-{% extends "site_base.html" %}
+{% extends "base.html" %}
 
 {% load gravatar %}
 
@@ -40,6 +40,7 @@
 			<a href='' class='rowtitlet' id='desc'>Description</a>
 			<a href='?sort=resort' class='rowtitlet' id='resort'>Resort</a>
 			<a href='?sort=country' class='rowtitlet' id='country'>Country</a>
+			<a href='?sort=price' class='rowtitlet' id='price'>Price</a>
 		</div>
 		
 		{% for ad in ads.object_list %}
@@ -76,6 +77,7 @@
 						<img src="/site_media/images/flagsbig/{{ ad.resort.address_country.iso }}.png" class="pic" alt="{{ ad.resort.address_country }}"></img>
 						<p>{{ ad.resort.address_country }}</p>
 					</div>
+					<div class='rowprice'>$ {{ ad.price }}</div>
 					{# <div>{{ ad.adtype }}</div> #}
 				</div>{# end of rowfooter #}
 			</div>{# end of row #}<div class='clearer'></div>

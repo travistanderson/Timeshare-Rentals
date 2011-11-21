@@ -1,11 +1,18 @@
 {# templates/registration/newuser.html #}
 {% extends "registration/base.html" %}
 
+{% block extra_head %}
+	<style type="text/css" media="screen">
+		.section{width:300px;margin:50px 0 0 300px;padding:20px 0 20px 30px;}
+		.greeting{width:275px;padding:15px 0;}
+	</style>
+{% endblock %}
+
 {% block body %}
 
-	<div class='section' style='width:300px;margin:50px 0 0 300px;padding:20px 0 20px 30px;'>
-		<H2>Create Your Account</H2><br/>
-
+	<div class='section'>
+		<H2>Create Your Account</H2>
+		<p class='greeting'>To advertise with TimeshareRentals.com you'll need to create an account. Please provide the information below to get started.</p>
 		<form method="post" action=".">
 			<table>
 				{% for field in form %}

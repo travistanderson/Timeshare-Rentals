@@ -1,5 +1,5 @@
 {# templates/ads/addetail.html #}
-{% extends "site_base.html" %}
+{% extends "base.html" %}
 
 {% block head_title %}{{ ad }}{% endblock head_title %}
 {% block extra_head %}
@@ -69,21 +69,21 @@
 {% endblock %}
 
 
-if me 
-	yes - show title and check for premod
-		yes - check for paid
-			yes-show ad
-			no-show $ message
-		no - check for paid
-			yes - show me message about mod
-			no - show me message and $ message
-			
-	
-	no - Don't show title and do check for premod
-		yes-check for paid
-			yes - show ad
-			no - show message to visitor
-		no-show message to visitor
+{# if me  #}
+{# 	yes - show title and check for premod #}
+{# 		yes - check for paid #}
+{# 			yes-show ad #}
+{# 			no-show $ message #}
+{# 		no - check for paid #}
+{# 			yes - show me message about mod #}
+{# 			no - show me message and $ message #}
+{# 			 #}
+{# 	 #}
+{# 	no - Don't show title and do check for premod #}
+{# 		yes-check for paid #}
+{# 			yes - show ad #}
+{# 			no - show message to visitor #}
+{# 		no-show message to visitor #}
 		
 		
 		

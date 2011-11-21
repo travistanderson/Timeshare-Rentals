@@ -2,6 +2,8 @@
 from django.contrib.auth.models import User
 from django import forms
 from django.utils.translation import ugettext_lazy as _
+from profiler.models import Mess
+
 
 class NewUserForm(forms.ModelForm):
 	"""
@@ -39,3 +41,27 @@ class NewUserForm(forms.ModelForm):
 		if commit:
 			user.save()
 		return user
+		
+		
+class MessForm(forms.ModelForm):
+	# name = forms.CharField(widget=forms.TextInput(attrs={'size':'35'}))
+	# description = forms.CharField(widget=forms.Textarea(attrs={'cols':'50'}))
+	# addedresortname = forms.CharField(widget=forms.TextInput(attrs={'size':'35'}),label='Name of Resort',required=False)
+	# start_room = forms.CharField(widget=forms.TextInput(attrs={'size':'8'}),label='Start Date')
+	# end_room = forms.CharField(widget=forms.TextInput(attrs={'size':'8'}),label='End Date')
+		
+	class Meta:
+		model = Mess
+		exclude = ('unread','sender','receiver','replied','name','email',)
+
+	def __init__(self, where, *args, **kwargs):
+		super(MessForm, self).__init__(*args, **kwargs)
+		if where == 0:
+			self.fields['namer'] = forms.CharField(label='Name',help_text='htn',required=True,)
+			self.fields['emailer'] = forms.EmailField(label='Email',help_text='hte',required=True,)
+
+
+
+
+
+	

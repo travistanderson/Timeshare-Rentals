@@ -12,7 +12,12 @@
 	{{ ad.description }}
 </div><div class='clearer'></div>
 <div class='member'>
-	Owner: <a href='{% url profile ad.creator.id %}'>{{ ad.creator }}</a>
+	Owner: <a href='{% url profile ad.creator.id %}'>{{ ad.creator }}</a><br/>
+	{% if user.is_authenticated %}
+		<a href='{% url compose request.user.id ad.id "new" %}'>Send {{ ad.creator }} a message <img src="/site_media/images/envelope-off.png" class="pic" alt="pic"></img></a>
+	{% else %}
+		<a href='{% url compose 0 ad.id "new" %}'>Send {{ ad.creator }} a message <img src="/site_media/images/envelope-off.png" class="pic" alt="pic"></img></a>
+	{% endif %}
 </div><br/>
 {% with ad.resort as object %}
 	{% include 'includes/resorti.html' %}

@@ -5,6 +5,10 @@ from django.contrib.auth.models import User
 from photologue.models import Photo, Gallery
 from django.utils.safestring import mark_safe
 import settings
+if "mailer" in settings.INSTALLED_APPS:
+    from mailer import send_mail
+else:
+    from django.core.mail import send_mail
 ADTYPES = ((1,'Free'),(2,'Bronze'),(3,'Silver'),(4,'Gold'),)
 
 
@@ -59,7 +63,7 @@ class Resort(models.Model):
 	name = models.CharField(max_length=200)
 	slug = models.SlugField(max_length=200)	
 	branch = models.CharField(max_length=200,blank=True, null=True)
-	description = models.TextField(blank=True, null=True)	
+	description = models.TextField(blank=True, null=True)
 	picture = models.ForeignKey(Photo, blank=True, null=True)
 	email = models.EmailField(blank=True, null=True)
 	url = models.URLField(blank=True, null=True)
@@ -90,9 +94,11 @@ class Ad(models.Model):
 	premod = models.BooleanField(default=False)
 	paid = models.BooleanField(default=False)
 	expiration_date = models.DateField(blank=True,)
-	# also needs to have price, 
-	# also needs number of beds 
-	# also needs number of baths
+	price = models.DecimalField(max_digits=10, decimal_places=2)
+		
+	class Meta:
+		ordering = ('-start_ad',)
+
 	def __unicode__(self):
 		return self.name
 
@@ -104,9 +110,29 @@ class Ad(models.Model):
 
 	def photolist(self):
 		return self.photos.order_by('orderer')
-		
-	class Meta:
-		ordering = ('-start_ad',)
+
+	def save(self,*args,**kwargs):
+		s = self
+		new = True
+		try:		# this checks to see if it is new or not
+			a = Ad.objects.get(id=s.id)
+			new = False
+			action = 'edited'
+		except Exception, e:
+			a = None
+			action = 'created'
+		super(Ad, self).save(*args,**kwargs)
+		subject = 'TSR: An ad was just %s. %s'  %(action,self.name)
+		content = '''Annie,
+				%s just %s the ad %s.
+				Check it for moderation <a href='http://timesharerentals.com/admin/ts/ad/%s/'>here</a> when you get a chance.
+				
+				Timesharerentals.com
+		''' %(self.creator,action,self.name,self.id)
+		fromemail = settings.CONTACT_EMAIL
+		toemail = ['modernarrangements@gmail.com',]
+		send_mail(subject,content,fromemail,toemail)
+
 
 
 class Email(models.Model):
