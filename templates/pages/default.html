@@ -2,7 +2,12 @@
 {% extends "base.html" %}
 
 {% block body %}
-	<div class='section'>{{ pager.content }} {# this is already escaped safe #}</div>
+	<div class='section' id="wide_column">
+		<div class='padder'>
+			<h1>{{ pager.title }}</h1><br/>
+			{{ pager.content }} {# this is already escaped safe #}
+		</div>{# end of padder #}
+	</div>{# end of section #}
 {% endblock body %}
 
 
