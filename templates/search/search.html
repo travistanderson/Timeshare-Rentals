@@ -23,7 +23,7 @@
 					Ads matching your search <br/>
 					<ul>
 						{% for result in adresults %}
-							<li><a href='{% url addetail result.slug %}'>{{ result.name }}</a></li>
+							<li><a href='{% url addetail result.id result.slug %}'>{{ result.name }}</a></li>
 						{% endfor %}
 					</ul>
 				{% endif %}

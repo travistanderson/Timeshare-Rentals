@@ -5,6 +5,12 @@ todo list:
 	-get email notifications working with paypal payments (possibly even have the paypal 'paid' signal mark the ad paid automatically)
 	-set up google analytics
 	-add cronjob to server that runs 'python manage.py notify' once everyday
+	-fix date display issue on addetail and adlist
+	-display price on addetail page
+	-include by week/by night payment designation option in form
+	-make it display price designation and sort in ad list
+	-make resort page photo smaller
+	-rework homepage to allow full width google ad at bottom
 	-Annie -transfer data to new site(upload photos, copy ad content, create resorts and fill in redirects)
 	-Annie -write account transfer email for the new site.
 	-Annie -include Terms of Service in footer and anything else
@@ -13,6 +19,7 @@ todo list:
 
 
 future todo list (anytime after site launches):
+	-add link to login page for signup and a custom message.
 	-spruce up create account page
 	-build statistics system
 	-ad commenting to the resorts
@@ -27,6 +34,11 @@ future todo list (anytime after site launches):
 
 
 done list:
+	
+	-make search display only premoderated ads and resorts
+	-display ad id as well as ad slug in url
+	-take the link images off the footer
+	-fix the envelope icon for sending messages
 	-login/sign up button- would like it to be bigger and a little more to the right --  ad the word "account" instead of profile
 	-build a redirector for existing pages on old site
 	-Annie -write policy about moderation- 

@@ -22,7 +22,7 @@
 					{% if resort.ads %}
 						<h2 class='resortheader'><span>Timeshares</span></h2><br/>
 						{% for ad in resort.ads %}
-							<div class='resortad'><a href='{% url addetail ad.slug %}'>{{ ad }}</a></div>
+							<div class='resortad'><a href='{% url addetail ad.id ad.slug %}'>{{ ad }}</a></div>
 						{% endfor %}
 					{% endif %}
 				</div>{# end of subpadder #}

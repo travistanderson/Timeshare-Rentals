@@ -69,8 +69,8 @@ def adlist(request):
 	return render_to_response('ads/adlist.html', {"ads":ads,'sort':sort,'direc':direc,},context_instance = RequestContext(request),)
 
 	
-def addetail(request,ad_slug):		
-	a = Ad.objects.get(slug=ad_slug)
+def addetail(request,ad_id,ad_slug):		
+	a = Ad.objects.get(id=ad_id)
 	user = request.user
 	if a.expiration_date < datetime.now().date():
 		a.expired = True
@@ -126,8 +126,8 @@ def newadcreate(request, adtype):
 				adform.paid = True
 			else:
 				adform.paid = False
-			adform.expiration_date = datetime.now() + timedelta(days=settings.DAYS[adtype])
 			adform.adtype = _getadtype(adtype)
+			adform.expiration_date = datetime.now() + timedelta(days=settings.PHOTATS[adform.adtype]['numdays'])
 			adform.slug = defaultfilters.slugify(adform.name)
 			adform.save()
 			if str(form.cleaned_data['resort']) == nphr:
@@ -197,7 +197,7 @@ def createpictures(request,ad_id):
 	if not user == ad.creator:	# check to make sure only the owner can edit
 		return HttpResponseRedirect(reverse('home'))
 	ad.canaddmore = True
-	maxer = int(settings.NUMPHOTOS[ad.adtype-1][1])
+	maxer = int(settings.PHOTATS[ad.adtype]['numphotos'])
 	if len(ad.photos.all()) >= maxer:
 		ad.canaddmore = False
 	if ad.canaddmore:
@@ -206,7 +206,7 @@ def createpictures(request,ad_id):
 		form = AdPicForm(ad,request.POST, request.FILES)
 		if form.is_valid():
 			new_pic = form.save(commit=False)
-			new_pic.title = str(request.user.username) + ' ' + ad.name + ' ' + str(datetime.now().strftime("%y%m%d%H%M%S"))
+			new_pic.title = str(request.user.username) + ' ' + ad.name[0:10] + ' ' + str(datetime.now().strftime("%y%m%d%H%M%S"))
 			new_pic.title_slug = defaultfilters.slugify(new_pic.title)
 			new_pic.orderer = ad.photos.all().count() + 1
 			new_pic.save()

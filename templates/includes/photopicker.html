@@ -2,6 +2,7 @@
 	{% for photo in ad.photos.all %}
 		{% ifequal forloop.counter 1 %}
 			<img class="pic" id="pic_{{ forloop.counter0 }}" src="{{ photo.get_detail_url }}" />
+			{# <img class="pic" id="pic_{{ forloop.counter0 }}" src="{{ photo.get_resort_url }}" /> #}
 			<div class="caption">
 				{{ photo.caption }}
 			</div>

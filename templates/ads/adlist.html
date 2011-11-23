@@ -46,7 +46,7 @@
 		{% for ad in ads.object_list %}
 			<div class="row{% ifequal ad.adtype 1 %} rowfree{% else %} rowprem{% endifequal %}">
 				<div class="rowleft">
-					<a href="{% url addetail ad.slug %}">{{ ad.name }}</a>
+					<a href="{% url addetail ad.id ad.slug %}">{{ ad.name }}</a>
 					<div class='rowdate'>
 						Available<br/>
 						{{ ad.start_room|date:'M d' }} - {{ ad.end_room|date:'d, Y' }}

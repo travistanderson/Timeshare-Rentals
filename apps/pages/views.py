@@ -1,5 +1,5 @@
 # pages/views.py
-from pages.models import Page, Tininav
+from pages.models import Page
 from django.template import loader, RequestContext
 from django.http import HttpResponse, HttpResponseRedirect
 from django.http import Http404
@@ -32,22 +32,22 @@ def pager(request, url):
 	else:
 		p = get_object_or_404(Page, url__exact="/doesn't-exist/")
 
-	ta = Tininav.objects.all()
-	theone = False
-	for tn in ta:
-		for page in tn.pages.all():
-			if page.id == p.id:
-				theone = tn.id
-				break				
-	tn = ''
-	if theone:			
-		tn = Tininav.objects.get(id=theone)
-		r = []
-		for j in tn.pages.all():
-			t1 = [j.url,j.title]
-			r.append(t1)
-	else:
-		r =[]
+	# ta = Tininav.objects.all()
+	# theone = False
+	# for tn in ta:
+	# 	for page in tn.pages.all():
+	# 		if page.id == p.id:
+	# 			theone = tn.id
+	# 			break				
+	# tn = ''
+	# if theone:			
+	# 	tn = Tininav.objects.get(id=theone)
+	# 	r = []
+	# 	for j in tn.pages.all():
+	# 		t1 = [j.url,j.title]
+	# 		r.append(t1)
+	# else:
+	# 	r =[]
 		
 	# s = [['/here/','Here'],['/there/','There'],['/everywhere/','Everywhere']]
 
@@ -62,7 +62,7 @@ def pager(request, url):
 	p.title = mark_safe(p.title)
 	p.content = mark_safe(p.content)
 
-	c = RequestContext(request, {'pager': p,'tininav':r,'tininame':tn,})
+	c = RequestContext(request, {'pager': p,})
 	response = HttpResponse(t.render(c))
 	populate_xheaders(request, response, Page, p.id)
 	return response

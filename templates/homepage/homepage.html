@@ -38,10 +38,10 @@
 			<div class="featured_ts" id="fts{{ forloop.counter }}">
 				{% for photo in ad.photos.all %}
 					{% ifequal forloop.counter 1 %}
-						<a href='{% url addetail ad.slug %}'><img src="{{ photo.get_front_url }}"></a>
+						<a href='{% url addetail ad.id ad.slug %}'><img src="{{ photo.get_front_url }}"></a>
 					{% endifequal %}
 				{% endfor %}
-				<a href='{% url addetail ad.slug %}'><h2>{{ ad.name }}</h2></a><br/>
+				<a href='{% url addetail ad.id ad.slug %}'><h2>{{ ad.name }}</h2></a><br/>
 				{{ ad.description|truncatewords:15 }}
 			</div>	
 			{% endfor %}

@@ -95,8 +95,13 @@ INSTALLED_APPS = (
 
 SITE_NAME = "timesharerentals.com"
 
-NUMPHOTOS = (('free','1'),('bronze','3'),('silver','10'),('gold','10'))
-DAYS = {'free':61,'bronze':183,'silver':365,'gold':10000,}
+# NUMPHOTOS = (('free','1'),('bronze','3'),('silver','10'),('gold','10'))
+# DAYS = {'free':61,'bronze':183,'silver':365,'gold':10000,}
+PHOTATS = ({'emptydict':1,},
+	{'name':'Free','namel':'free','numphotos':1,'numdays':61,'dollars':0,'ads':1,'featured':0,'statistics':0,},
+	{'name':'Bronze','namel':'bronze','numphotos':3,'numdays':183,'dollars':80,'ads':0,'featured':1,'statistics':1,},
+	{'name':'Silver','namel':'silver','numphotos':10,'numdays':365,'dollars':120,'ads':0,'featured':1,'statistics':1,},
+	{'name':'Gold','namel':'gold','numphotos':10,'numdays':10000,'dollars':250,'ads':0,'featured':1,'statistics':1,})
 # TYPES = {'free':1,'bronze':2,'silver':3,'gold':4,}
 
 # PAYPAL_RECEIVER_EMAIL = "travistanderson@gmail.com"

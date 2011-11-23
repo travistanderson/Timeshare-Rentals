@@ -21,6 +21,7 @@ class NewAdForm(forms.ModelForm):
 		exclude = ('creator','adtype','premod','photos','expiration_date')
 		fields = ('name','description','resort','addedresortname','start_room','end_room','price',)
 
+
 	 
 class EditAdForm(forms.ModelForm):
 	name = forms.CharField(widget=forms.TextInput(attrs={'size':'35'}))
@@ -36,16 +37,17 @@ class EditAdForm(forms.ModelForm):
 		fields = ('name','description','resort','addedresortname','start_room','end_room','price',)
 
 
+
 class AdPicForm(forms.ModelForm):
 	caption = forms.CharField(widget=forms.Textarea(attrs={'cols':'30','rows':'3'}))
-	# deleter = forms.ModelChoiceField(queryset=Photoo.objects.all(),empty_label=None,required=False)
+
 	class Meta:
 		model = Photoo
 		exclude = ('title_slug','date_added','tags','is_public','crop_from','effect','title','orderer')
+
 	def __init__(self, ad, *args, **kwargs):
 		super(AdPicForm, self).__init__(*args, **kwargs)
 		mypics = ad.photos.all()
-		# if int(mypics.count()) >= int(settings.NUMPHOTOS[ad.adtype-1][1]):
 		self.fields['deleter'] = forms.ModelChoiceField(queryset=mypics,label='Select photo to delete.',required=False,)
 
 

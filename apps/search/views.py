@@ -11,11 +11,12 @@ def search(request):
 	query = request.GET.get('search', '')
 	searchpage = True
 	if query:
-		adqset = (Q(name__icontains=query) | Q(description__icontains=query))
+		adqset = (Q(name__icontains=query,premod=True) | Q(description__icontains=query,premod=True))
 		adresults = Ad.objects.filter(adqset).distinct()
 		
-		resortqset = (Q(name__icontains=query) | Q(description__icontains=query))
-		resortresults = Resort.objects.filter(adqset).distinct()
+
+		resortqset = (Q(name__icontains=query,premod=True) | Q(description__icontains=query,premod=True))
+		resortresults = Resort.objects.filter(resortqset).distinct()
 
 	else:
 		adresults = []

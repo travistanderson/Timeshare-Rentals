@@ -9,7 +9,7 @@
 			$arn = $('#id_addedresortname').parent().parent();		// this is the whole form row for the added resort field
 			$arn.css({'display':'none'});
 			$('#id_resort').change(function(){
-				if($("#id_resort option:selected").text() == "My resort isn't here. Add a new one."){
+				if($("#id_resort option:selected").text() == "--My resort isn't here. Add a new one."){
 					$arn.slideDown('slow');
 				}else{
 					$arn.hide();
@@ -24,7 +24,7 @@
 			m3 = "</div></span>";
 			$('#id_name').after(m1+'id_name'+m2+'Give your timeshare ad a name that people will be able to find, like "Beatiful Oceanside Villa".'+m3);
 			$('#id_description').after(m1+'id_description'+m2+'Be sure to include the number of bedrooms and bathrooms as well as a general description about the timeshare.'+m3);
-			$('#id_resort').after(m1+'id_resort'+m2+"Pick the resort where you timeshare is located."+m3);
+			$('#id_resort').after(m1+'id_resort'+m2+"Pick the resort where your timeshare is located."+m3);
 			$('#id_start_room').after(m1+'id_start_room'+m2+'Select the first day your timeshare will be available for rent.'+m3);
 			$('#id_end_room').after(m1+'id_end_room'+m2+'Select the last day your timeshare will be available for rent.'+m3);
 			$('#id_price').after(m1+'id_price'+m2+'How much will you charge to rent your timeshare? This is US Dollars.'+m3);

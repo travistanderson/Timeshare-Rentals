@@ -42,7 +42,7 @@
 					</tr>
 					{% for ad in ads %}
 						<tr>
-							<td><a href='{% url addetail ad.slug %}' class='proname'>{{ ad.name }}</a></td>
+							<td><a href='{% url addetail ad.id ad.slug %}' class='proname'>{{ ad.name }}</a></td>
 							<td><div class='premod{{ ad.premod }}'>&nbsp;</div></td>
 							<td><div class='prothumb'>{% include 'includes/justthumbs.html' %}</div></td>
 							<td><div class='expad'>{% ifequal ad.adtype 4 %}Lifetime{% else %}{{ ad.expiration_date|date:"F d" }}<br/>{{ ad.expiration_date|date:"Y" }}{% endifequal %}</div></td>
@@ -51,20 +51,23 @@
 							<td><div class='paid'>{% if ad.paid %}
 								<img src="/admin_media/img/admin/icon_success.gif" class="pic" alt="pic"></img>{% else %}
 								
+								
+								
 								<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
 								<input type="hidden" name="cmd" value="_s-xclick">
+								<input type="hidden" name="item_number" value="{{ ad.adtype }}">
 								<input type="hidden" name="hosted_button_id" value="GWMAUVWHJD2UU">
-								{# <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal"> #}
 								<input type="submit" name="submit" alt="PayPal" class='buttoner' value='pay now $' style='color:#7AAA1B;'>
-								{# <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"> #}
 								</form>{% endif %}</div>
 
 								{# <form action="https://www.paypal.com/cgi-bin/webscr" method="post"> #}
 								{# <input type="hidden" name="cmd" value="_s-xclick"> #}
 								{# <input type="hidden" name="hosted_button_id" value="268KUB3QJEK3J"> #}
 								{# <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynow_LG.gif" border="0" name="submit" alt="PayPal"> #}
-								{# {# <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"> #}
+								{# <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"> #}
 								{# </form> #}
+								
+								{# {% endif %}</div> #}
 
 							</td>
 							<td><a href='{% url ad_delete ad.id %}' class='buttoner dbuttoner'><span class='deletead'>delete</span></a></td>
@@ -76,7 +79,7 @@
 					<h3>Timeshares</h3><br/>
 					<ul>
 						{% for ad in paidmodads %}
-							<li><a href='{% url addetail ad.slug %}'>{{ ad }}</a></li>
+							<li><a href='{% url addetail ad.id ad.slug %}'>{{ ad }}</a></li>
 						{% endfor %}
 					</ul><br/>
 				{% else %}
@@ -90,3 +93,52 @@
 
 
 {% endblock %}
+
+
+
+
+gold
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="ZQ48W8J3LJZ8N">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+
+
+
+silver
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="268KUB3QJEK3J">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+
+
+
+bronze
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="MBF7JSC4PLHYE">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+
+
+tester
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="Z3U8KTPX7M4YU">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+
+
+{# http://tsr.travis.nu/ad/pay/success/ #}
+{# http://tsr.travis.nu/ad/pay/cancel/ #}
+{# notify_url=https://tsr.travis.nu/ad/pay/paypal/ #}
