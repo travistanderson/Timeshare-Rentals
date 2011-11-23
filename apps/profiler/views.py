@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
 from datetime import datetime, timedelta
 import hashlib
+import settings
 from profiler.models import Mess
 from profiler.forms import NewUserForm, MessForm
 from photologue.models import Photo, Gallery
@@ -54,6 +55,9 @@ def profile(request,user_id):
 	else:
 		me = 0
 	ads = Ad.objects.filter(creator=u)
+	for ad in ads:
+		# ad.paypalid = settings.SITE_NAME
+		ad.paypalid = settings.PHOTATS[ad.adtype]['paypalid']
 	mess = Mess.objects.filter(receiver=u,unread=True)
 	paidmodads = Ad.objects.filter(creator=u,paid=True,premod=True)
 	return render_to_response('profiler/profile.html', {"theuser":u,'ads':ads,'paidmodads':paidmodads,'me':me,'mess':mess},context_instance = RequestContext(request),)
@@ -121,9 +125,10 @@ def compose(request,user_id,object_id,reco):
 		form = MessForm(wf,initial=initial) # An unbound form
 	return render_to_response('profiler/compose.html', {'theuser':u,'form': form,'re':re,},context_instance = RequestContext(request),)
 
+
 		
-@login_required	
-def settings(request,user_id):
+@login_required
+def usersettings(request,user_id):
 	u = User.objects.get(id=user_id)
 	unread = Mess.objects.filter(receiver=u,unread=True)
 	if not u == request.user:
@@ -131,3 +136,5 @@ def settings(request,user_id):
 	# settings
 	return render_to_response('profiler/settings.html', {'theuser':u,'unread':unread,},context_instance = RequestContext(request),)
 		
+
+	

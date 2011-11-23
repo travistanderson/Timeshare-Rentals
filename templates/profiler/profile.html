@@ -22,7 +22,7 @@
 			<ul class='profilelinks'>
 				<li class='active'>Ads</li>
 				<li><a href='{% url messages theuser.id %}'>Messages {% if mess %}{{ mess|length }}{% endif %}</a></li>
-				<li><a href='{% url settings theuser.id %}'>Settings</a></li>
+				<li><a href='{% url usersettings theuser.id %}'>Settings</a></li>
 			</ul>
 			
 			<h1>{{ theuser }}'s Profile</h1><br/><br/>
@@ -51,12 +51,12 @@
 							<td><div class='paid'>{% if ad.paid %}
 								<img src="/admin_media/img/admin/icon_success.gif" class="pic" alt="pic"></img>{% else %}
 								
-								
-								
+
+								{# {{ ad.paypalid }} #}
 								<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
 								<input type="hidden" name="cmd" value="_s-xclick">
-								<input type="hidden" name="item_number" value="{{ ad.adtype }}">
-								<input type="hidden" name="hosted_button_id" value="GWMAUVWHJD2UU">
+								<input type="hidden" name="item_number" value="{{ ad.id }}">
+								<input type="hidden" name="hosted_button_id" value="{{ ad.paypalid }}">
 								<input type="submit" name="submit" alt="PayPal" class='buttoner' value='pay now $' style='color:#7AAA1B;'>
 								</form>{% endif %}</div>
 
@@ -96,15 +96,23 @@
 
 
 
-
-gold
+tester
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
 <input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="ZQ48W8J3LJZ8N">
-<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<input type="hidden" name="hosted_button_id" value="Z3U8KTPX7M4YU">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
 <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 </form>
 
+
+
+bronze
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="MBF7JSC4PLHYE">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
 
 
 
@@ -119,23 +127,14 @@ silver
 
 
 
-bronze
+gold
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
 <input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="MBF7JSC4PLHYE">
-<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<input type="hidden" name="hosted_button_id" value="ZQ48W8J3LJZ8N">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
 <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 </form>
 
-
-
-tester
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="Z3U8KTPX7M4YU">
-<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-</form>
 
 
 

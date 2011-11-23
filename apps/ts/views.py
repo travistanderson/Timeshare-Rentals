@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect, Http404, HttpResponse
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
 from django.template import defaultfilters
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.models import User
 from django.template import defaultfilters
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
@@ -251,7 +251,27 @@ def photorder(request,ad_id):# check to make sure only the owner can edit
 		return HttpResponse(data,mimetype='application/javascript')
 	
 	return render_to_response('create/add_pictures.html',{'ad':ad,'phtc':phtc},context_instance = RequestContext(request),)
-	
+
+
+
+@login_required
+def paysuccess(request):
+	return render_to_response('ads/paysuccess.html', context_instance = RequestContext(request),)
+
+
+
+@login_required
+def paycancel(request):
+	return render_to_response('ads/paycancel.html', context_instance = RequestContext(request),)
+
+
+
+# @permission_required('ts.view_paypal')
+def paypal(request):
+	return render_to_response('ads/paypal.html', context_instance = RequestContext(request),)	
+
+
+
 # TODO make a choice page where it asks about payment, creating another ad
 
 

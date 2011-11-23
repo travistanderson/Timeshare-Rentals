@@ -5,6 +5,9 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
+	url(r'^pay/success/$', 'ts.views.paysuccess', name='paysuccess'),
+	url(r'^pay/cancel/$', 'ts.views.paycancel', name='paycancel'),
+	url(r'^pay/paypal/$', 'ts.views.paypal', name='paypal'),
 	url(r'^edit/(?P<ad_id>\d+)/$', 'ts.views.adedit', name='ad_edit'),
 	url(r'^delete/(?P<ad_id>\d+)/$', 'ts.views.addelete', name='ad_delete'),
 	url(r'^choose-an-ad/$', 'ts.views.chart', name='chart'),

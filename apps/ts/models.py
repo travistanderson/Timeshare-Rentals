@@ -98,6 +98,7 @@ class Ad(models.Model):
 		
 	class Meta:
 		ordering = ('-start_ad',)
+		permissions = (('view_paypal','Can see the results of Paypal auth return.'),)
 
 	def __unicode__(self):
 		return self.name
