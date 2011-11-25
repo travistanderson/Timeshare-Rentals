@@ -2,6 +2,7 @@
 {% extends "base.html" %}
 
 {% load gravatar %}
+{% load date_range %}
 
 {% block head_title %}Ad List{% endblock head_title %}
 
@@ -48,8 +49,8 @@
 				<div class="rowleft">
 					<a href="{% url addetail ad.id ad.slug %}">{{ ad.name }}</a>
 					<div class='rowdate'>
-						Available<br/>
-						{{ ad.start_room|date:'M d' }} - {{ ad.end_room|date:'d, Y' }}
+						Available<br/>{% display_range ad.start_room ad.end_room %}
+						{# {{ ad.start_room|date:'M d' }} - {{ ad.end_room|date:'d, Y' }} #}
 					</div>
 				
 				</div>{# end of rowheader #}

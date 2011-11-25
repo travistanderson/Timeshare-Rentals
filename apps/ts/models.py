@@ -10,6 +10,7 @@ if "mailer" in settings.INSTALLED_APPS:
 else:
     from django.core.mail import send_mail
 ADTYPES = ((1,'Free'),(2,'Bronze'),(3,'Silver'),(4,'Gold'),)
+PRICETYPES = ((1,'Night'),(2,'Month'),)
 
 
 class Photoo(Photo):
@@ -95,6 +96,7 @@ class Ad(models.Model):
 	paid = models.BooleanField(default=False)
 	expiration_date = models.DateField(blank=True,)
 	price = models.DecimalField(max_digits=10, decimal_places=2)
+	priceunit = models.IntegerField(choices=PRICETYPES,blank=True, null=True)
 		
 	class Meta:
 		ordering = ('-start_ad',)

@@ -1,3 +1,5 @@
+{# templates/ads/adincludes/adbody.html #}
+{% load date_range %}
 <style type="text/css" media="screen">
 	.datebox{font-weight:bold;padding:0 0 10px 0;}
 	.datebox div{font-size:14px;}
@@ -6,7 +8,10 @@
 	{% include "includes/photopicker.html" %}
 	<div class='datebox'>
 		<div>Available:</div>
-	{{ ad.start_room|date:'M d' }} - {{ ad.end_room|date:'d, Y' }}
+		{% display_range ad.start_room ad.end_room %}
+		<div>Price:</div>
+		{{ ad.price }}<br/>
+	{# {{ ad.start_room|date:'M d' }} - {{ ad.end_room|date:'d, Y' }} #}
 	</div>
 	{# {{ ad.start_date }} - {{ ad.end_date }} #}
 	{{ ad.description }}

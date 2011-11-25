@@ -5,15 +5,11 @@ todo list:
 	-get email notifications working with paypal payments (possibly even have the paypal 'paid' signal mark the ad paid automatically)
 	-set up google analytics
 	-add cronjob to server that runs 'python manage.py notify' once everyday
-	-fix date display issue on addetail and adlist
-	-display price on addetail page
 	-include by week/by night payment designation option in form
 	-make it display price designation and sort in ad list
-	-make resort page photo smaller
 	-rework homepage to allow full width google ad at bottom
 	-Annie -transfer data to new site(upload photos, copy ad content, create resorts and fill in redirects)
 	-Annie -write account transfer email for the new site.
-	-Annie -include Terms of Service in footer and anything else
 	-Annie -help integrate google ads? (service@timesharerentals.com,tatertot this for analytics also)
 
 
@@ -34,7 +30,9 @@ future todo list (anytime after site launches):
 
 
 done list:
-	
+	-make resort page photo smaller
+	-display price on addetail page
+	-fix date display issue on addetail and adlist
 	-make search display only premoderated ads and resorts
 	-display ad id as well as ad slug in url
 	-take the link images off the footer
@@ -58,6 +56,7 @@ done list:
 	-build messaging system
 	-change ad model to include price and change list page
 	-include nav elements in footer
+	-Annie -include Terms of Service in footer and anything else
 
 
 notes:

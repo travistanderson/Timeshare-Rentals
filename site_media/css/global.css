@@ -98,8 +98,8 @@ ul#navigation li a#home:hover, ul#navigation li a#advertise:hover, ul#navigation
 .rowtitle #country{width:55px;padding-left:40px;}
 .rowtitle #price{width:45px;padding-left:20px;}
 .rowleft{width:205px;font-size:13px;font-weight:bold;float:left;padding:5px 0 0 0px;margin-right:10px;white-space:nowrap;overflow:hidden;}
-.rowprem .rowdate{font-size:12px;margin:20px 0 0 85px;}
-.rowfree .rowdate{font-size:9px;line-height:12px;margin:0 0 0 85px;}
+.rowprem .rowdate{font-size:12px;margin:20px 20px 0 0px;text-align:right;}
+.rowfree .rowdate{font-size:9px;line-height:12px;margin:0 20px 0 0px;text-align:right;}
 .rowright{width:685px;float:left;padding:5px 0 0 0;}                                                    
 .rowphotos{width:205px;padding:8px 0 0 0;float:left;}                                                         
 .rowprem .rowdescription{float:left;width:195px;overflow:hidden;margin-left:30px;}
