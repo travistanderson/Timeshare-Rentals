@@ -78,7 +78,7 @@
 						<img src="/site_media/images/flagsbig/{{ ad.resort.address_country.iso }}.png" class="pic" alt="{{ ad.resort.address_country }}"></img>
 						<p>{{ ad.resort.address_country }}</p>
 					</div>
-					<div class='rowprice'>$ {{ ad.price }}</div>
+					<div class='rowprice'>$ {{ ad.price }}<br/>{{ ad.get_priceunit_display }}</div>
 					{# <div>{{ ad.adtype }}</div> #}
 				</div>{# end of rowfooter #}
 			</div>{# end of row #}<div class='clearer'></div>

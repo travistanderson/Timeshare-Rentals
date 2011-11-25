@@ -10,7 +10,7 @@ if "mailer" in settings.INSTALLED_APPS:
 else:
     from django.core.mail import send_mail
 ADTYPES = ((1,'Free'),(2,'Bronze'),(3,'Silver'),(4,'Gold'),)
-PRICETYPES = ((1,'Night'),(2,'Month'),)
+PRICETYPES = ((1,'Per Night'),(2,'Per Month'),)
 
 
 class Photoo(Photo):

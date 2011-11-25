@@ -3,14 +3,15 @@
 <style type="text/css" media="screen">
 	.datebox{font-weight:bold;padding:0 0 10px 0;}
 	.datebox div{font-size:14px;}
+	.datebox .dateboxprice{padding:10px 0 0 0;}
 </style>
 <div>
 	{% include "includes/photopicker.html" %}
 	<div class='datebox'>
 		<div>Available:</div>
 		{% display_range ad.start_room ad.end_room %}
-		<div>Price:</div>
-		{{ ad.price }}<br/>
+		<div class='dateboxprice'>Price {{ ad.get_priceunit_display }}:</div>
+		&#36; {{ ad.price }}<br/>
 	{# {{ ad.start_room|date:'M d' }} - {{ ad.end_room|date:'d, Y' }} #}
 	</div>
 	{# {{ ad.start_date }} - {{ ad.end_date }} #}

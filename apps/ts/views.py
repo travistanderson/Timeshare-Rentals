@@ -15,7 +15,7 @@ except ImportError:
 	import simplejson as json
 import settings
 from ts.models import Ad, Country, Photoo, Resort, ADTYPES
-from ts.forms import AdPicForm, EditAdForm, NewAdForm
+from ts.forms import AdForm, AdPicForm
 
 nphr = "--My resort isn't here. Add a new one."
 
@@ -116,7 +116,7 @@ def chart(request):
 @login_required
 def newadcreate(request, adtype):
 	if request.method == 'POST':
-		form = NewAdForm(request.POST)
+		form = AdForm(request.POST)
 		if form.is_valid():
 			adform = form.save(commit=False)
 			adform.start_ad = datetime.now()
@@ -140,10 +140,10 @@ def newadcreate(request, adtype):
 			a = Ad.objects.get(id=adform.id)
 			return HttpResponseRedirect(reverse('createpictures', args=[str(a.id)]))		# ? choice page
 		else:
-			form = NewAdForm(request.POST)
+			form = AdForm(request.POST)
 		return render_to_response('create/newadcreate.html',{'form':form,'adtype':adtype,}, context_instance = RequestContext(request),)
 	else:
-		form = NewAdForm()
+		form = AdForm()
 	return render_to_response('create/newadcreate.html',{'form':form,'adtype':adtype,}, context_instance = RequestContext(request),)
 	
 
@@ -154,7 +154,7 @@ def adedit(request,ad_id):
 		return HttpResponseRedirect(reverse('home'))
 	adtype = ad.get_adtype_display()
 	if request.method == 'POST':
-		form = EditAdForm(request.POST,instance=ad)
+		form = AdForm(request.POST,instance=ad)
 		if form.is_valid():
 			if str(form.cleaned_data['resort']) == nphr:
 				if form.cleaned_data['addedresortname'] != '':
@@ -165,10 +165,10 @@ def adedit(request,ad_id):
 			# return HttpResponseRedirect('/ads/create-add-pictures/%s/' %(str(ad.id)))
 			return HttpResponseRedirect(reverse('profile', args=[str(request.user.id)]))		# ? choice page
 		else:
-			form = EditAdForm(request.POST,instance=ad)
+			form = AdForm(request.POST,instance=ad)
 		return render_to_response('create/newadcreate.html', {'form': form,'adtype':adtype,}, context_instance = RequestContext(request),)
 	else:
-		form = EditAdForm(instance=ad)
+		form = AdForm(instance=ad)
 	return render_to_response('create/newadcreate.html', {'form': form,'adtype':adtype,}, context_instance = RequestContext(request),)
 
 @login_required

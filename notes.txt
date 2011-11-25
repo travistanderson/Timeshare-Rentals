@@ -3,13 +3,11 @@ todo list:
 	-fix paypal buttons (create gold, silver and bronze and include ad numbers variable)
 	-put paypal buttons in everywhere they should pay
 	-get email notifications working with paypal payments (possibly even have the paypal 'paid' signal mark the ad paid automatically)
-	-set up google analytics
 	-add cronjob to server that runs 'python manage.py notify' once everyday
-	-include by week/by night payment designation option in form
-	-make it display price designation and sort in ad list
 	-rework homepage to allow full width google ad at bottom
+	-send out account transfer email
+	-swith google analytics over when I change the domain for the live site
 	-Annie -transfer data to new site(upload photos, copy ad content, create resorts and fill in redirects)
-	-Annie -write account transfer email for the new site.
 	-Annie -help integrate google ads? (service@timesharerentals.com,tatertot this for analytics also)
 
 
@@ -30,6 +28,9 @@ future todo list (anytime after site launches):
 
 
 done list:
+	-set up google analytics
+	-make price per month display price designation and sort in ad list
+	-include by week/by night payment designation option in form
 	-make resort page photo smaller
 	-display price on addetail page
 	-fix date display issue on addetail and adlist
@@ -56,6 +57,7 @@ done list:
 	-build messaging system
 	-change ad model to include price and change list page
 	-include nav elements in footer
+	-Annie -write account transfer email for the new site.
 	-Annie -include Terms of Service in footer and anything else
 
 
