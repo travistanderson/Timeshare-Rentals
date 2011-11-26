@@ -2,9 +2,7 @@ todo list:
 	w-repoint dns record to new site
 	w-switch google analytics over when I change the domain for the live site
 	w-send out account transfer email
-	-put paypal buttons in everywhere they should pay
 	-get email notifications working with paypal payments (possibly even have the paypal 'paid' signal mark the ad paid automatically)
-	-spruce up grid page
 	-Annie -transfer data to new site(upload photos, copy ad content, create resorts and fill in redirects)
 
 
@@ -24,6 +22,8 @@ future todo list (anytime after site launches):
 
 
 done list:
+	-put paypal buttons in everywhere they should pay
+	-spruce up grid page
 	-fix paypal buttons (create gold, silver and bronze and include ad numbers variable)
 	-add cronjob to server that runs 'python manage.py notify' once everyday
 	-add cronjob to server that runs 'python manage.py send_mail' once everyminute

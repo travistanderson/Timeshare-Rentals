@@ -1,4 +1,11 @@
 <div class='alert'>
 	<div class='red'>This ad has not been paid for yet.</div>
-	Other users will not see this ad until you <a href='{% url profile request.user.id %}'>pay here</a>.
+	{# Other users will not see this ad until you <a href='{% url profile request.user.id %}'>pay here</a>. #}
+	Other users will not see this ad until you pay.
+	<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+	<input type="hidden" name="cmd" value="_s-xclick">
+	<input type="hidden" name="item_number" value="{{ ad.id }}">
+	<input type="hidden" name="hosted_button_id" value="{{ ad.paypalid }}">
+	<input type="submit" name="submit" alt="PayPal" class='buttoner' value='pay here $' style='color:#7AAA1B;'>
+	</form>
 </div>

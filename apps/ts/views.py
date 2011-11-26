@@ -71,6 +71,7 @@ def adlist(request):
 	
 def addetail(request,ad_id,ad_slug):		
 	a = Ad.objects.get(id=ad_id)
+	a.paypalid = settings.PHOTATS[a.adtype]['paypalid']
 	user = request.user
 	if a.expiration_date < datetime.now().date():
 		a.expired = True

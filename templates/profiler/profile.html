@@ -50,25 +50,12 @@
 							<td><p class='prodesc'>{{ ad.description|truncatewords:"25" }}<a href='{% url ad_edit ad.id %}' class='buttoner editer'><span class='editad'>edit</span></a></p></td>
 							<td><div class='paid'>{% if ad.paid %}
 								<img src="/admin_media/img/admin/icon_success.gif" class="pic" alt="pic"></img>{% else %}
-								
-
-								{# {{ ad.paypalid }} #}
 								<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
 								<input type="hidden" name="cmd" value="_s-xclick">
 								<input type="hidden" name="item_number" value="{{ ad.id }}">
 								<input type="hidden" name="hosted_button_id" value="{{ ad.paypalid }}">
 								<input type="submit" name="submit" alt="PayPal" class='buttoner' value='pay now $' style='color:#7AAA1B;'>
 								</form>{% endif %}</div>
-
-								{# <form action="https://www.paypal.com/cgi-bin/webscr" method="post"> #}
-								{# <input type="hidden" name="cmd" value="_s-xclick"> #}
-								{# <input type="hidden" name="hosted_button_id" value="268KUB3QJEK3J"> #}
-								{# <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynow_LG.gif" border="0" name="submit" alt="PayPal"> #}
-								{# <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"> #}
-								{# </form> #}
-								
-								{# {% endif %}</div> #}
-
 							</td>
 							<td><a href='{% url ad_delete ad.id %}' class='buttoner dbuttoner'><span class='deletead'>delete</span></a></td>
 						</tr>
