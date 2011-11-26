@@ -67,7 +67,10 @@ ul#navigation li a#home:hover, ul#navigation li a#advertise:hover, ul#navigation
 .centered{margin-left:200px;}
 .padder{padding:10px;}
 
+.googleadwide{width:728px;padding:0px 58px 0 58px;}
 .googleadwidehome{width:728px;padding:8px 90px 0 91px;}
+.googleadwidelist{width:728px;padding:0px 80px 0 80px;}
+.googleadwidelisttop{width:728px;padding:0px 80px 0 80px;}
 
 .graph{width:820px;height:600px;margin:0 0 0 0px;font-size:20px;border-collapse:collapse;}
 .graph th{background:#777;padding:20px 0 5px 20px;background-image:

@@ -25,6 +25,21 @@
 		<a href='{% url compose 0 ad.id "new" %}'>Send {{ ad.creator }} a message <img src="/site_media/images/envelope-off.png" class="pic" alt="pic"></img></a>
 	{% endif %}
 </div><br/>
+
+{% ifequal ad.adtype 1 %}
+	<div class='googleadwide'>
+		{% include "includes/googleadwide.html" %}			
+	</div><br/>
+{% endifequal %}
+
 {% with ad.resort as object %}
 	{% include 'includes/resorti.html' %}
 {% endwith %}
+
+{% ifequal ad.adtype 1 %}
+	<br/><br/>
+	<h2 class='resortheader'><span>Ads</span></h2>
+	<div class='googleadwide'>
+		{% include "includes/googleadwide.html" %}			
+	</div>
+{% endifequal %}

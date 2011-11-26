@@ -23,15 +23,17 @@
 		});
 	</script>
 	<style type="text/css" media="screen">
-		.searchholder{padding:30px 0 0 20px;}
+		.searchholder{padding:0 0 10px 0;}
 	</style>
 {% endblock %}
 
 {% block body %}
 	<div class="section" id="wide_column">
 		<div class='row'>
-			{# Here are some Google Ads #}
-			<img src="/site_media/images/googleads.jpg" alt="googleads" style='padding:0 50px 0 0;float:right;'></img>
+			<div class='googleadwidelist'>
+				{# Here are some Google Ads #}
+				{% include "includes/googleadwide.html" %}				
+			</div>
 			<div class='searchholder'>{% include "includes/searchbox.html" %}</div>
 			<div class='clearer'></div>
 		</div>
@@ -97,6 +99,9 @@
 		            <a href="?page={{ ads.next_page_number }}&amp;sort={{ sort }}&amp;direc={{ direc }}">next</a>
 		        {% endif %}
 		    </span>
+		</div>
+		<div class='googleadwidelist'>
+			{% include "includes/googleadwide.html" %}
 		</div>
 	</div>{# end of section #}
 
