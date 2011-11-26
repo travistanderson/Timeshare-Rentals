@@ -89,8 +89,8 @@ ul#navigation li a#home:hover, ul#navigation li a#advertise:hover, ul#navigation
 .graph .adtag{width:150px;height:65px;}
 .graph .picchart{padding:0px 0 0 0px;margin-left:-20px;}*/
 
-.graph{width:916px;height:600px;margin:0 0 0 0px;font-size:15px;background:#f6f6f6;font-family:Helvetica,Arial,sans-serif;}
-.graph .graphrow div{float:left;width:227px;border-left:1px solid #fbfbfb;border-right:1px solid #e5e5e5;}
+.graph{width:916px;height:625px;margin:0 0 0 0px;font-size:15px;background:#f6f6f6;font-family:Helvetica,Arial,sans-serif;}
+.graph .graphrow div{float:left;width:227px;border-left:1px solid #ccc;border-right:1px solid #fbfbfb;}
 .graph .graphheader{background:#ddd;height:160px;}
 .graph .graphheader div{background:url(/site_media/images/chartbadge.png)no-repeat;height:160px;width:227px;text-align:center;}
 .graph .graphheader #col1{opacity:0.3;}
@@ -99,10 +99,11 @@ ul#navigation li a#home:hover, ul#navigation li a#advertise:hover, ul#navigation
 .graph .graphheader h2{color:#efefef;font-family:Helvetica,Arial,sans-serif;font-weight:normal;padding:8px 0 0 0;margin:0 0 45px 0;}
 .graph .graphheader h3{color:#efefef;font-family:Helvetica,Arial,sans-serif;font-size:57px;font-weight:normal;height:60px;}
 .graph .graphheader h3 span{font-size:25px;vertical-align:top;}
-.graph .graphpics{background:#ddd;height:70px;}
-.graph .graphpics img{width:110px;padding:10px 0 0 60px;}
-.graph div.graphlower div{padding:10px 0 8px 15px;width:211px;height:42px;}
-.graph div.darkrow{background:#ddd;height:42px;}
+.graph .graphpics{height:70px;}
+.graph .graphpics img{width:110px;padding:10px 0 2px 60px;}
+.graph div.graphlower{height:55px;}
+.graph div.graphlower div{padding:20px 0 15px 20px;width:207px;height:20px;}
+.graph div.darkrow{background:#ddd;}
 
 /*.graph .descgraph{font-size:16px;color:#7AAA1B;font-weight:bold;}
 .graph .adtag{width:150px;height:65px;}

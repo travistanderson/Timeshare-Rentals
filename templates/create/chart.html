@@ -21,7 +21,7 @@
 				<div id='col3'><h2 class='silverh2'>Silver</h2><h3><span>&#36;</span>120</h3></div>
 				<div id='col4'><h2 class='goldh2'>Gold</h2><h3><span>&#36;</span>250</h3></div>
 			</div><div class='clearer'></div>
-			<div class="graphrow graphpics">
+			<div class="graphrow graphpics darkrow">
 				<div>
 					<a href="{% url newadcreate 'free' %}" class='picchart'>
 						<img src="/site_media/images/adlogos/freetag.png" class="adtag" alt="bt_free"></img>
@@ -79,36 +79,28 @@
 				<div>No Ads</div>
 				<div>No Ads</div>
 			</div><div class='clearer'></div>
-			{# <div> #}
-			{# 	<div class='descgraph'>Price</div> #}
-			{# 	<div>Free</div> #}
-			{# 	<div>$80</div> #}
-			{# 	<div>$120</div> #}
-			{# 	<div>$250</div> #}
-			{# </div> #}
-			{# <div> #}
-			{# 	<div class='descgraph'>&nbsp;</div> #}
-			{# 	<div> #}
-				{# 	<a href="{% url newadcreate 'free' %}" class='picchart'> #}
-				{# 		<img src="/site_media/images/adlogos/freetag.png" class="adtag" alt="bt_free"></img> #}
-				{# 	</a> #}
-				{# </div> #}
-				{# <div> #}
-				{# 	<a href="{% url newadcreate 'bronze' %}"  class='picchart'> #}
-				{# 		<img src="/site_media/images/adlogos/bronzetag.png" class="adtag" alt="bronze"></img> #}
-				{# 	</a> #}
-				{# </div> #}
-				{# <div> #}
-				{# 	<a href="{% url newadcreate 'silver' %}"  class='picchart'> #}
-				{# 		<img src="/site_media/images/adlogos/silvertag.png" class="adtag" alt="silver"></img> #}
-				{# 	</a> #}
-				{# </div> #}
-				{# <div> #}
-				{# 	<a href="{% url newadcreate 'gold' %}"  class='picchart'> #}
-				{# 		<img src="/site_media/images/adlogos/goldtag.png" class="adtag" alt="gold"></img> #}
-				{# 	</a> #}
-			{# 	</div> #}
-			{# </div> #}
+			<div class="graphrow graphpics">
+				<div>
+					<a href="{% url newadcreate 'free' %}" class='picchart'>
+						<img src="/site_media/images/adlogos/freetag.png" class="adtag" alt="bt_free"></img>
+					</a>
+				</div>
+				<div>
+					<a href="{% url newadcreate 'bronze' %}"  class='picchart'>
+						<img src="/site_media/images/adlogos/bronzetag.png" class="adtag" alt="bronze"></img>
+					</a>
+				</div>
+				<div>
+					<a href="{% url newadcreate 'silver' %}"  class='picchart'>
+						<img src="/site_media/images/adlogos/silvertag.png" class="adtag" alt="silver"></img>
+					</a>
+				</div>
+				<div>
+					<a href="{% url newadcreate 'gold' %}"  class='picchart'>
+						<img src="/site_media/images/adlogos/goldtag.png" class="adtag" alt="gold"></img>
+					</a>
+				</div>
+			</div><div class='clearer'></div>
 		</div>
 	</div>
 {% endblock %}
