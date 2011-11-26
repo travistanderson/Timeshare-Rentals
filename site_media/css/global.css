@@ -48,7 +48,7 @@ ul#navigation li a#home:hover, ul#navigation li a#advertise:hover, ul#navigation
 	border:1px solid #aaa;-moz-box-shadow:1px 1px 1px #444;-webkit-box-shadow:1px 1px 1px #444;box-shadow:1px 1px 1px #444;display:block;}
 .pink{color:#EE2A7B;}
 /*===================== left column ===============================*/
-#left_column {float:left;padding:0 0 30px;width:330px;}
+#left_column {float:left;padding:0 0 0px;width:330px;}
 .section{border:1px solid gray;padding:10px;margin:5px;-moz-border-radius:.75em;-webkit-border-radius:.75em;}
 #searchbox{height:25px;}
 #searchbox #searcher{width:215px;-moz-border-radius:.5em;-webkit-border-radius:.5em;margin-bottom:8px;}
@@ -66,6 +66,8 @@ ul#navigation li a#home:hover, ul#navigation li a#advertise:hover, ul#navigation
 #wide_column{width:900px;}
 .centered{margin-left:200px;}
 .padder{padding:10px;}
+
+.googleadwidehome{width:728px;padding:8px 90px 0 91px;}
 
 .graph{width:820px;height:600px;margin:0 0 0 0px;font-size:20px;border-collapse:collapse;}
 .graph th{background:#777;padding:20px 0 5px 20px;background-image:
@@ -121,7 +123,7 @@ ul#navigation li a#home:hover, ul#navigation li a#advertise:hover, ul#navigation
 
 .featured_ts{padding:0px 0 0 19px;}
 .featured_ts img{padding:0px 0 10px 0px;}
-.whoweare{padding:9px 0 0 0;}
+.whoweare{padding:11px 0 0 0;}
 /*===================== form stuff ===============================*/
 #newform{margin:30px;}
 #newform input{width:450px;}
