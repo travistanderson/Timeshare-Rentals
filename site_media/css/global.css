@@ -72,7 +72,7 @@ ul#navigation li a#home:hover, ul#navigation li a#advertise:hover, ul#navigation
 .googleadwidelist{width:728px;padding:0px 80px 0 80px;}
 .googleadwidelisttop{width:728px;padding:0px 80px 0 80px;}
 
-.graph{width:820px;height:600px;margin:0 0 0 0px;font-size:20px;border-collapse:collapse;}
+/*.graph{width:820px;height:600px;margin:0 0 0 0px;font-size:20px;border-collapse:collapse;}
 .graph th{background:#777;padding:20px 0 5px 20px;background-image:
 	-webkit-gradient(linear,left top,left bottom,color-stop(1, rgb(153,150,153)),color-stop(0.67, rgb(90,92,92)));
 	-moz-linear-gradient(center top,rgb(153,150,153) 100%,rgb(90,92,92) 67%);}
@@ -87,7 +87,26 @@ ul#navigation li a#home:hover, ul#navigation li a#advertise:hover, ul#navigation
 .graph #secondcol, #thirdcol{}
 .graph .descgraph{font-size:16px;color:#7AAA1B;font-weight:bold;}
 .graph .adtag{width:150px;height:65px;}
-.graph .picchart{padding:0px 0 0 0px;margin-left:-20px;}
+.graph .picchart{padding:0px 0 0 0px;margin-left:-20px;}*/
+
+.graph{width:916px;height:600px;margin:0 0 0 0px;font-size:15px;background:#f6f6f6;font-family:Helvetica,Arial,sans-serif;}
+.graph .graphrow div{float:left;width:227px;border-left:1px solid #fbfbfb;border-right:1px solid #e5e5e5;}
+.graph .graphheader{background:#ddd;height:160px;}
+.graph .graphheader div{background:url(/site_media/images/chartbadge.png)no-repeat;height:160px;width:227px;text-align:center;}
+.graph .graphheader #col1{opacity:0.3;}
+.graph .graphheader #col2{opacity:0.5;}
+.graph .graphheader #col3{opacity:0.7;}
+.graph .graphheader h2{color:#efefef;font-family:Helvetica,Arial,sans-serif;font-weight:normal;padding:8px 0 0 0;margin:0 0 45px 0;}
+.graph .graphheader h3{color:#efefef;font-family:Helvetica,Arial,sans-serif;font-size:57px;font-weight:normal;height:60px;}
+.graph .graphheader h3 span{font-size:25px;vertical-align:top;}
+.graph .graphpics{background:#ddd;height:70px;}
+.graph .graphpics img{width:110px;padding:10px 0 0 60px;}
+.graph div.graphlower div{padding:10px 0 8px 15px;width:211px;height:42px;}
+.graph div.darkrow{background:#ddd;height:42px;}
+
+/*.graph .descgraph{font-size:16px;color:#7AAA1B;font-weight:bold;}
+.graph .adtag{width:150px;height:65px;}
+.graph .picchart{padding:0px 0 0 0px;margin-left:-20px;}*/
 
 .row{border-bottom:1px solid gray;padding:3px 0 0 0;}
 .rowprem{height:110px;}

@@ -1,12 +1,10 @@
 todo list:
 	w-repoint dns record to new site
-	-fix paypal buttons (create gold, silver and bronze and include ad numbers variable)
+	w-switch google analytics over when I change the domain for the live site
+	w-send out account transfer email
 	-put paypal buttons in everywhere they should pay
 	-get email notifications working with paypal payments (possibly even have the paypal 'paid' signal mark the ad paid automatically)
-	-add cronjob to server that runs 'python manage.py notify' once everyday
-	-rework homepage to allow full width google ad at bottom
-	-send out account transfer email
-	-swith google analytics over when I change the domain for the live site
+	-spruce up grid page
 	-Annie -transfer data to new site(upload photos, copy ad content, create resorts and fill in redirects)
 
 
@@ -17,7 +15,6 @@ future todo list (anytime after site launches):
 	-build statistics system
 	-ad commenting to the resorts
 	-spruce up contact form
-	-spruce up grid page
 	-put up a map of resorts
 	-improve search
 	-ad a map on every ad page of the timeshare location
@@ -27,6 +24,10 @@ future todo list (anytime after site launches):
 
 
 done list:
+	-fix paypal buttons (create gold, silver and bronze and include ad numbers variable)
+	-add cronjob to server that runs 'python manage.py notify' once everyday
+	-add cronjob to server that runs 'python manage.py send_mail' once everyminute
+	-rework homepage to allow full width google ad at bottom
 	-set up google analytics
 	-make price per month display price designation and sort in ad list
 	-include by week/by night payment designation option in form
