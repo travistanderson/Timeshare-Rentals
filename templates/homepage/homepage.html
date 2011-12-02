@@ -42,7 +42,7 @@
 					{% endifequal %}
 				{% endfor %}
 				<a href='{% url addetail ad.id ad.slug %}'><h2>{{ ad.name }}</h2></a><br/>
-				{{ ad.description|truncatewords:15 }}
+				{{ ad.descriptionflat|truncatewords:13 }}
 			</div>	
 			{% endfor %}
 		</div>

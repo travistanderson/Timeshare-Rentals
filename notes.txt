@@ -4,11 +4,13 @@ todo list:
 	w-send out account transfer email
 	-get email notifications working with paypal payments (possibly even have the paypal 'paid' signal mark the ad paid automatically)
 	-put question mark helpers on the chart page for (ads and private messaging)
+	-fix server memory leak
 	-Annie -transfer data to new site(upload photos, copy ad content, create resorts and fill in redirects)
 
 
 
 future todo list (anytime after site launches):
+	-add markdown buttons to regular add form
 	-add link to login page for signup and a custom message.
 	-spruce up create account page
 	-build statistics system
@@ -23,6 +25,8 @@ future todo list (anytime after site launches):
 
 
 done list:
+	-get markdown working everywhere for ads
+	-logout in admin
 	-put paypal buttons in everywhere they should pay
 	-spruce up grid page
 	-fix paypal buttons (create gold, silver and bronze and include ad numbers variable)

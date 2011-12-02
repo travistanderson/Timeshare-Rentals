@@ -1,9 +1,12 @@
 {# templates/ads/adincludes/adbody.html #}
 {% load date_range %}
+{% load markup %}
 <style type="text/css" media="screen">
 	.datebox{font-weight:bold;padding:0 0 10px 0;}
 	.datebox div{font-size:14px;}
 	.datebox .dateboxprice{padding:10px 0 0 0;}
+	table{border:solid 2px gray;-moz-border-radius:5px;-webkit-border-radius:5px;}
+	td{border-right:solid 1px #a8a8a8;padding:5px;border-bottom:solid 1px #a8a8a8;padding:5px;}
 </style>
 <div>
 	{% include "includes/photopicker.html" %}
@@ -15,7 +18,7 @@
 	{# {{ ad.start_room|date:'M d' }} - {{ ad.end_room|date:'d, Y' }} #}
 	</div>
 	{# {{ ad.start_date }} - {{ ad.end_date }} #}
-	{{ ad.description }}
+	{{ ad.descriptionhtml|markdown }}
 </div><div class='clearer'></div>
 <div class='member'>
 	Owner: <a href='{% url profile ad.creator.id %}'>{{ ad.creator }}</a><br/>

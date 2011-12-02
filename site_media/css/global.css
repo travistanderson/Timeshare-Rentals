@@ -1,10 +1,10 @@
 html, body{height:100%;}
 html, body, div, p, ul, ol, li, h1, h2, h3, h4, pre, form, p, button, img {border:0 none;margin:0;padding:0;}
-body {-x-system-font:none;background:#F2D686 url(/site_media/images/leftback.jpg) repeat-x;color:#8D8D85;
-	font-family:Tahoma,Arial,sans-serif;font-size:11px;font-size-adjust:none;font-stretch:normal;
+body{-x-system-font:none;background:#F2D686 url(/site_media/images/leftback.jpg) repeat-x;color:#6D6D6D;
+	font-family:Helvetica,Arial,sans-serif;font-size:13px;font-size-adjust:none;font-stretch:normal;
 	font-style:normal;font-variant:normal;font-weight:normal;line-height:22px;}
 ul, li{list-style-type:none;}
-a {outline-color:-moz-use-text-color;outline-style:none;outline-width:medium;text-decoration:none;}
+a{outline-color:-moz-use-text-color;outline-style:none;outline-width:medium;text-decoration:none;}
 a:hover{cursor:pointer;text-decoration:none;}
 input, textarea{-x-system-font:none;color:#3A3A35;font-family:Tahoma,Arial,sans-serif;font-size:11px;font-size-adjust:none;font-stretch:normal;font-style:normal;font-variant:normal;font-weight:normal;line-height:17px;}
 button{cursor:pointer;display:block;}
@@ -13,6 +13,7 @@ div.clear{clear:both;font-size:1px;height:1px;line-height:1px;position:relative;
 #bd{width:1100px;float:left;min-height:614px;background:url(/site_media/images/tree.jpg) no-repeat top right;padding:20px 0 0 0;}
 a, h4 a {/*border-bottom:1px solid #D7E1E9;*/color:#7AAA1B;}
 a span{display:none;}
+p{margin-bottom:10px;}
 p a:hover, h4 a:hover{border-bottom:1px solid #AAA;color:#333;}
 p.link{padding:0 0 0 19px;}
 h1{color:#EE2A7B;font-size:26px;font-weight:bold;font-family:'Droid Serif',arial,serif;line-height:40px;}
@@ -124,7 +125,7 @@ ul#navigation li a#home:hover, ul#navigation li a#advertise:hover, ul#navigation
 .rowtitle #price{width:45px;padding-left:20px;}
 .rowleft{width:205px;font-size:13px;font-weight:bold;float:left;padding:5px 0 0 0px;margin-right:10px;white-space:nowrap;overflow:hidden;}
 .rowprem .rowdate{font-size:12px;margin:20px 20px 0 0px;text-align:right;}
-.rowfree .rowdate{font-size:9px;line-height:12px;margin:0 20px 0 0px;text-align:right;}
+.rowfree .rowdate{font-size:11px;line-height:12px;margin:0 20px 0 0px;text-align:right;}
 .rowright{width:685px;float:left;padding:5px 0 0 0;}                                                    
 .rowphotos{width:205px;padding:8px 0 0 0;float:left;}                                                         
 .rowprem .rowdescription{float:left;width:195px;overflow:hidden;margin-left:30px;}
@@ -132,7 +133,7 @@ ul#navigation li a#home:hover, ul#navigation li a#advertise:hover, ul#navigation
 .rowuser{float:left;width:70px;padding:5px;margin:20px 30px 10px 20px;background:#ccc;color:#fff;-moz-border-radius: 5px;-webkit-border-radius: 5px;height:40px;}
 .rowresort{float:left;width:100px;color:#EE2A7B;font-weight:bold;margin-left:20px;}
 .rowcountry{float:left;width:80px;padding:0;}
-.rowprice{text-align:right;width:52px;float:left;}
+.rowprice{text-align:right;width:54px;float:left;font-size:12px;letter-spacing:-1px;}
 .rowprem .rowcountry img{height:62px;width:67px;margin:13px 0 -20px 0;}
 .rowfree .rowcountry img{height:62px;width:67px;margin:-8px 0 -20px 0;}
 .rowcountry p{width:67px;margin:-5 auto 0 auto;text-align:center;}
@@ -184,7 +185,8 @@ ul#navigation li a#home:hover, ul#navigation li a#advertise:hover, ul#navigation
 /*===================== colors ===============================*/
 /* #7AAA1B -- green */
 /* #DCDCDC -- gray (not used anywhere from what I can tell)*/
-/* #8D8D85 -- gray for all text */
+/* #8D8D85 -- OLD - gray for all text */
+/* #6D6D6D -- gray for all text */
 /* #464646 -- gray for footer */
 /* #F2D686 -- Tan for the beach */
 /* #EE2A7B -- Purple light for h1's and logo */

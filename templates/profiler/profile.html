@@ -47,7 +47,7 @@
 							<td><div class='prothumb'>{% include 'includes/justthumbs.html' %}</div></td>
 							<td><div class='expad'>{% ifequal ad.adtype 4 %}Lifetime{% else %}{{ ad.expiration_date|date:"F d" }}<br/>{{ ad.expiration_date|date:"Y" }}{% endifequal %}</div></td>
 							<td><span class='medalholder{{ ad.adtype }}'></span><p class='promedti'>{{ ad.get_adtype_display }}</p></td>
-							<td><p class='prodesc'>{{ ad.description|truncatewords:"25" }}<a href='{% url ad_edit ad.id %}' class='buttoner editer'><span class='editad'>edit</span></a></p></td>
+							<td><p class='prodesc'>{{ ad.descriptionflat|truncatewords:"25" }}<a href='{% url ad_edit ad.id %}' class='buttoner editer'><span class='editad'>edit</span></a></p></td>
 							<td><div class='paid'>{% if ad.paid %}
 								<img src="/admin_media/img/admin/icon_success.gif" class="pic" alt="pic"></img>{% else %}
 								<form action="https://www.paypal.com/cgi-bin/webscr" method="post">

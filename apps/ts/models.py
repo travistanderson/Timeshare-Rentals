@@ -9,6 +9,43 @@ if "mailer" in settings.INSTALLED_APPS:
     from mailer import send_mail
 else:
     from django.core.mail import send_mail
+from BeautifulSoup import BeautifulSoup
+from BeautifulSoup import Comment as BSComment
+from markdown import markdown
+
+
+def _make_html_text(markdown_text):
+	regular_text = markdown(markdown_text)
+	return regular_text
+
+VALID_TAGS = {'strong': [],'em': [],'p': [],'ol': [],'ul': [],'li': [],'br': [],'quote':[],'h1':[],'h2':[],'hr':[],'a': ['href', 'title'],'table':[],'tr':[],'th':[],'td':[],}
+
+def _sanitize_html(value, valid_tags=VALID_TAGS):
+    soup = BeautifulSoup(value)
+    comments = soup.findAll(text=lambda text:isinstance(text, BSComment))
+    [comment.extract() for comment in comments]
+    # Some markup can be crafted to slip through BeautifulSoup's parser, so
+    # we run this repeatedly until it generates the same output twice.
+    newoutput = soup.renderContents()
+    while 1:
+        oldoutput = newoutput
+        soup = BeautifulSoup(newoutput)
+        for tag in soup.findAll(True):
+            if tag.name not in valid_tags:
+                tag.hidden = True
+            else:
+                tag.attrs = [(attr, value) for attr, value in tag.attrs if attr in valid_tags[tag.name]]
+        newoutput = soup.renderContents()
+        if oldoutput == newoutput:
+            break
+    return newoutput
+
+
+def _make_flat_text(markdown_text):
+	lineless = markdown_text.replace('\n',' ')
+	spaceless = ''.join(BeautifulSoup(lineless).findAll(text=True))
+	return spaceless
+	
 ADTYPES = ((1,'Free'),(2,'Bronze'),(3,'Silver'),(4,'Gold'),)
 PRICETYPES = ((1,'Per Night'),(2,'Per Week'),)
 
@@ -85,6 +122,8 @@ class Ad(models.Model):
 	name = models.CharField(max_length=80)
 	slug = models.SlugField(max_length=100)
 	description = models.TextField()
+	descriptionflat = models.TextField(blank=True)
+	descriptionhtml = models.TextField(blank=True)
 	photos = models.ManyToManyField(Photoo, blank=True, null=True)
 	resort = models.ForeignKey(Resort, blank=True, null=True)
 	creator = models.ForeignKey(User)
@@ -97,7 +136,8 @@ class Ad(models.Model):
 	expiration_date = models.DateField(blank=True,)
 	price = models.DecimalField(max_digits=10, decimal_places=2)
 	priceunit = models.IntegerField(choices=PRICETYPES,blank=True, null=True)
-		
+			# alter table ts_ad add column descriptionhtml longtext not null;
+			# alter table ts_ad add column descriptionflat longtext not null;		
 	class Meta:
 		ordering = ('-start_ad',)
 		permissions = (('view_paypal','Can see the results of Paypal auth return.'),)
@@ -116,6 +156,13 @@ class Ad(models.Model):
 
 	def save(self,*args,**kwargs):
 		s = self
+		dhtml = _make_html_text(s.description)
+		try:
+			chtml = _sanitize_html(dhtml, valid_tags=VALID_TAGS)
+		except Exception, e:
+			chtml = "Sorry we can't retrieve this post right now."
+		s.descriptionhtml = chtml
+		s.descriptionflat = _make_flat_text(chtml)
 		new = True
 		try:		# this checks to see if it is new or not
 			a = Ad.objects.get(id=s.id)

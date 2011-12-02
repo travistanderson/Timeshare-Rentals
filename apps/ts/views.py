@@ -17,13 +17,16 @@ import settings
 from ts.models import Ad, Country, Photoo, Resort, ADTYPES
 from ts.forms import AdForm, AdPicForm
 
+
 nphr = "--My resort isn't here. Add a new one."
+
 
 def _getadtype(adtype):
 	for ad in ADTYPES:
 		if adtype == ad[1].lower():
 			theadtype = ad[0]
 	return theadtype
+
 
 def adlist(request):
 	today = datetime.today()
@@ -157,6 +160,7 @@ def adedit(request,ad_id):
 	if request.method == 'POST':
 		form = AdForm(request.POST,instance=ad)
 		if form.is_valid():
+			# handle html cleaning here
 			if str(form.cleaned_data['resort']) == nphr:
 				if form.cleaned_data['addedresortname'] != '':
 					newresort = Resort()

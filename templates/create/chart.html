@@ -3,6 +3,15 @@
 
 {% block head_title %}Create and Ad{% endblock head_title %}
 {% block extra_head %}
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function(){
+			$('.pmhelp').hover(function(e){
+				
+			},function(){
+				
+			})
+		});
+	</script>
 	<style type="text/css" media="screen">
 		.section{padding-left:0px;padding-right:0px;}
 		#wide_column{width:916px;}
@@ -68,10 +77,10 @@
 				<div>Ad Length: Lifetime</div>
 			</div><div class='clearer'></div>
 			<div class="graphrow graphlower">
-				<div>Private Messaging</div>
-				<div>Private Messaging</div>
-				<div>Private Messaging</div>
-				<div>Private Messaging</div>
+				<div>Private Messaging<span class='pmhelp'>?</span></div>
+				<div>Private Messaging<span class='pmhelp'>?</span></div>
+				<div>Private Messaging<span class='pmhelp'>?</span></div>
+				<div>Private Messaging<span class='pmhelp'>?</span></div>
 			</div><div class='clearer'></div>
 			<div class="graphrow graphlower darkrow">
 				<div>Inline Ads</div>

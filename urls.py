@@ -27,3 +27,5 @@ if settings.DEBUG:
         (r'^site_media/(?P<path>.*)$', 'django.views.static.serve',
             {'document_root': os.path.join(os.path.dirname(__file__), "site_media")}),
     )
+
+admin.site.root_path = '/admin/'
