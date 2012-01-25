@@ -8,6 +8,7 @@ from photologue.models import Photo
 from ts.models import Resort, Ad
 
 def home(request):
-	ap = Ad.objects.filter(adtype__gt=1, premod=True,paid=True)
+	today = datetime.today()
+	ap = Ad.objects.filter(adtype__gt=1, premod=True,paid=True,expiration_date__gte=today)
 	# maybe add in some kind of randamizer to mix up which ads show
-	return render_to_response('homepage/homepage.html', {"adp_list":ap},context_instance = RequestContext(request),)
+	return render_to_response('homepage/homepage.html', {"adp_list":ap,},context_instance = RequestContext(request),)

@@ -1,11 +1,9 @@
 todo list:
-	w-repoint dns record to new site
 	w-switch google analytics over when I change the domain for the live site
 	w-send out account transfer email
 	-get email notifications working with paypal payments (possibly even have the paypal 'paid' signal mark the ad paid automatically)
 	-put question mark helpers on the chart page for (ads and private messaging)
 	-fix server memory leak
-	-Annie -transfer data to new site(upload photos, copy ad content, create resorts and fill in redirects)
 
 
 
@@ -25,6 +23,8 @@ future todo list (anytime after site launches):
 
 
 done list:
+	-Annie -transfer data to new site(upload photos, copy ad content, create resorts and fill in redirects)
+	-repoint dns record to new site
 	-get markdown working everywhere for ads
 	-logout in admin
 	-put paypal buttons in everywhere they should pay
