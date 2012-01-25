@@ -2,8 +2,6 @@ todo list:
 	w-switch google analytics over when I change the domain for the live site
 	w-send out account transfer email
 	-get email notifications working with paypal payments (possibly even have the paypal 'paid' signal mark the ad paid automatically)
-	-put question mark helpers on the chart page for (ads and private messaging)
-	-fix server memory leak
 
 
 
@@ -23,6 +21,8 @@ future todo list (anytime after site launches):
 
 
 done list:
+	-fix server memory leak
+	-put question mark helpers on the chart page for (ads and private messaging)
 	-Annie -transfer data to new site(upload photos, copy ad content, create resorts and fill in redirects)
 	-repoint dns record to new site
 	-get markdown working everywhere for ads

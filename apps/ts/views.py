@@ -114,7 +114,8 @@ def resortdetail(request,resort_slug):
 
 
 def chart(request):
-	return render_to_response('create/chart.html', context_instance = RequestContext(request),)
+	photats = settings.PHOTATS
+	return render_to_response('create/chart.html', {'photats':photats,},context_instance = RequestContext(request),)
 
 
 @login_required

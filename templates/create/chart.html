@@ -3,12 +3,20 @@
 
 {% block head_title %}Create and Ad{% endblock head_title %}
 {% block extra_head %}
+	<script src="/site_media/js/jquery.qtip.min.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript" charset="utf-8">
 		$(document).ready(function(){
-			$('.pmhelp').hover(function(e){
-				
-			},function(){
-				
+			// $('.pmhelp').hover(function(e){
+			// 	alert('hover');
+			// },function(){
+			// 	
+			// })
+			$('.pmhelp').qtip({
+				// content:'Private Messaging allows you to send and receive messages with other timesharerentals.com members without revealing your email address.',
+				content:'Private Messaging allows you to send messages to other timesharerentals.com members and receive messages from anyone interested in your timeshare without revealing your email address.',
+				style:{background:'#ccc',border:{color:'#aaa',width:.025,radius:5}},
+				show:'mouseover',
+				hide:'mouseout'
 			})
 		});
 	</script>
@@ -16,19 +24,20 @@
 		.section{padding-left:0px;padding-right:0px;}
 		#wide_column{width:916px;}
 		.section h1{padding:0 0 20px 20px;}
+		.pmhelp{float:right;margin-right:15px;color:#EE2A7B;font-weight:bold;font-size:14px;cursor:pointer;}
 	</style>
 {% endblock %}
 
 {% block body %}
 	<div class="section" id="wide_column">
 		<h1>Select the ad that's right for you</h1>
-		
+
 		<div class="graph">
 			<div class="graphrow graphheader">
-				<div id='col1'><h2 class='freeh2'>Free</h2><h3><span>&#36;</span>0</h3></div>
-				<div id='col2'><h2 class='bronzeh2'>Bronze</h2><h3><span>&#36;</span>80</h3></div>
-				<div id='col3'><h2 class='silverh2'>Silver</h2><h3><span>&#36;</span>120</h3></div>
-				<div id='col4'><h2 class='goldh2'>Gold</h2><h3><span>&#36;</span>250</h3></div>
+				<div id='col1'><h2 class='freeh2'>Free</h2><h3><span>&#36;</span>{{ photats.1.dollars }}</h3></div>
+				<div id='col2'><h2 class='bronzeh2'>Bronze</h2><h3><span>&#36;</span>{{ photats.2.dollars }}</h3></div>
+				<div id='col3'><h2 class='silverh2'>Silver</h2><h3><span>&#36;</span>{{ photats.3.dollars }}</h3></div>
+				<div id='col4'><h2 class='goldh2'>Gold</h2><h3><span>&#36;</span>{{ photats.4.dollars }}</h3></div>
 			</div><div class='clearer'></div>
 			<div class="graphrow graphpics darkrow">
 				<div>
@@ -53,16 +62,16 @@
 				</div>
 			</div><div class='clearer'></div>
 			<div class="graphrow graphlower">
-				<div>Description: 40 Words</div>
-				<div>Description: 100 Words</div>
-				<div>Description: Unlimited Words</div>
-				<div>Description: Unlimited Words</div>
+				<div>Description: {{ photats.1.description }}</div>
+				<div>Description: {{ photats.2.description }}</div>
+				<div>Description: {{ photats.3.description }}</div>
+				<div>Description: {{ photats.4.description }}</div>
 			</div><div class='clearer'></div>
 			<div class="graphrow graphlower darkrow">
-				<div>1 picture</div>
-				<div>3 pictures</div>
-				<div>10 pictures</div>
-				<div>10 pictures</div>
+				<div>{{ photats.1.numphotos }} picture</div>
+				<div>{{ photats.2.numphotos }} pictures</div>
+				<div>{{ photats.3.numphotos }} pictures</div>
+				<div>{{ photats.4.numphotos }} pictures</div>
 			</div><div class='clearer'></div>
 			<div class="graphrow graphlower">
 				<div>&nbsp;</div>
