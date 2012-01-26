@@ -1,0 +1,22 @@
+{# templates/profile/forgot_submit.html #}
+
+{% extends "base.html" %}
+
+
+{% block body %}
+	<div class="section" id="wide_column">
+		<div class='padder'>
+			<h1>An Email has been sent</h1><br/>
+			<div id='loginform'>
+				
+				Follow the link in the email to reset your password.
+
+
+			</div>{# end of loginform #}
+			<div id='signupform'>
+				{# Enter the email address associated with your account and we will email you a link to reset your password. #}
+			</div>{# end of signupform #}
+			<div class='clearer'></div>
+		</div>{# end of padder #}
+	</div>{# end of section #}
+{% endblock %}

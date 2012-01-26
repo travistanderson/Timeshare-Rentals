@@ -1,8 +1,8 @@
 todo list:
-	w-switch google analytics over when I change the domain for the live site
-	w-send out account transfer email
+	-send out account transfer email
+	-switch google analytics over when I change the domain for the live site
+	-create user setting for if the user wants to get notification emails
 	-get email notifications working with paypal payments (possibly even have the paypal 'paid' signal mark the ad paid automatically)
-
 
 
 future todo list (anytime after site launches):
@@ -21,6 +21,7 @@ future todo list (anytime after site launches):
 
 
 done list:
+	-let user edit password and forgot password function and contact email address
 	-fix server memory leak
 	-put question mark helpers on the chart page for (ads and private messaging)
 	-Annie -transfer data to new site(upload photos, copy ad content, create resorts and fill in redirects)

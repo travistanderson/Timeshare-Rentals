@@ -1,0 +1,50 @@
+{# templates/profile/forgot.html #}
+
+{% extends "base.html" %}
+{% block extra_head %}
+	<style type="text/css" media="screen">
+		#loginform{float:left;height:75px;margin:0 50px 0 50px;}
+		#forgotform{float:left;height:75px;}
+	</style>
+{% endblock %}
+
+
+{% block body %}
+
+	<div class="section" id="wide_column">
+		<div class='padder'>
+			<h1>Forgot My Password</h1><br/>
+			<div id='loginform'>
+				{% if form.errors %}
+					<p>That email is not in our database</p>
+				{% endif %}
+
+				<form action="{% url forgot_view %}" method="post">
+					<table class="form-table">
+						<tr>
+							<td class="label">
+								<label for="id_email">Email</label>
+							</td>
+							<td class="fields">
+								{% if forgotform.email.errors %}<div>{{ forgotform.email.errors }}</div><br/>{% endif %}
+								{{ forgotform.email }}
+							</td>
+						</tr>
+						<tr>
+							<td class="label">&nbsp;</td>
+							<td class="fields">
+								<input type="hidden" name="next" value="{{ next }}" />
+								<input type="submit" name="submit" value="Submit" class="formbutton" id="post">
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>{# end of loginform #}
+			<div id='forgotform'>
+				Enter the email address associated with your account and we will email you a link to reset your password.
+			</div>{# end of signupform #}
+			<div class='clearer'></div>
+		</div>{# end of padder #}
+	</div>{# end of section #}
+
+{% endblock %}

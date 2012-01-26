@@ -1,8 +1,16 @@
 # profiler/forms.py
-from django.contrib.auth.models import User
 from django import forms
+from django.forms.models import ModelForm
+from django.contrib.auth.models import User
+from django.db.models import get_model
+from django.forms.extras import widgets
 from django.utils.translation import ugettext_lazy as _
 from profiler.models import Mess
+
+
+class LoginForm(forms.Form):
+	username = forms.CharField(max_length=30,label='Username')
+	password = forms.CharField(max_length=100,label='Password',widget=forms.PasswordInput)
 
 
 class NewUserForm(forms.ModelForm):
@@ -62,6 +70,74 @@ class MessForm(forms.ModelForm):
 
 
 
+# 
+# 
+# 
+# 	
+# class LoginForm(forms.Form):
+# 	username = forms.CharField(max_length=30,label='Username')
+# 	password = forms.CharField(max_length=100,label='Password',widget=forms.PasswordInput)
+	
+	
+class ForgotForm(forms.Form):
+	email = forms.EmailField()
+	
+	def clean_email(self):
+		data = self.cleaned_data['email']
+		allusers = User.objects.all()
+		inthere = False
+		for auser in allusers:
+			if auser.email == data:
+				inthere = True
+		if inthere == False:
+			raise forms.ValidationError('That Email is not in our database')
+		return data
 
 
+class PasswordResetForm(forms.Form):
+	new_password_1 = forms.CharField(max_length=16, widget=forms.PasswordInput, required=True,)
+	new_password_2 = forms.CharField(max_length=16, widget=forms.PasswordInput, required=True,)
+   
+	def clean(self):
+		cleaned_data = self.cleaned_data
+		new_password_1 = cleaned_data.get('new_password_1')
+		new_password_2 = cleaned_data.get('new_password_2')
+		if new_password_1 and new_password_2:
+			if (self.cleaned_data['new_password_1'] != self.cleaned_data['new_password_2']):
+				raise forms.ValidationError("You entered two different passwords")
+		return self.cleaned_data
+
+
+class PasswordChangeForm(forms.Form):
+	old_password = forms.CharField(max_length=30, widget=forms.PasswordInput, required=True,)
+	new_password_1 = forms.CharField(max_length=30, widget=forms.PasswordInput, required=True,label='New Password')
+	new_password_2 = forms.CharField(max_length=30, widget=forms.PasswordInput, required=True,label='New Password Again')
+
+	def clean(self):
+		cleaned_data = self.cleaned_data
+		new_password_1 = cleaned_data.get('new_password_1')
+		new_password_2 = cleaned_data.get('new_password_2')
+		if new_password_1 and new_password_2:
+			if (self.cleaned_data['new_password_1'] != self.cleaned_data['new_password_2']):
+				raise forms.ValidationError("New Password and New Password Again did not match.")
+		return self.cleaned_data
+
+
+
+class EmailChangeForm(forms.Form):
+	email = forms.EmailField()
+
+		
+		
+class UserEditForm(forms.Form):
+	# first_name = forms.CharField(max_length=30,label='First Name',required=True,)
+	# last_name = forms.CharField(max_length=30,label='Last Name',required=True,)
+	email = forms.EmailField(label='Email',required=True,)
+	# class Meta:
+		# model = get_model('auth', 'user')
+		# exclude = ('username','password','is_staff','is_active','is_superuser','last_login','date_joined','groups','user_permissions',)
+		
+		
+		
+		
 	

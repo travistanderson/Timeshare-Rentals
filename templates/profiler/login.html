@@ -1,0 +1,61 @@
+{# templates/profile/login.html #}
+
+{% extends "base.html" %}
+{% block extra_head %}
+	<style type="text/css" media="screen">
+		#loginform{float:left;height:120px;margin:0 100px 0 150px;}
+		#forgotform{float:left;height:120px;}
+	</style>
+{% endblock %}
+
+{% block body %}
+	<div class="section" id="wide_column">
+		<div class='padder'>
+			<h2>Login</h2><br/>
+			{% if message %}<p>{{ message }}</p>{% endif %}
+
+			<form action="{% url login_view %}" method="post" id='loginform'>
+				<table class="form-table">
+					<tr>
+						<td class="label">
+							<label for="id_name">Username</label>
+						</td>
+						<td class="fields">
+							{% if loginform.username.errors %}<div>{{ loginform.username.errors }}</div><br/>{% endif %}
+							{% if message %}<div><ul class='errorlist'><li>{{ message }}</li></ul></div><br/>{% endif %}
+							{{ loginform.username }}
+						</td>
+					</tr>
+					<tr>
+						<td class="label">
+							<label for="id_email">Password</label>
+						</td>
+						<td class="fields">
+							{% if loginform.password.errors %}<div>{{ loginform.password.errors }}</div><br/>{% endif %}
+							{{ loginform.password }}
+						</td>
+					</tr>
+					<tr>
+						<td class="label">&nbsp;</td>
+						<td class="fields">
+							<input type="hidden" name="next" value="{{ next }}" />
+							<input type="submit" name="submit" value="Login" class="formbutton" id="post">
+						</td>
+					</tr>
+				</table>
+			</form>{# end of login form #}
+			<form action="{% url forgot_view %}" method="get" id='forgotform'>
+				<table class="form-table">
+					<tr>
+						<td class="label"><label for='id_postforgot'>I forgot my password</label></td>
+						<td class="fields">
+							<input type="hidden" name="next" value="{{ next }}" />
+							<input type="submit" name="submit" value="Forgot" class="formbutton" id="post_postforgot">
+						</td>
+					</tr>
+				</table>
+			</form>{# end of forgot form #}
+			<div class='clearer'></div>
+		</div>{# end of padder #}
+	</div>{# end of section #}
+{% endblock %}

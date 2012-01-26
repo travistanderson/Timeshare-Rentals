@@ -64,3 +64,12 @@ class Mess(models.Model):
 		toemail = [self.receiver.email,]
 		send_mail(subject,content,fromemail,toemail)
 
+
+
+class EmailReset(models.Model):
+	email = models.EmailField(blank=True, max_length=100)
+	expires = models.DateTimeField()
+	key = models.CharField(blank=True, max_length=100)
+	
+	def __unicode__(self):
+		return self.email
