@@ -1,0 +1,19 @@
+{# templates/error.html #}
+{% extends "base.html" %}
+{% block extra_head %}
+	<style type="text/css" media="screen">
+		.monkey{width:300px;margin:100px 0 100px 165px;}
+		.padder{padding:0 144px;}
+		
+	</style>
+{% endblock %}
+
+{% block body %}
+	<div class='section' id="wide_column">
+		<div class='padder'><br/>
+		    <h2>{% block message %}{% endblock %}</h2><br/><br/>
+			<p>If you want, you can head back to the <a href='{% url home %}'>Home</a> page.</p>
+			<img src="/site_media/images/monkey.png" class="monkey" alt="monkey"></img>			
+		</div>
+	</div>
+{% endblock %}

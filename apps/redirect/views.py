@@ -8,10 +8,9 @@ from redirect.models import Redirector
 
 
 def redirecturl(request,old_url):
-	# u = get_object_or_404(Redirector,oldurl=old_url)
-
 	return render_to_response('redirector.html', {"u":old_url,},context_instance = RequestContext(request),)
-	# return redirect(u.newurl)
 
 
+def the404(request):
+	return render_to_response('404.html',context_instance=RequestContext(request),)
 

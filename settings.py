@@ -20,7 +20,7 @@ if WHICH_ENVIRONMENT == 'development':			# Django settings on the local dev serv
 	DATABASE_PORT = ''
 	
 else:			# WHICH_ENVIRONMENT == 'production'			# Django settings on the server for TSR project.
-	DEBUG = True
+	DEBUG = False
 	TEMPLATE_DEBUG = DEBUG
 	TEMPLATE_DIRS = ('/home/travis/timesharerentals.com/timeshare/templates')
 	MEDIA_ROOT = '/home/travis/timesharerentals.com/media/site_media'

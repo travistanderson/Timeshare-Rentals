@@ -1,9 +1,10 @@
-{% extends "base.html" %}
+{# templates/404.html #}
+{% extends "error.html" %}
+{% block head_title %}Page Not Found - 404{% endblock %}
 
-{% load i18n %}
+{# {% block body %} #}
+{# 	{{ block.super }} #}
+{# {% endblock %} #}
 
-{% block head_title %}{% trans "Not Found" %}{% endblock %}
 
-{% block body %}
-    <p>I'm sorry. I wrote some bad code here and I can't find this page.</p>
-{% endblock %}
+{% block message %}We're sorry. We can't find the page. 404 Error{% endblock %}

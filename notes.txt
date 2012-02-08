@@ -85,3 +85,43 @@ The Timesharerentals.com Team
 
 old "who we are"
 Welcome to Timesharerentals.com. We are a site dedicated to advertising timeshares for rent or for sale. You could say we’re the Timeshare Classifieds. So whether you’re an owner, or someone looking for  a good deal for your next vacation, this site it for you. With no commission or booking fees, you’ll find affordable options for advertising your timeshare for rent or sale. And because renting directly from the owners tends to be cheaper, as a consumer you’ll likely find a great deal! Thanks for letting Timesharerentals.com help you advertise or find a timeshare priced right for your next vacation!
+
+
+
+---------------------------------------------------------
+ Here is the form letter for after an ad is approved
+---------------------------------------------------------
+Dear Mirta, 
+
+Thank you for your ad submission with Timesharerentals.com. Your ad has now been moderated and is available for viewing on Timesharerentals.com. 
+
+Thank you for letting Timesharerentals.com help you advertise! 
+
+Sincerely, 
+
+Timesharerentals.com 
+Customer Service
+
+
+
+---------------------------------------------------------
+ Here is the form letter for the site transition
+---------------------------------------------------------
+Dear {{username}},
+
+Timesharerentals.com has just completed a redesign of the entire site. You are receiving this email because you have an ad listed with us. The new site allows you to edit your own ads, upload pictures of your timeshare and exchange messages directly with other users. There is an improved search function which will make it more likely for your ad to be found and for your timeshare to be rented. Also users can send you messages from the site about your ad. You can create new ads yourself. We have paid ads with premium features and a free ad as well.
+
+Your old ad has been moved to the new site and can be seen {{here}}. We have created a user account for you.
+Username: {{username}}
+Password: {{password}}
+
+You can login {{here}}. We recommend that you login at your earliest convenience and change the password to one of your own choosing. We have {{email}} on record as your contact email address. You can change it as well on your profile page {{here}}
+
+Thank you for using Timesharerentals.com. We hope the new site will be a benefit to you.
+
+Timesharerentals.com 
+
+
+
+
+

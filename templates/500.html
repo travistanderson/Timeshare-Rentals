@@ -1,9 +1,9 @@
-{% extends "base.html" %}
+{# templates/500.html #}
+{% extends "error.html" %}
+{% block head_title %}Server Error - 500{% endblock %}
 
-{% load i18n %}
+{# {% block body %} #}
+{# 	{{ block.super }} #}
+{# {% endblock %} #}
 
-{% block head_title %}{% trans "Server Error" %}{% endblock %}
-
-{% block body %}
-    <p>{% trans "We're sorry but a server error has occurred. We've been notified and will look into it as soon as possible." %}</p>
-{% endblock %}
+{% block message %}We're sorry. It looks like our server is having some trouble. We will check into it. 500 Error{% endblock %}
