@@ -14,7 +14,7 @@ class AdForm(forms.ModelForm):
 	addedresortname = forms.CharField(widget=forms.TextInput(attrs={'size':'35'}),label='Name of Resort',required=False)
 	start_room = forms.CharField(widget=forms.TextInput(attrs={'size':'8'}),label='Start Date')
 	end_room = forms.CharField(widget=forms.TextInput(attrs={'size':'8'}),label='End Date')
-	price = forms.CharField(widget=forms.TextInput(attrs={'size':'8'}),label='Price')
+	price = forms.CharField(widget=forms.TextInput(attrs={'size':'8'}),label='Price USD')
 	priceunit = forms.ChoiceField(choices=PRICETYPES,label='Pricing Term',required=True)
 		
 	class Meta:
@@ -22,6 +22,13 @@ class AdForm(forms.ModelForm):
 		exclude = ('creator','adtype','premod','photos','expiration_date')
 		fields = ('name','description','resort','addedresortname','start_room','end_room','price','priceunit')
 
+	def clean_price(self):
+		data = self.cleaned_data['price']
+		try:
+			int(data)
+		except Exception, e:
+			raise forms.ValidationError('Please enter a number')
+		return data
 
 	 
 # class EditAdForm(forms.ModelForm):

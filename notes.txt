@@ -1,11 +1,10 @@
 todo list:
-	-send out account transfer email
-	-switch google analytics over when I change the domain for the live site
+	-user should get an email once their ad is approved
 	-create user setting for if the user wants to get notification emails
+	-add special date description text field to ad creation form (figure out how to sort these)
+	-add option to not show price (figure out how to sort these)
+	-Annie should get notification when a new resort is created by a user
 	-get email notifications working with paypal payments (possibly even have the paypal 'paid' signal mark the ad paid automatically)
-
-
-future todo list (anytime after site launches):
 	-add markdown buttons to regular add form
 	-add link to login page for signup and a custom message.
 	-spruce up create account page
@@ -17,10 +16,13 @@ future todo list (anytime after site launches):
 	-ad a map on every ad page of the timeshare location
 	-create user settings section (receive email when messaged?, when to notify of expiration?, show email address on ads?)
 	-create a timeshare calendar, Calendar- years 2011-2021 dates. Fri-Fri, Sat-Sat, Sun-Sun (this would let people know the nomenclature for timeshare weeks)
+	
 
 
 
 done list:
+	-switch google analytics over when I change the domain for the live site
+	-send out account transfer email
 	-let user edit password and forgot password function and contact email address
 	-fix server memory leak
 	-put question mark helpers on the chart page for (ads and private messaging)
