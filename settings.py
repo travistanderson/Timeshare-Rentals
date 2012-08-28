@@ -98,10 +98,10 @@ SITE_NAME = "timesharerentals.com"
 # NUMPHOTOS = (('free','1'),('bronze','3'),('silver','10'),('gold','10'))
 # DAYS = {'free':61,'bronze':183,'silver':365,'gold':10000,}
 PHOTATS = ({'emptydict':1,},
-	{'name':'Free','namel':'free','numphotos':1,'numdays':61,'dollars':0,'ads':1,'featured':0,'statistics':0,'paypalid':'Z3U8KTPX7M4YU','description':'40 Words',},
-	{'name':'Bronze','namel':'bronze','numphotos':3,'numdays':183,'dollars':65,'ads':0,'featured':1,'statistics':1,'paypalid':'MBF7JSC4PLHYE','description':'100 Words',},
-	{'name':'Silver','namel':'silver','numphotos':10,'numdays':365,'dollars':100,'ads':0,'featured':1,'statistics':1,'paypalid':'268KUB3QJEK3J','description':'Unlimited Words',},
-	{'name':'Gold','namel':'gold','numphotos':10,'numdays':10000,'dollars':200,'ads':0,'featured':1,'statistics':1,'paypalid':'ZQ48W8J3LJZ8N','description':'Unlimited Words',})
+	{'name':'Free','namel':'free','numphotos':1,'numdays':31,'dollars':0,'ads':1,'featured':0,'statistics':0,'paypalid':'Z3U8KTPX7M4YU','description':'40 Words',},
+	{'name':'Bronze','namel':'bronze','numphotos':3,'numdays':183,'dollars':13,'ads':0,'featured':1,'statistics':1,'paypalid':'MBF7JSC4PLHYE','description':'100 Words',},
+	{'name':'Silver','namel':'silver','numphotos':10,'numdays':365,'dollars':20,'ads':0,'featured':1,'statistics':1,'paypalid':'268KUB3QJEK3J','description':'Unlimited Words',},
+	{'name':'Gold','namel':'gold','numphotos':10,'numdays':10000,'dollars':75,'ads':0,'featured':1,'statistics':1,'paypalid':'ZQ48W8J3LJZ8N','description':'Unlimited Words',})
 # TYPES = {'free':1,'bronze':2,'silver':3,'gold':4,}
 
 # PAYPAL_RECEIVER_EMAIL = "travistanderson@gmail.com"
