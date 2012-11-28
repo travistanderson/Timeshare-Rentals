@@ -18,9 +18,9 @@ class Command(BaseCommand):
 			subject = 'Your ad on TimeshareRentals.com is expiring %s.'  % when
 			content = '''%s,
 					Your ad "%s", on TimeshareRentals.com is expiring %s.
-					You can renew it here <a href='http://timesharerentals.com/profile/%s/'>here</a>.
-					If you do not wish to renew it, simply let it expire.
-					Thanks for placing your ad with us.
+					You can renew it by replying to this email and letting
+					us know. If you do not wish to renew it, 
+					simply let it expire. Thanks for placing your ad with us.
 
 					Timesharerentals.com
 			''' %(ad.creator,ad,when,ad.creator.id)
