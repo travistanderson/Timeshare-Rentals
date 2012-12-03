@@ -46,6 +46,7 @@
 			</form>{# end of login form #}
 			<form action="{% url forgot_view %}" method="get" id='forgotform'>
 				<table class="form-table">
+					<tr><td>I don't have an account yet</td><td><a href='{% url newuser %}'>Sign Up</a></td></tr>
 					<tr>
 						<td class="label"><label for='id_postforgot'>I forgot my password</label></td>
 						<td class="fields">
